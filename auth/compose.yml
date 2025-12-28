@@ -1,0 +1,71 @@
+name: auth
+
+services:
+  authelia:
+    image: authelia/authelia:4.39.15
+    container_name: 'authelia'
+    volumes:
+      - ${APPS_FOLDER}/auth/authelia/secrets:/secrets:ro
+      - ${APPS_FOLDER}/auth/authelia/keys:/keys:ro
+      - ${APPS_FOLDER}/auth/authelia/db:/db
+      - ./config/authelia:/config
+      - ${APPS_FOLDER}/auth/authelia/logs:/var/log/authelia/
+    environment:
+      LDAP_BASE_DN: ${LDAP_BASE_DN}
+      TZ: Europe/Berlin
+      X_AUTHELIA_CONFIG_FILTERS: 'template'
+      DOMAIN: ${DOMAIN}
+    env_file:
+      - authelia.env
+    networks:
+      auth_internal:
+        ipv4_address: 172.31.254.3
+        ipv6_address: fdd0:0:0:fff::3
+      default:
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=auth_internal
+      - traefik.http.routers.authelia.rule=Host(`auth.${DOMAIN}`)
+      - traefik.http.routers.authelia.entrypoints=websecure,websecure-pub
+      - traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/authz/forward-auth
+      - traefik.http.middlewares.authelia.forwardAuth.trustForwardHeader=true
+      - traefik.http.middlewares.authelia.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email
+    user: 568:568
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  lldap:
+    image: ghcr.io/lldap/lldap:v0.6.2-alpine-rootless
+    container_name: lldap
+    volumes:
+      - ${APPS_FOLDER}/auth/lldap:/data
+    environment:
+      LLDAP_LDAP_BASE_DN: ${LDAP_BASE_DN}
+      TZ: Europe/Berlin
+    env_file:
+      - lldap.env
+    networks:
+      auth_internal:
+        ipv4_address: 172.31.254.4
+        ipv6_address: fdd0:0:0:fff::4
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=auth_internal
+      - traefik.http.routers.lldap.rule=Host(`lldap.${DOMAIN}`)
+      - traefik.http.routers.lldap.entrypoints=websecure
+      - traefik.http.routers.lldap.service=lldap
+      - traefik.http.services.lldap.loadbalancer.server.port=17170
+    user: 568:568
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  auth_internal:
+    external: true
+    name: auth_internal

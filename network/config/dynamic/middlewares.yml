@@ -1,0 +1,15 @@
+http:
+  middlewares:
+    compress:
+      compress: {}
+    hsts:
+      headers:
+        stsSeconds: 2592000
+    crowdsec:
+      plugin:
+        bouncer:
+          enabled: true
+          logLevel: INFO
+          crowdsecLapiKey: {{env "CROWDSEC_API_KEY"}}
+          crowdsecAppsecEnabled: true
+          crowdsecAppsecHost: crowdsec:7422

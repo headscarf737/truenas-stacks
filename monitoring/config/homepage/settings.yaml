@@ -1,0 +1,21 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+layout:
+  Media:
+    style: row
+    columns: 3
+    useEqualHeights: true
+
+  Files:
+    style: row
+    columns: 2
+    useEqualHeights: true
+
+  Network:
+  
+  Arrs:
+  
+  Monitoring:
+  

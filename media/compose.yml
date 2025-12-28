@@ -1,0 +1,322 @@
+name: media
+
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:1.5.3
+    container_name: bazarr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}:/media
+      - ${APPS_FOLDER}/media/bazarr:/config
+      - ${APPS_FOLDER}/media/usenet:/data/usenet
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.bazarr.rule=Host(`bazarr.${DOMAIN}`)
+      - traefik.http.routers.bazarr.entrypoints=websecure
+      - traefik.http.routers.bazarr.middlewares=authelia@docker
+      - traefik.http.routers.bazarr.service=bazarr
+      - traefik.http.services.bazarr.loadbalancer.server.port=6767
+    security_opt:
+      - no-new-privileges:true
+
+  configarr:
+    image: ghcr.io/raydak-labs/configarr:1.18.0
+    container_name: configarr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ./config/configarr/config.yml:/app/config/config.yml
+      - ${APPS_FOLDER}/media/configarr:/app/repos
+    environment:
+      TZ: Europe/Berlin
+      RADARR_API_KEY: ${RADARR_API_KEY}
+      SONARR_API_KEY: ${SONARR_API_KEY}
+    network_mode: 'service:gluetun'
+    restart: no
+    user: 568:568
+    profiles:
+      - manual
+
+  gluetun:
+    image: qmcgaw/gluetun:v3.40.3
+    container_name: gluetun
+    volumes:
+      - ${APPS_FOLDER}/media/gluetun:/gluetun
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      UPDATER_PERIOD: 24h
+      HTTP_CONTROL_SERVER_AUTH_DEFAULT_ROLE: '{"auth":"apikey","apikey":"${GLUETUN_API_KEY}"}'
+      VPN_SERVICE_PROVIDER: mullvad
+      VPN_TYPE: wireguard
+      WIREGUARD_PRIVATE_KEY: ${WG_PRIV_KEY}
+      WIREGUARD_ADDRESSES: ${WG_ADDRESS}
+      SERVER_COUNTRIES: Germany
+      SERVER_CITIES: Frankfurt
+      OWNED_ONLY: yes
+      BLOCK_MALICIOUS: 'off'
+    networks:
+      media:
+      traefik:
+      auth_internal:
+        ipv4_address: 172.31.254.5
+        ipv6_address: fdd0:0:0:fff::5
+    extra_hosts:
+      - "lldap:172.31.254.4"
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    hostname: media
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:10.11.5
+    container_name: jellyfin
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}:/media
+      - ${APPS_FOLDER}/media/jellyfin:/config
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.jellyfin.rule=Host(`jellyfin.${DOMAIN}`)
+      - traefik.http.routers.jellyfin.entrypoints=websecure
+      - traefik.http.routers.jellyfin.service=jellyfin
+      - traefik.http.services.jellyfin.loadbalancer.server.port=8096
+    devices:
+      - /dev/dri:/dev/dri
+    security_opt:
+      - no-new-privileges:true
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:2.3.0
+    container_name: prowlarr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${APPS_FOLDER}/media/prowlarr:/config
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      PROWLARR__AUTH__METHOD: External
+      PROWLARR__AUTH__APIKEY: ${PROWLARR_API_KEY}
+      PROWLARR__LOG__LEVEL: info
+      PROWLARR__LOG__ANALYTICSENABLED: False
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.prowlarr.rule=Host(`prowlarr.${DOMAIN:?err}`)
+      - traefik.http.routers.prowlarr.entrypoints=websecure
+      - traefik.http.routers.prowlarr.middlewares=authelia@docker
+      - traefik.http.routers.prowlarr.service=prowlarr
+      - traefik.http.services.prowlarr.loadbalancer.server.port=9696
+    security_opt:
+      - no-new-privileges:true
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:6.0.4
+    container_name: radarr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}:/media
+      - ${APPS_FOLDER}/media/radarr:/config
+      - ${APPS_FOLDER}/media/usenet:/data/usenet
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      RADARR__AUTH__METHOD: External
+      RADARR__AUTH__APIKEY: ${RADARR_API_KEY}
+      RADARR__LOG__LEVEL: info
+      RADARR__LOG__ANALYTICSENABLED: False
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.radarr.rule=Host(`radarr.${DOMAIN}`)
+      - traefik.http.routers.radarr.entrypoints=websecure
+      - traefik.http.routers.radarr.middlewares=authelia@docker
+      - traefik.http.routers.radarr.service=radarr
+      - traefik.http.services.radarr.loadbalancer.server.port=7878
+    security_opt:
+      - no-new-privileges:true
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:4.5.5
+    container_name: sabnzbd
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${APPS_FOLDER}/media/sabnzbd:/config
+      - ${APPS_FOLDER}/media/usenet:/data/usenet
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.${DOMAIN}`)
+      - traefik.http.routers.sabnzbd.entrypoints=websecure
+      - traefik.http.routers.sabnzbd.middlewares=authelia@docker
+      - traefik.http.routers.sabnzbd.service=sabnzbd
+      - traefik.http.services.sabnzbd.loadbalancer.server.port=8080
+    security_opt:
+      - no-new-privileges:true
+
+  seerr:
+    image: ghcr.io/hotio/seerr:nightly
+    container_name: seerr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${APPS_FOLDER}/media/seerr:/app/config
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      API_KEY: ${SEERR_API_KEY}
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.seerr.rule=Host(`seerr.${DOMAIN}`)
+      - traefik.http.routers.seerr.entrypoints=websecure
+      - traefik.http.routers.seerr.service=seerr
+      - traefik.http.services.seerr.loadbalancer.server.port=5055
+    security_opt:
+      - no-new-privileges:true
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:4.0.16
+    container_name: sonarr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}:/media
+      - ${APPS_FOLDER}/media/sonarr:/config
+      - ${APPS_FOLDER}/media/usenet:/data/usenet
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      SONARR__AUTH__METHOD: External
+      SONARR__AUTH__APIKEY: ${SONARR_API_KEY}
+      SONARR__LOG__LEVEL: info
+      SONARR__LOG__ANALYTICSENABLED: False
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sonarr.rule=Host(`sonarr.${DOMAIN}`)
+      - traefik.http.routers.sonarr.entrypoints=websecure
+      - traefik.http.routers.sonarr.middlewares=authelia@docker
+      - traefik.http.routers.sonarr.service=sonarr
+      - traefik.http.services.sonarr.loadbalancer.server.port=8989
+    security_opt:
+      - no-new-privileges:true
+
+  stash:
+    image: ghcr.io/hotio/stash:release-0.30.1
+    container_name: stash
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}:/media
+      - ${APPS_FOLDER}/media/stash:/config
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      STASH_STASH: /media/adult
+      STASH_PORT: 9998
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.stash.rule=Host(`stash.${DOMAIN}`)
+      - traefik.http.routers.stash.entrypoints=websecure
+      - traefik.http.routers.stash.middlewares=authelia@docker
+      - traefik.http.routers.stash.service=stash
+      - traefik.http.services.stash.loadbalancer.server.port=9998
+    security_opt:
+      - no-new-privileges:true
+
+  whisparr:
+    image: ghcr.io/hotio/whisparr:v3-3.0.2.1751
+    container_name: whisparr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}:/media
+      - ${APPS_FOLDER}/media/whisparr:/config
+      - ${APPS_FOLDER}/media/usenet:/data/usenet
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      WHISPARR__AUTH__METHOD: External
+      WHISPARR__AUTH__APIKEY: ${WHISPARR_API_KEY}
+      WHISPARR__LOG__LEVEL: info
+      WHISPARR__LOG__ANALYTICSENABLED: False
+    network_mode: 'service:gluetun'
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.whisparr.rule=Host(`whisparr.${DOMAIN}`)
+      - traefik.http.routers.whisparr.entrypoints=websecure
+      - traefik.http.routers.whisparr.middlewares=authelia@docker
+      - traefik.http.routers.whisparr.service=whisparr
+      - traefik.http.services.whisparr.loadbalancer.server.port=6969
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  media:
+    external: false
+    name: media
+  traefik:
+    external: true
+    name: traefik
+  auth_internal:
+    external: true
+    name: auth_internal

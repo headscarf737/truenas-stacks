@@ -1,0 +1,87 @@
+name: monitoring
+
+services:
+  dozzle:
+    image: amir20/dozzle:v8.14.12
+    container_name: dozzle
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      traefik:
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dozzle.rule=Host(`dozzle.${DOMAIN}`)
+      - traefik.http.routers.dozzle.entrypoints=websecure
+      - traefik.http.routers.dozzle.middlewares=authelia@docker
+      - traefik.http.routers.dozzle.service=dozzle
+      - traefik.http.services.dozzle.loadbalancer.server.port=8080
+    security_opt:
+      - no-new-privileges:true
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:v1.8.0
+    container_name: homepage
+    volumes:
+      - ./config/homepage/widgets.yaml:/app/config/widgets.yaml
+      - ./config/homepage/services.yaml:/app/config/services.yaml
+      - ./config/homepage/settings.yaml:/app/config/settings.yaml
+      - ./config/homepage/bookmarks.yaml:/app/config/bookmarks.yaml
+      - ${TANK_DATASET}:/mnt/tank:ro
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      HOMEPAGE_ALLOWED_HOSTS: homepage.${DOMAIN}
+      HOMEPAGE_VAR_DOMAIN: ${DOMAIN}
+    env_file:
+      - homepage.env
+    networks:
+      traefik:
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.homepage.rule=Host(`homepage.${DOMAIN}`)
+      - traefik.http.routers.homepage.entrypoints=websecure
+      - traefik.http.routers.homepage.middlewares=authelia@docker
+      - traefik.http.routers.homepage.service=homepage
+      - traefik.http.services.homepage.loadbalancer.server.port=3000
+    security_opt:
+      - no-new-privileges:true
+
+  scrutiny:
+    image: ghcr.io/analogj/scrutiny:master-omnibus
+    container_name: scrutiny
+    volumes:
+      - /run/udev:/run/udev:ro
+      - ${APPS_FOLDER}/monitoring/scrutiny/config:/opt/scrutiny/config
+      - ${APPS_FOLDER}/monitoring/scrutiny/data:/opt/scrutiny/influxdb
+    networks:
+      traefik:
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.scrutiny.rule=Host(`scrutiny.${DOMAIN}`)
+      - traefik.http.routers.scrutiny.entrypoints=websecure
+      - traefik.http.routers.scrutiny.middlewares=authelia@docker
+      - traefik.http.routers.scrutiny.service=scrutiny
+      - traefik.http.services.scrutiny.loadbalancer.server.port=8080
+    cap_add:
+      - SYS_RAWIO
+      - SYS_ADMIN
+    devices:
+      - /dev/sda
+      - /dev/sdb
+      - /dev/sdc
+      - /dev/sdd
+      - /dev/sde
+      - /dev/sdf
+      - /dev/sdg
+      - /dev/sdh
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  traefik:
+    external: true
+    name: traefik

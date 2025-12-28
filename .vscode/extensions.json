@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "streetsidesoftware.code-spell-checker",
+    "DavidAnson.vscode-markdownlint",
+    "esbenp.prettier-vscode",
+    "docker.docker",
+    "ms-azuretools.vscode-docker"
+  ]
+}

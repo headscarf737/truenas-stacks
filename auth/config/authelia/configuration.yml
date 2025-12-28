@@ -1,0 +1,174 @@
+# yaml-language-server: $schema=https://www.authelia.com/schemas/latest/json-schema/configuration.json
+
+server:
+  address: 'tcp4://:9091'
+
+log:
+  level: info
+  file_path: '/var/log/authelia/authelia.log'
+  keep_stdout: true
+
+identity_validation:
+  elevated_session:
+    require_second_factor: true
+  reset_password:
+    jwt_lifespan: '5 minutes'
+    jwt_secret: {{ secret "/secrets/jwt_secret.txt" | mindent 0 "|" | msquote }}
+
+totp:
+  disable: false
+  issuer: '{{ env "DOMAIN" }}'
+  period: 30
+  skew: 1
+
+password_policy:
+  zxcvbn:
+    enabled: true
+    min_score: 4
+
+authentication_backend:
+  ldap:
+    implementation: 'lldap'
+    address: 'ldap://lldap:3890'
+    base_dn: '{{ env "LDAP_BASE_DN" }}'
+    user: '{{ env "LDAP_AUTH_USER" }}'
+    password: '{{ env "LDAP_AUTH_PASS" }}'
+    attributes:
+      extra:
+        immich-quota:
+          multi_valued: false
+          value_type: 'integer'
+
+definitions:
+  user_attributes:
+    role:
+      expression: '"admin" in groups ? "admin" : "user"'
+
+access_control:
+  default_policy: 'deny'
+  rules:
+    - domain: traefik.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    
+    - domain: bazarr.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: prowlarr.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: radarr.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: sabnzbd.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: sonarr.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: stash.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: whisparr.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+
+    - domain: dozzle.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: homepage.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+    - domain: scrutiny.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
+
+session:
+  name: 'authelia_session'
+  secret: {{ secret "/secrets/session_secret.txt" | mindent 0 "|" | msquote }}
+  cookies:
+    - domain: '{{ env "DOMAIN" }}'
+      authelia_url: https://auth.{{ env "DOMAIN" }}
+
+regulation:
+  max_retries: 4
+  find_time: 120
+  ban_time: 300
+
+storage:
+  encryption_key: {{ secret "/secrets/storage_encryption_key.txt" | mindent 0 "|" | msquote }}
+  local:
+    path: '/db/db.sqlite3'
+
+notifier:
+  disable_startup_check: false
+  smtp:
+    address: 'smtp://{{ env "SMTP_HOST" }}'
+    username: '{{ env "SMTP_USER" }}'
+    password: '{{ env "SMTP_PASSWORD" }}'
+    sender: '{{ env "SMTP_SENDER" }}'
+
+identity_providers:
+  oidc:
+    hmac_secret: '{{ env "HMAC_SECRET" }}'
+
+    jwks:
+      - key: {{ secret "/keys/private.pem" | mindent 10 "|" | msquote }}
+
+    claims_policies:
+      immich_policy:
+        custom_claims:
+          immich-quota:
+            attribute: 'immich-quota'
+          role:
+            attribute: 'role'
+
+    scopes:
+      immich_scope:
+        claims:
+          - 'immich-quota'
+          - 'role'
+
+    authorization_policies:
+      images_policy:
+        default_policy: 'deny'
+        rules:
+          - policy: 'one_factor'
+            subject:
+              - ['group:images']
+    
+    clients:
+      - client_id: '{{ env "IMMICH_ID" }}'
+        client_name: 'immich'
+        client_secret: '{{ env "IMMICH_SECRET" }}'
+        public: false
+        authorization_policy: 'images_policy'
+        require_pkce: false
+        redirect_uris:
+          - 'https://immich.{{ env "DOMAIN" }}/auth/login'
+          - 'https://immich.{{ env "DOMAIN" }}/user-settings'
+          - 'app.immich:///oauth-callback'
+        claims_policy: 'immich_policy'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'email'
+          - 'immich_scope'
+        response_types:
+          - 'code'
+        grant_types:
+          - 'authorization_code'
+        id_token_signed_response_alg: 'RS256'
+        userinfo_signed_response_alg: 'RS256'
+        token_endpoint_auth_method: 'client_secret_post'
