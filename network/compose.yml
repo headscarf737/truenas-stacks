@@ -1,6 +1,23 @@
 name: network
 
 services:
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:1.15.1@sha256:a4e2089b3531eec8c9328c7a9a586f80e8d67dcd94856e0b596b7896e1de3f62
+    container_name: cloudflare-ddns
+    environment:
+      - CLOUDFLARE_API_TOKEN=${CF_DNS_API_TOKEN}
+      - DOMAINS=${DOMAIN}
+      - PROXIED=false
+      # todo enable ipv6
+      - IP6_PROVIDER=none
+    restart: unless-stopped
+    user: 568:568
+    cap_drop:
+      - ALL
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+
   crowdsec:
     image: crowdsecurity/crowdsec:v1.7.4@sha256:4312a5109057f2a6b1237431abe638cd1026ecb3a9c2707c6ccc1ed09e4cb994
     container_name: crowdsec
@@ -129,22 +146,6 @@ services:
       test: [ 'CMD', 'traefik', 'healthcheck', '--ping' ]
     security_opt:
       - no-new-privileges:true
-
-  cloudflare-ddns:
-    image: favonia/cloudflare-ddns:1.15.1@sha256:a4e2089b3531eec8c9328c7a9a586f80e8d67dcd94856e0b596b7896e1de3f62
-    restart: unless-stopped
-    user: 568:568
-    read_only: true
-    cap_drop:
-      - ALL
-    security_opt:
-      - no-new-privileges:true
-    environment:
-      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_DDNS_TOKEN}
-      - DOMAINS=${CLOUDFLARE_DDNS_DOMAINS}
-      - PROXIED=false
-      # todo enable ipv6
-      - IP6_PROVIDER=none
 
 networks:
   traefik:
