@@ -2,7 +2,7 @@ name: immich
 
 services:
   database:
-    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
     container_name: immich_postgres
     volumes:
       - ${APPS_FOLDER}/immich/db:/var/lib/postgresql/data
@@ -71,7 +71,7 @@ services:
       - no-new-privileges:true
 
   redis:
-    image: valkey/valkey:9.0.1-alpine
+    image: valkey/valkey:9.0.1-alpine@sha256:c106a0c03bcb23cbdf9febe693114cb7800646b11ca8b303aee7409de005faa8
     container_name: immich_redis
     networks:
       immich:

@@ -2,7 +2,7 @@ name: auth
 
 services:
   authelia:
-    image: authelia/authelia:4.39.15
+    image: authelia/authelia:4.39.15@sha256:d23ee3c721d465b4749cc58541cda4aebe5aa6f19d7b5ce0afebb44ebee69591
     container_name: 'authelia'
     volumes:
       - ${APPS_FOLDER}/auth/authelia/secrets:/secrets:ro
@@ -38,7 +38,7 @@ services:
       - no-new-privileges:true
 
   lldap:
-    image: ghcr.io/lldap/lldap:v0.6.2-alpine-rootless
+    image: ghcr.io/lldap/lldap:v0.6.2-alpine-rootless@sha256:35df821899ec54c11eaab395e9c68e191e2582592cba343b0a904f6821aadcd2
     container_name: lldap
     volumes:
       - ${APPS_FOLDER}/auth/lldap:/data

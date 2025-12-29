@@ -2,7 +2,7 @@ name: network
 
 services:
   crowdsec:
-    image: crowdsecurity/crowdsec:v1.7.4
+    image: crowdsecurity/crowdsec:v1.7.4@sha256:4312a5109057f2a6b1237431abe638cd1026ecb3a9c2707c6ccc1ed09e4cb994
     container_name: crowdsec
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -50,7 +50,7 @@ services:
     hostname: dns-server
 
   traefik:
-    image: traefik:3.6.5
+    image: traefik:3.6.5@sha256:67622638cd88dbfcfba40159bc652ecf0aea0e032f8a3c7e3134ae7c037b9910
     container_name: traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -131,7 +131,7 @@ services:
       - no-new-privileges:true
 
   cloudflare-ddns:
-    image: favonia/cloudflare-ddns:1.15.1
+    image: favonia/cloudflare-ddns:1.15.1@sha256:a4e2089b3531eec8c9328c7a9a586f80e8d67dcd94856e0b596b7896e1de3f62
     restart: unless-stopped
     user: 568:568
     read_only: true
