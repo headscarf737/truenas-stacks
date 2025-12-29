@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   dns:
-    image: technitium/dns-server:14.2.0
+    image: technitium/dns-server:14.3.0@sha256:322b236403ca25028032f28736e2270a860527b030b162c9f82451c6494c4698
     container_name: dns
     volumes:
       - ${APPS_FOLDER}/network/dns:/etc/dns
