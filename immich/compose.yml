@@ -59,10 +59,10 @@ services:
       - traefik.http.routers.immich.rule=Host(`immich.${DOMAIN}`)
       - traefik.http.routers.immich.entrypoints=websecure
       - traefik.http.routers.immich.service=immich
-      - traefik.http.routers.immich-pub.rule=Host(`immich.${DOMAIN}`)
-      - traefik.http.routers.immich-pub.entrypoints=websecure-pub
-      # TODO: add header auth middleware for pub router
-      - traefik.http.routers.immich-pub.service=immich
+#      - traefik.http.routers.immich-pub.rule=Host(`immich.${DOMAIN}`)
+#      - traefik.http.routers.immich-pub.entrypoints=websecure-pub
+      # TODO: add header auth middleware for pub router#
+#      - traefik.http.routers.immich-pub.service=immich
       - traefik.http.services.immich.loadbalancer.server.port=2283
     user: 568:568
     cap_drop:
