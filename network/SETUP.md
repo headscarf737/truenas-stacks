@@ -31,6 +31,14 @@ Add `${DOMAIN}` to your routers rebind protection whitelist.
 
 Do the same for your Public DNS provider (e.g. Cloudflare) so that `${DOMAIN}` and `*.${DOMAIN}` point to your public IP address.
 
+### Static IPv6
+
+Choose an ULA prefix for your network, e.g. `fd42:168:178:220::/64`
+
+In your router add a static IPv6 route for `fd42:168:178:220::/64` via your link local address.
+
+Add `NET_INTERFACE_DNS6` as an alias to your network interface
+
 ## Setup Crowdsec
 
 Generate a secure API key for `CROWDSEC_API_KEY`

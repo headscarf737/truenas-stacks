@@ -40,8 +40,6 @@ services:
       ENROLL_INSTANCE_NAME: ${CROWDSEC_INSTANCE_NAME}
     networks:
       traefik:
-        ipv4_address: 172.31.255.254
-        ipv6_address: fdd0:0:0:1000::fe
     restart: unless-stopped
 
   dns:
@@ -87,6 +85,8 @@ services:
       - '${NET_INTERFACE_INTERNAL}:443:443/udp'
     networks:
       traefik:
+        ipv4_address: 172.31.255.254
+        ipv6_address: fdd0:0:0:1000::fe
       auth_internal:
         ipv4_address: 172.31.254.2
         ipv6_address: fdd0:0:0:fff::2
