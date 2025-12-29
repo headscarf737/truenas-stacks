@@ -1,5 +1,9 @@
 # Install Guide
 
+## Before You Start
+
+If your drive is `512e`, you should switch to `4kn` for better performance.
+
 ## Notice
 
 This setup assumes a very specific TrueNAS setup
@@ -135,3 +139,27 @@ chmod 600 .env
 sudo docker network create --subnet 172.31.255.0/24 --subnet fdd0:0:0:1000::/64 traefik
 sudo docker network create --internal --subnet 172.31.254.0/24 --subnet fdd0:0:0:fff::/64 auth_internal
 ```
+
+## Email
+
+In Settings > General enter your email information and send a test email to verify that everything is working.
+
+## Snapshots
+
+Create snapshot tasks for your `docker` dataset (e.g. daily, but exclude `media/usenet`) and your `content` dataset (e.g. hourly).
+
+## Smb User Shares
+
+If you want to make some disks available via SMB, create a dataset `Users` (with SMB Preset) and one dataset per user inside it (with SMB Preset but without Share).
+
+Permissions for the `Users` dataset. Owner should be `root:builtin_users`. Group `builtin_administrators` with Modify, and `group@` with Read
+
+Permissions for each user dataset. Owner should be the respective user and group. `owner@` should have Modify
+
+The Share ACL for the `Users` share should contain group `builtin_users` with Full Control
+
+Set a Quota for each user dataset if needed.
+
+## Smart Monitoring
+
+Use <https://github.com/JoeSchmuck/Multi-Report/blob/main/Multi_Report_Quick_Start_Guide.pdf> to set up email reports for your SMART data.
