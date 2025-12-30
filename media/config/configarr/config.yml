@@ -46,7 +46,7 @@ radarr:
           until_quality: Merged QPs
           until_score: 35000
           min_format_score: 1
-        min_format_score: 0
+        min_format_score: 1700
         quality_sort: top
         qualities:
           - name: Merged QPs

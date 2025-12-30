@@ -68,6 +68,7 @@ Follow <https://wiki.bazarr.media/Getting-Started/Setup-Guide/>
 
 ```shell
 sudo docker compose --profile=manual up -d
+sudo docker compose logs -f configarr
 ```
 
 ## Jellyfin
