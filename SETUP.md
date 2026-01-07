@@ -163,3 +163,10 @@ Set a Quota for each user dataset if needed.
 ## Smart Monitoring
 
 Use <https://github.com/JoeSchmuck/Multi-Report/blob/main/Multi_Report_Quick_Start_Guide.pdf> to set up email reports for your SMART data.
+
+## Run Docker Command in all Stacks
+
+```shell
+./docker-all <docker-commands>
+# e.g. ./docker-all compose up -d
+```
