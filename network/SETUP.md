@@ -57,6 +57,18 @@ Use the `ENROLL_KEY` for `CROWDSEC_ENROLL_KEY`
 
 Start the stack and accept the enroll request
 
+Run this command to add extra context information to Crowdsec Alerts
+
+```shell
+sudo docker compose exec -it crowdsec /bin/sh
+# and then inside the container
+cat > /etc/crowdsec/contexts/extra_info.yaml << EOF
+context:
+  host:
+  - evt.Meta.target_fqdn
+EOF
+```
+
 Restart the stack again to apply the new configuration.
 
 Subscribe to some Blocklists on <https://app.crowdsec.net/blocklists> (e.g. Firehol cruzit.com list, Firehol cybercrime tracker list, Firehol greensnow.co list)

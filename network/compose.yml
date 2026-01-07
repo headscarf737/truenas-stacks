@@ -98,7 +98,8 @@ services:
       # Logs
       - '--log.level=INFO'
       - '--accesslog.filePath=/var/log/traefik/access.log'
-      - '--accesslog.format=common'
+      - '--accesslog.format=json'
+      - '--accesslog.fields.headers.names.User-Agent=keep'
       # Web
       - '--entrypoints.web.address=:80/tcp'
       - '--entrypoints.web.http.redirections.entryPoint.to=websecure'
