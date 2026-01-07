@@ -112,3 +112,13 @@ https://daserste-live.ard-mcdn.de/daserste/live/hls/de/master.m3u8
 ```
 
 See <https://github.com/jnk22/kodinerds-iptv/blob/master/iptv/clean/clean.m3u> and <https://xmltv.info/> or <https://www.open-epg.com/app/index.php>
+
+## Seerr
+
+Setting up seerr is straight forward. Just follow the onboarding steps.
+
+Add Sonarr and Radarr instances like in Prowlarr section.
+
+For Sonarr make sure to enable Season Folders
+
+Setting up Email notifications is recommended.
