@@ -27,7 +27,6 @@ services:
       - ./config/homepage/services.yaml:/app/config/services.yaml
       - ./config/homepage/settings.yaml:/app/config/settings.yaml
       - ./config/homepage/bookmarks.yaml:/app/config/bookmarks.yaml
-      - ${TANK_DATASET}:/mnt/tank:ro
     environment:
       PUID: 568
       PGID: 568
