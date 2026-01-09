@@ -116,7 +116,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.victorialogs.rule=Host(`victorialogs.${DOMAIN}`)
       - traefik.http.routers.victorialogs.entrypoints=websecure
-      #- traefik.http.routers.victorialogs.middlewares=authelia@docker
+      - traefik.http.routers.victorialogs.middlewares=authelia@docker
       - traefik.http.routers.victorialogs.service=victorialogs
       - traefik.http.services.victorialogs.loadbalancer.server.port=9428
     user: 568:568
