@@ -19,14 +19,16 @@ services:
     security_opt:
       - no-new-privileges:true
 
-  fluent-bit:
+  fluentbit:
     image: fluent/fluent-bit:4.2.2
-    container_name: fluent-bit
+    container_name: fluentbit
     volumes:
       - ./config/fluentbit/config.yaml:/fluent-bit/etc/fluent-bit.yaml:ro
       - ${APPS_FOLDER}/monitoring/fluentbit:/fluent-bit/etc/data:ro
       # Logs
       - ${APPS_FOLDER}/network/traefik/logs:/var/log/traefik:ro
+    networks:
+      metrics_internal:
     command: [ "/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.yaml" ]
     restart: unless-stopped
     user: 568:568
@@ -95,9 +97,61 @@ services:
     security_opt:
       - no-new-privileges:true
 
-  # TODO: add cadvisor, victorialogs, victoriametrics, grafana
+  victorialogs:
+    image: victoriametrics/victoria-logs:v1.43.1
+    container_name: victorialogs
+    volumes:
+      - ${APPS_FOLDER}/monitoring/victorialogs:/vlogs
+    networks:
+      metrics_internal:
+      traefik:
+    command: --storageDataPath=/vlogs
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://127.0.0.1:9428/health" ]
+      interval: 1s
+      timeout: 1s
+      retries: 10
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.victorialogs.rule=Host(`victorialogs.${DOMAIN}`)
+      - traefik.http.routers.victorialogs.entrypoints=websecure
+      #- traefik.http.routers.victorialogs.middlewares=authelia@docker
+      - traefik.http.routers.victorialogs.service=victorialogs
+      - traefik.http.services.victorialogs.loadbalancer.server.port=9428
+    user: 568:568
+    security_opt:
+      - no-new-privileges:true
+
+  vmauth:
+    image: victoriametrics/vmauth:v1.133.0
+    container_name: vmauth
+    depends_on:
+      victorialogs:
+        condition: service_healthy
+    volumes:
+      - ./config/vmauth:/etc/vmauth
+    networks:
+      metrics_internal:
+    command: -auth.config=/etc/vmauth/vmauth.yaml
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://127.0.0.1:8427/health" ]
+      interval: 1s
+      timeout: 1s
+      retries: 10
+    user: 568:568
+    security_opt:
+      - no-new-privileges:true
+
+  # TODO: add cadvisor, victoriametrics, grafana
 
 networks:
   traefik:
     external: true
     name: traefik
+
+  metrics_internal:
+    external: false
+    name: metrics_internal
+    internal: true

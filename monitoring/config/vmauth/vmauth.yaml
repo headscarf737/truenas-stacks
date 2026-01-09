@@ -1,0 +1,8 @@
+unauthorized_user:
+  url_map:
+    - src_paths:
+        - /insert/.*
+      url_prefix: http://victorialogs:9428
+#    - src_paths:
+#        - /opentelemetry/.*
+#      url_prefix: http://victoriametrics:8428

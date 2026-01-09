@@ -1,5 +1,5 @@
 service:
-  log_level: debug
+  log_level: info
 
 parsers:
     - name: traefik
@@ -27,5 +27,12 @@ pipeline:
         - isocode ClientHost %{country.iso_code}
 
   outputs:
-    - name: stdout
-      match: '*'
+    - name: opentelemetry
+      match: 'traefik'
+      host: vmauth
+      logs_uri: /insert/opentelemetry/v1/logs
+      metrics_uri: /opentelemetry/api/v1/push
+      logs_severity_text_message_key: level
+      port: 8427
+      header: 
+        - VL-Stream-Fields severity,RouterName

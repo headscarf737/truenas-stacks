@@ -93,6 +93,10 @@ access_control:
       policy: 'one_factor'
       subject:
         - ['group:admin']
+    - domain: victorialogs.{{ env "DOMAIN" }}
+      policy: 'one_factor'
+      subject:
+        - ['group:admin']
 
 session:
   name: 'authelia_session'
