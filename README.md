@@ -46,6 +46,8 @@ This repo includes the following stacks:
 
 - [monitoring](./monitoring): Monitoring stack for server health and performance
 
+  - Dozzle: Log viewer for docker containers
+  - fluentbit: Observability Pipeline processor
   - Homepage: Dashboard for quick access to services
   - Scrutiny: SMART monitoring for drives
 

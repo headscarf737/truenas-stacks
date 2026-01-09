@@ -27,9 +27,9 @@ services:
       - ${APPS_FOLDER}/network/crowdsec/data:/var/lib/crowdsec/data/
       - ${APPS_FOLDER}/network/crowdsec/config:/etc/crowdsec/
       # Logs
-      - ${APPS_FOLDER}/network/traefik/logs:/var/log/traefik
-      - ${APPS_FOLDER}/auth/authelia/logs:/var/log/authelia
-      - ${APPS_FOLDER}/nextcloud/logs:/var/log/nextcloud
+      - ${APPS_FOLDER}/network/traefik/logs:/var/log/traefik:ro
+      - ${APPS_FOLDER}/auth/authelia/logs:/var/log/authelia:ro
+      - ${APPS_FOLDER}/nextcloud/logs:/var/log/nextcloud:ro
     environment:
       TZ: Europe/Berlin
       USE_WAL: true

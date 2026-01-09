@@ -19,6 +19,20 @@ services:
     security_opt:
       - no-new-privileges:true
 
+  fluent-bit:
+    image: fluent/fluent-bit:4.2.2
+    container_name: fluent-bit
+    volumes:
+      - ./config/fluentbit/config.yaml:/fluent-bit/etc/fluent-bit.yaml:ro
+      - ${APPS_FOLDER}/monitoring/fluentbit:/fluent-bit/etc/data:ro
+      # Logs
+      - ${APPS_FOLDER}/network/traefik/logs:/var/log/traefik:ro
+    command: [ "/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.yaml" ]
+    restart: unless-stopped
+    user: 568:568
+    security_opt:
+      - no-new-privileges:true
+
   homepage:
     image: ghcr.io/gethomepage/homepage:v1.8.0@sha256:7dc099d5c6ec7fc945d858218565925b01ff8a60bcbfda990fc680a8b5cd0b6e
     container_name: homepage
@@ -77,8 +91,11 @@ services:
       - /dev/sdf
       - /dev/sdg
       - /dev/sdh
+      - /dev/nvme0
     security_opt:
       - no-new-privileges:true
+
+  # TODO: add cadvisor, victorialogs, victoriametrics, grafana
 
 networks:
   traefik:

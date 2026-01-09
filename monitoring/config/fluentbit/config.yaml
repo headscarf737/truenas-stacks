@@ -1,0 +1,31 @@
+service:
+  log_level: debug
+
+parsers:
+    - name: traefik
+      format: json
+      time_key: StartLocal
+      time_format: '%Y-%m-%dT%H:%M:%S.%L%z'
+      time_keep: on
+
+pipeline:
+  inputs:
+    - name: tail
+      path: /var/log/traefik/*.log
+      parser: traefik
+      tag: traefik
+
+  filters:
+    - name: geoip2
+      match: 'traefik'
+      database: /fluent-bit/etc/data/GeoLite2-City.mmdb
+      lookup_key: ClientHost
+      record:
+        - accuracy_radius ClientHost %{location.accuracy_radius}
+        - latitude ClientHost %{location.latitude}
+        - longitude ClientHost %{location.longitude}
+        - isocode ClientHost %{country.iso_code}
+
+  outputs:
+    - name: stdout
+      match: '*'

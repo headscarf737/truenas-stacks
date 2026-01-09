@@ -15,3 +15,13 @@ Create nextcloud key using instructions provided under Settings > System
 Create new user with long random password
 
 Create Token for that user
+
+## Fluentbit
+
+Download the GeoLite2 database into the fluentbit config folder:
+
+This product includes GeoLite Data created by MaxMind, available from https://www.maxmind.com.
+
+```shell
+curl -L -o ${APPS_FOLDER}/monitoring/fluentbit/GeoLite2-City.mmdb "https://github.com/P3TERX/GeoLite.mmdb/releases/latest/download/GeoLite2-City.mmdb"
+```

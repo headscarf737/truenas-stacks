@@ -78,6 +78,7 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 
 - `monitoring/scrutiny/config`
 - `monitoring/scrutiny/data`
+- `monitoring/fluentbit`
 
 ### Network
 
