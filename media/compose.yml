@@ -252,7 +252,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0
+    image: ghcr.io/hotio/stash:release-v0@sha256:a83d78df96ae8f64f73c1081bd8b0e77d719902d0836f284c14598eace142219
     container_name: stash
     depends_on:
       gluetun:
@@ -280,7 +280,7 @@ services:
       - no-new-privileges:true
 
   whisparr:
-    image: ghcr.io/hotio/whisparr:v3
+    image: ghcr.io/hotio/whisparr:v3@sha256:10bec8ce343fcd8703867717b31a96e53bae28d540179b3181d7aacc6865747b
     container_name: whisparr
     depends_on:
       gluetun:
