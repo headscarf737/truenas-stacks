@@ -1,13 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "docker:enableMajor",
-    "docker:pinDigests"
-  ],
+  "extends": ["config:recommended", "docker:enableMajor", "docker:pinDigests"],
   "timezone": "Europe/Berlin",
   "schedule": ["before 9am on monday"],
   "automerge": false,
   "updateNotScheduled": false,
-  "prHourlyLimit": 3
+  "prHourlyLimit": 3,
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/hotio/stash"],
+      "versioning": "regex:^release-v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/hotio/whisparr"],
+      "versioning": "regex:^v3-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)$"
+    }
+  ]
 }
