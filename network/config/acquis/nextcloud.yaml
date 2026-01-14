@@ -1,5 +1,5 @@
 source: file
 filenames:
- - /var/log/nextcloud/*.log
+  - /var/log/nextcloud/*.log
 labels:
   type: Nextcloud

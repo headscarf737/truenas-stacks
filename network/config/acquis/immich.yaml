@@ -1,5 +1,5 @@
 source: docker
 container_name:
- - immich_server
+  - immich_server
 labels:
   type: immich

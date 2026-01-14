@@ -3,154 +3,170 @@
 # https://gethomepage.dev/configs/services/
 
 - Media:
-  - Jellyfin:
-      href: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: jellyfin
-      widgets:
-        - type: jellyfin
-          url: http://media:8096
-          key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
-          enableBlocks: true
+    - Jellyfin:
+        href: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: jellyfin
+        widgets:
+          - type: jellyfin
+            url: http://media:8096
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
+            enableBlocks: true
 
-  - Seerr:
+    - Seerr:
       href: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}
       icon: jellyseerr
       widgets:
         - type: jellyseerr
           url: http://media:5055
+          # prettier-ignore
           key: {{HOMEPAGE_VAR_SEERR_KEY}}
 
-  - Stash:
-        href: https://stash.{{HOMEPAGE_VAR_DOMAIN}}
-        icon: stash
-        widgets:
-          - type: stash
-            url: http://media:9998
+    - Stash:
+      href: https://stash.{{HOMEPAGE_VAR_DOMAIN}}
+      icon: stash
+      widgets:
+        - type: stash
+          url: http://media:9998
 
 - Files:
-  - Immich:
-      href: https://immich.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: immich
-      widgets:
-        - type: immich
-          url: http://immich-server:2283
-          key: {{HOMEPAGE_VAR_IMMICH_KEY}}
-          version: 2
+    - Immich:
+        href: https://immich.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: immich
+        widgets:
+          - type: immich
+            url: http://immich-server:2283
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+            version: 2
 
-  - Nextcloud:
-      href: https://nextcloud.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: nextcloud
-      widgets:
-        - type: nextcloud
-          url: http://nextcloud:80
-          key: {{HOMEPAGE_VAR_NEXTCLOUD_KEY}}
+    - Nextcloud:
+        href: https://nextcloud.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: nextcloud
+        widgets:
+          - type: nextcloud
+            url: http://nextcloud:80
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_NEXTCLOUD_KEY}}
 
 - Network:
-  - Traefik:
-      href: https://traefik.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: traefik
-      widgets:
-        - type: traefik
-          url: http://traefik:8080
-          key: {{HOMEPAGE_VAR_TRAEFIK_KEY}}
+    - Traefik:
+        href: https://traefik.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: traefik
+        widgets:
+          - type: traefik
+            url: http://traefik:8080
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_TRAEFIK_KEY}}
 
-  - Crowdsec:
-      icon: crowdsec
-      widgets:
-        - type: crowdsec
-          url: http://crowdsec:8080
-          username: {{HOMEPAGE_VAR_CROWDSEC_USER}}
-          password: {{HOMEPAGE_VAR_CROWDSEC_PASSWORD}}
+    - Crowdsec:
+        icon: crowdsec
+        widgets:
+          - type: crowdsec
+            url: http://crowdsec:8080
+            # prettier-ignore
+            username: {{HOMEPAGE_VAR_CROWDSEC_USER}}
+            # prettier-ignore
+            password: {{HOMEPAGE_VAR_CROWDSEC_PASSWORD}}
 
-  - DNS:
-      href: https://{{HOMEPAGE_VAR_DNS_ADDRESS}}
-      icon: technitium
-      widgets:
-        - type: technitium
-          url: https://{{HOMEPAGE_VAR_DNS_ADDRESS}}
-          key: {{HOMEPAGE_VAR_DNS_KEY}}
+    - DNS:
+        href: https://{{HOMEPAGE_VAR_DNS_ADDRESS}}
+        icon: technitium
+        widgets:
+          - type: technitium
+            url: https://{{HOMEPAGE_VAR_DNS_ADDRESS}}
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_DNS_KEY}}
 
-  - TrueNAS:
-      href: https://{{HOMEPAGE_VAR_TRUENAS_ADDRESS}}
-      icon: truenas
-#      widgets:
-#        - type: truenas
-#          url: https://{{HOMEPAGE_VAR_TRUENAS_ADDRESS}}
-#          key: {{HOMEPAGE_VAR_TRUENAS_KEY}}
+    - TrueNAS:
+        href: https://{{HOMEPAGE_VAR_TRUENAS_ADDRESS}}
+        icon: truenas
+        # widgets:
+        #   - type: truenas
+        #     url: https://{{HOMEPAGE_VAR_TRUENAS_ADDRESS}}
+        #     # prettier-ignore
+        #     key: {{HOMEPAGE_VAR_TRUENAS_KEY}}
 
-  - Authelia:
+    - Authelia:
         href: https://auth.{{HOMEPAGE_VAR_DOMAIN}}
         icon: authelia
 
-  - LLDAP:
-      href: https://lldap.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: lldap
+    - LLDAP:
+        href: https://lldap.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: lldap
 
 - Arrs:
-  - Bazaar:
-      href: https://bazarr.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: bazarr
-      widgets:
-        - type: bazarr
-          url: http://media:6767
-          key: {{HOMEPAGE_VAR_BAZARR_KEY}}
+    - Bazaar:
+        href: https://bazarr.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: bazarr
+        widgets:
+          - type: bazarr
+            url: http://media:6767
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_BAZARR_KEY}}
 
-  - Gluetun:
-      icon: gluetun
-      widgets:
-        - type: gluetun
-          url: http://media:8000
-          key: {{HOMEPAGE_VAR_GLUETUN_KEY}}
+    - Gluetun:
+        icon: gluetun
+        widgets:
+          - type: gluetun
+            url: http://media:8000
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_GLUETUN_KEY}}
 
-  - Prowlarr:
-      href: https://prowlarr.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: prowlarr
-      widgets:
-        - type: prowlarr
-          url: http://media:9696
-          key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
+    - Prowlarr:
+        href: https://prowlarr.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: prowlarr
+        widgets:
+          - type: prowlarr
+            url: http://media:9696
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
-  - Radarr:
-      href: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: radarr
-      widgets:
-        - type: radarr
-          url: http://media:7878
-          key: {{HOMEPAGE_VAR_RADARR_KEY}}
+    - Radarr:
+        href: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: radarr
+        widgets:
+          - type: radarr
+            url: http://media:7878
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_RADARR_KEY}}
 
-  - SABnzbd:
-      href: https://sabnzbd.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: sabnzbd
-      widgets:
-        - type: sabnzbd
-          url: http://media:8080
-          key: {{HOMEPAGE_VAR_SABNZBD_KEY}}
+    - SABnzbd:
+        href: https://sabnzbd.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: sabnzbd
+        widgets:
+          - type: sabnzbd
+            url: http://media:8080
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_SABNZBD_KEY}}
 
-  - Sonarr:
-      href: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: sonarr
-      widgets:
-        - type: sonarr
-          url: http://media:8989
-          key: {{HOMEPAGE_VAR_SONARR_KEY}}
+    - Sonarr:
+        href: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: sonarr
+        widgets:
+          - type: sonarr
+            url: http://media:8989
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_SONARR_KEY}}
 
-  - Whisparr:
-      href: https://whisparr.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: whisparr
-      widgets:
-        - type: radarr
-          fields: ["wanted", "queued"]
-          url: http://media:6969
-          key: {{HOMEPAGE_VAR_WHISPARR_KEY}}
+    - Whisparr:
+        href: https://whisparr.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: whisparr
+        widgets:
+          - type: radarr
+            fields: ["wanted", "queued"]
+            url: http://media:6969
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_WHISPARR_KEY}}
 
 - Monitoring:
-  - Scrutiny:
-      href: https://scrutiny.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: scrutiny
-      widgets:
-        - type: scrutiny
-          url: http://scrutiny:8080
+    - Scrutiny:
+        href: https://scrutiny.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: scrutiny
+        widgets:
+          - type: scrutiny
+            url: http://scrutiny:8080
 
-  - Dozzle:
-      href: https://dozzle.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: dozzle
+    - Dozzle:
+        href: https://dozzle.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: dozzle

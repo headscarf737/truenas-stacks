@@ -58,6 +58,7 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 ### Immich
 
 - `immich/db`
+- `immich/model-cache`
 
 ### Media
 

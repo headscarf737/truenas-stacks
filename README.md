@@ -25,14 +25,12 @@ docker compose up -d <space separated service names>
 This repo includes the following stacks:
 
 - [auth](./auth): Authentication stack with Authelia and LLDAP
-
   - Authelia: Used for 2FA and SSO
   - LLDAP: Lightweight LDAP server for user management
 
 - [immich](./immich): Immich self-hosted photo and video backup and management solution
 
 - [media](./media): Arr stack based on Usenet
-
   - Gluetun: VPN client for secure connections
   - Jellyfin: Media server for streaming
   - Prowlarr: Indexer manager
@@ -45,20 +43,17 @@ This repo includes the following stacks:
   - Stash: Adult media manager
 
 - [monitoring](./monitoring): Monitoring stack for server health and performance
-
   - Dozzle: Log viewer for docker containers
   - fluentbit: Observability Pipeline processor
   - Homepage: Dashboard for quick access to services
   - Scrutiny: SMART monitoring for drives
 
 - [network](./network): Network services stack
-
   - Traefik: Traefik reverse proxy with Cloudflare DNS ACME
   - CrowdSec: Security tool to protect against attacks
   - Technitium DNS Server: Split DNS server
 
 - [nextcloud](./nextcloud): Nextcloud self-hosted cloud storage and collaboration platform
-
   - Nextcloud: Core application for file storage and sharing
   - MariaDB: Database backend for Nextcloud
   - Redis: Caching server to improve performance
@@ -95,7 +90,7 @@ See the `SETUP.md` files in the subdirectories for service-specific setup instru
 To lint the docker compose files, you can use [docker-compose-linter](https://github.com/zavoloklom/docker-compose-linter)
 
 ```shell
-pnpm dlx dclint **/.
+pnpm dlx dclint -r .
 ```
 
 ## Resources

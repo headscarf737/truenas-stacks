@@ -2,11 +2,11 @@ service:
   log_level: info
 
 parsers:
-    - name: traefik
-      format: json
-      time_key: StartLocal
-      time_format: '%Y-%m-%dT%H:%M:%S.%L%z'
-      time_keep: on
+  - name: traefik
+    format: json
+    time_key: StartLocal
+    time_format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    time_keep: on
 
 pipeline:
   inputs:
@@ -17,7 +17,7 @@ pipeline:
 
   filters:
     - name: geoip2
-      match: 'traefik'
+      match: "traefik"
       database: /fluent-bit/etc/data/GeoLite2-City.mmdb
       lookup_key: ClientHost
       record:
@@ -28,11 +28,11 @@ pipeline:
 
   outputs:
     - name: opentelemetry
-      match: 'traefik'
+      match: "traefik"
       host: vmauth
       logs_uri: /insert/opentelemetry/v1/logs
       metrics_uri: /opentelemetry/api/v1/push
       logs_severity_text_message_key: level
       port: 8427
-      header: 
+      header:
         - VL-Stream-Fields severity,RouterName

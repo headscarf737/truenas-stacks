@@ -10,6 +10,7 @@ http:
         bouncer:
           enabled: true
           logLevel: INFO
+          # prettier-ignore
           crowdsecLapiKey: {{env "CROWDSEC_API_KEY"}}
           crowdsecAppsecEnabled: true
           crowdsecAppsecHost: crowdsec:7422

@@ -29,7 +29,8 @@ services:
       - ${APPS_FOLDER}/network/traefik/logs:/var/log/traefik:ro
     networks:
       metrics_internal:
-    command: [ "/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.yaml" ]
+    command:
+      ["/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.yaml"]
     restart: unless-stopped
     user: 568:568
     security_opt:
@@ -108,7 +109,7 @@ services:
     command: --storageDataPath=/vlogs
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "wget", "-qO-", "http://127.0.0.1:9428/health" ]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9428/health"]
       interval: 1s
       timeout: 1s
       retries: 10
@@ -136,16 +137,13 @@ services:
     command: -auth.config=/etc/vmauth/vmauth.yaml
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "wget", "-qO-", "http://127.0.0.1:8427/health" ]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8427/health"]
       interval: 1s
       timeout: 1s
       retries: 10
     user: 568:568
     security_opt:
       - no-new-privileges:true
-
-  # TODO: add cadvisor, victoriametrics, grafana
-
 networks:
   traefik:
     external: true

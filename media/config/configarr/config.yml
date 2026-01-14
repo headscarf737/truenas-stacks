@@ -18,7 +18,7 @@ sonarr:
         anime: default
 
     quality_profiles:
-      - name: '[GERMAN] FHD Remux, Bluray, WEB'
+      - name: "[GERMAN] FHD Remux, Bluray, WEB"
         reset_unmatched_scores:
           enabled: true
         score_set: german
@@ -90,21 +90,21 @@ sonarr:
           # Streaming Services
           - 218e93e5702f44a68ad9e3c6ba87d2f0 # HD Streaming Boost
         assign_scores_to:
-          - name: '[GERMAN] FHD Remux, Bluray, WEB'
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
       - trash_ids:
           - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
         assign_scores_to:
-          - name: '[GERMAN] FHD Remux, Bluray, WEB'
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -10000
 
     custom_format_groups:
       - trash_guide:
-        - id: abe720fab2d27682adc2a735136cec02 # [Streaming Services] General
+          - id: abe720fab2d27682adc2a735136cec02 # [Streaming Services] General
         assign_scores_to:
-            - name: '[GERMAN] FHD Remux, Bluray, WEB'
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
-radarr: 
+radarr:
   instance1:
     base_url: http://media:7878
     api_key: !env RADARR_API_KEY
@@ -119,7 +119,7 @@ radarr:
       type: movie
 
     quality_profiles:
-      - name: '[GERMAN] FHD Remux, Bluray, WEB'
+      - name: "[GERMAN] FHD Remux, Bluray, WEB"
         reset_unmatched_scores:
           enabled: true
         score_set: german
@@ -204,13 +204,13 @@ radarr:
           - 240770601cc226190c367ef59aba7463 # AAC
           - c2998bd0d90ed5621d8df281e839436e # DD
         assign_scores_to:
-          - name: '[GERMAN] FHD Remux, Bluray, WEB'
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
       - trash_ids:
           - e6886871085226c3da1830830146846c # Generated Dynamic HDR
           - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
         assign_scores_to:
-          - name: '[GERMAN] FHD Remux, Bluray, WEB'
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -10000
 
       - trash_ids:
@@ -218,11 +218,11 @@ radarr:
           - 417804f7f2c4308c1f4c5d380d4c4475 # ATMOS (undefined)
           - 1af239278386be2919e1bcee0bde047e # DD+ ATMOS
         assign_scores_to:
-          - name: '[GERMAN] FHD Remux, Bluray, WEB'
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -3000
 
     custom_format_groups:
       - trash_guide:
-        - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
+          - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
         assign_scores_to:
-            - name: '[GERMAN] FHD Remux, Bluray, WEB'
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"

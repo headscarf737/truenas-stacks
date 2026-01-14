@@ -23,11 +23,11 @@ services:
     networks:
       nextcloud:
       traefik:
-    command: [ 'coolconfig generate-proof-key && /start-collabora-online.sh' ]
-    entrypoint: [ '/bin/bash', '-c' ]
+    command: ["coolconfig generate-proof-key && /start-collabora-online.sh"]
+    entrypoint: ["/bin/bash", "-c"]
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:9980/hosting/discovery" ]
+      test: ["CMD", "curl", "-f", "http://localhost:9980/hosting/discovery"]
       interval: 15s
       timeout: 10s
       retries: 5
@@ -70,10 +70,11 @@ services:
       - mariadb
       - redis
     volumes:
-      - ${APPS_FOLDER}/nextcloud/app:/var/www/html
-      - ${APPS_FOLDER}/nextcloud/logs:/var/log/nextcloud
       - ${CONTENT_FOLDER}/files:/var/www/html/data
+      - ${APPS_FOLDER}/nextcloud/app:/var/www/html
       - ${APPS_FOLDER}/nextcloud/redis/redis-session.ini:/usr/local/etc/php/conf.d/redis-session.ini
+      # Logs
+      - ${APPS_FOLDER}/nextcloud/logs:/var/log/nextcloud
     environment:
       TZ: Europe/Berlin
       MYSQL_DATABASE: nextcloud

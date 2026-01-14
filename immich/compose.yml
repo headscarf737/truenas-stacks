@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_DB: ${DB_DATABASE_NAME}
-      POSTGRES_INITDB_ARGS: '--data-checksums'
+      POSTGRES_INITDB_ARGS: --data-checksums
     networks:
       immich:
     restart: unless-stopped
@@ -23,7 +23,7 @@ services:
     image: ghcr.io/immich-app/immich-machine-learning:v2.4.1@sha256:b3deefd1826f113824e9d7bc30d905e7f823535887d03f869330946b6db3b44a
     container_name: immich_machine_learning
     volumes:
-      - model-cache:/cache
+      - ${APPS_FOLDER}/immich/model-cache:/cache
     environment:
       TZ: Europe/Berlin
     networks:
@@ -42,8 +42,8 @@ services:
       - database
       - redis
     volumes:
-      - ${CONTENT_FOLDER}/images:/data
       - /etc/localtime:/etc/localtime:ro
+      - ${CONTENT_FOLDER}/images:/data
     environment:
       TZ: Europe/Berlin
       IMMICH_TRUSTED_PROXIES: 172.31.255.0/24,fdd0:0:0:1000::/64
@@ -59,10 +59,10 @@ services:
       - traefik.http.routers.immich.rule=Host(`immich.${DOMAIN}`)
       - traefik.http.routers.immich.entrypoints=websecure
       - traefik.http.routers.immich.service=immich
-#      - traefik.http.routers.immich-pub.rule=Host(`immich.${DOMAIN}`)
-#      - traefik.http.routers.immich-pub.entrypoints=websecure-pub
+      # - traefik.http.routers.immich-pub.rule=Host(`immich.${DOMAIN}`)
+      # - traefik.http.routers.immich-pub.entrypoints=websecure-pub
       # TODO: add header auth middleware for pub router
-#      - traefik.http.routers.immich-pub.service=immich
+      # - traefik.http.routers.immich-pub.service=immich
       - traefik.http.services.immich.loadbalancer.server.port=2283
     user: 568:568
     cap_drop:
@@ -77,7 +77,7 @@ services:
       immich:
     restart: unless-stopped
     healthcheck:
-      test: redis-cli ping || exit 1
+      test: ["CMD-SHELL", "redis-cli ping || exit 1"]
     security_opt:
       - no-new-privileges:true
 
@@ -88,6 +88,3 @@ networks:
   traefik:
     external: true
     name: traefik
-
-volumes:
-  model-cache:

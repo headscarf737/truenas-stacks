@@ -1,5 +1,5 @@
 source: file
 filenames:
- - /var/log/authelia/*.log
+  - /var/log/authelia/*.log
 labels:
   type: authelia

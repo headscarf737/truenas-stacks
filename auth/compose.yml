@@ -3,17 +3,18 @@ name: auth
 services:
   authelia:
     image: authelia/authelia:4.39.15@sha256:d23ee3c721d465b4749cc58541cda4aebe5aa6f19d7b5ce0afebb44ebee69591
-    container_name: 'authelia'
+    container_name: authelia
     volumes:
+      - ./config/authelia:/config
       - ${APPS_FOLDER}/auth/authelia/secrets:/secrets:ro
       - ${APPS_FOLDER}/auth/authelia/keys:/keys:ro
       - ${APPS_FOLDER}/auth/authelia/db:/db
-      - ./config/authelia:/config
+      # Logs
       - ${APPS_FOLDER}/auth/authelia/logs:/var/log/authelia/
     environment:
       LDAP_BASE_DN: ${LDAP_BASE_DN}
       TZ: Europe/Berlin
-      X_AUTHELIA_CONFIG_FILTERS: 'template'
+      X_AUTHELIA_CONFIG_FILTERS: template
       DOMAIN: ${DOMAIN}
     env_file:
       - authelia.env

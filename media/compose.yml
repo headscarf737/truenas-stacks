@@ -16,7 +16,7 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -42,7 +42,7 @@ services:
       TZ: Europe/Berlin
       RADARR_API_KEY: ${RADARR_API_KEY}
       SONARR_API_KEY: ${SONARR_API_KEY}
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: no
     user: 568:568
     profiles:
@@ -66,7 +66,7 @@ services:
       SERVER_COUNTRIES: Germany
       SERVER_CITIES: Frankfurt
       OWNED_ONLY: yes
-      BLOCK_MALICIOUS: 'off'
+      BLOCK_MALICIOUS: off
     networks:
       media:
       traefik:
@@ -96,7 +96,7 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -126,7 +126,7 @@ services:
       PROWLARR__AUTH__APIKEY: ${PROWLARR_API_KEY}
       PROWLARR__LOG__LEVEL: info
       PROWLARR__LOG__ANALYTICSENABLED: False
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -157,7 +157,7 @@ services:
       RADARR__AUTH__APIKEY: ${RADARR_API_KEY}
       RADARR__LOG__LEVEL: info
       RADARR__LOG__ANALYTICSENABLED: False
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -183,7 +183,7 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -209,7 +209,7 @@ services:
       PGID: 568
       TZ: Europe/Berlin
       API_KEY: ${SEERR_API_KEY}
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -239,7 +239,7 @@ services:
       SONARR__AUTH__APIKEY: ${SONARR_API_KEY}
       SONARR__LOG__LEVEL: info
       SONARR__LOG__ANALYTICSENABLED: False
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -252,7 +252,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0@sha256:a83d78df96ae8f64f73c1081bd8b0e77d719902d0836f284c14598eace142219
+    image: ghcr.io/hotio/stash:release-v0.30.1
     container_name: stash
     depends_on:
       gluetun:
@@ -267,7 +267,7 @@ services:
       TZ: Europe/Berlin
       STASH_STASH: /media/adult
       STASH_PORT: 9998
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -280,7 +280,7 @@ services:
       - no-new-privileges:true
 
   whisparr:
-    image: ghcr.io/hotio/whisparr:v3@sha256:10bec8ce343fcd8703867717b31a96e53bae28d540179b3181d7aacc6865747b
+    image: ghcr.io/hotio/whisparr:v3-3.1.0.2116
     container_name: whisparr
     depends_on:
       gluetun:
@@ -298,7 +298,7 @@ services:
       WHISPARR__AUTH__APIKEY: ${WHISPARR_API_KEY}
       WHISPARR__LOG__LEVEL: info
       WHISPARR__LOG__ANALYTICSENABLED: False
-    network_mode: 'service:gluetun'
+    network_mode: service:gluetun
     restart: unless-stopped
     labels:
       - traefik.enable=true

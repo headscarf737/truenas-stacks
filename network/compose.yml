@@ -56,11 +56,11 @@ services:
       DNS_SERVER_FORWARDERS: 1.1.1.1,1.0.0.1,2606:4700:4700::1111,2606:4700:4700::1001
       DNS_SERVER_FORWARDER_PROTOCOL: Tls
     ports:
-      - '${NET_INTERFACE_DNS4}:53:53/tcp'
-      - '${NET_INTERFACE_DNS4}:53:53/udp'
-      - '${NET_INTERFACE_DNS4}:53443:53443/tcp'
-      - '${NET_INTERFACE_DNS6}:53:53/tcp'
-      - '${NET_INTERFACE_DNS6}:53:53/udp'
+      - "${NET_INTERFACE_DNS4}:53:53/tcp"
+      - "${NET_INTERFACE_DNS4}:53:53/udp"
+      - "${NET_INTERFACE_DNS4}:53443:53443/tcp"
+      - "${NET_INTERFACE_DNS6}:53:53/tcp"
+      - "${NET_INTERFACE_DNS6}:53:53/udp"
     restart: unless-stopped
     hostname: dns-server
 
@@ -77,12 +77,12 @@ services:
     env_file:
       - .env
     ports:
-      - '${NET_INTERFACE_EXTERNAL}:80:8081/tcp'
-      - '${NET_INTERFACE_EXTERNAL}:443:8443/tcp'
-      - '${NET_INTERFACE_EXTERNAL}:443:8443/udp'
-      - '${NET_INTERFACE_INTERNAL}:80:80/tcp'
-      - '${NET_INTERFACE_INTERNAL}:443:443/tcp'
-      - '${NET_INTERFACE_INTERNAL}:443:443/udp'
+      - "${NET_INTERFACE_EXTERNAL}:80:8081/tcp"
+      - "${NET_INTERFACE_EXTERNAL}:443:8443/tcp"
+      - "${NET_INTERFACE_EXTERNAL}:443:8443/udp"
+      - "${NET_INTERFACE_INTERNAL}:80:80/tcp"
+      - "${NET_INTERFACE_INTERNAL}:443:443/tcp"
+      - "${NET_INTERFACE_INTERNAL}:443:443/udp"
     networks:
       traefik:
         ipv4_address: 172.31.255.254
@@ -92,59 +92,59 @@ services:
         ipv6_address: fdd0:0:0:fff::2
     command:
       # Misc
-      - '--ping'
-      - '--global.sendAnonymousUsage=false'
-      - '--global.checkNewVersion=false'
+      - "--ping"
+      - "--global.sendAnonymousUsage=false"
+      - "--global.checkNewVersion=false"
       # Logs
-      - '--log.level=INFO'
-      - '--accesslog.filePath=/var/log/traefik/access.log'
-      - '--accesslog.format=json'
-      - '--accesslog.fields.headers.names.User-Agent=keep'
+      - "--log.level=INFO"
+      - "--accesslog.filePath=/var/log/traefik/access.log"
+      - "--accesslog.format=json"
+      - "--accesslog.fields.headers.names.User-Agent=keep"
       # Web
-      - '--entrypoints.web.address=:80/tcp'
-      - '--entrypoints.web.http.redirections.entryPoint.to=websecure'
+      - "--entrypoints.web.address=:80/tcp"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       # Websecure
-      - '--entrypoints.websecure.address=:443/tcp'
-      - '--entrypoints.websecure.http.middlewares=crowdsec@file,hsts@file,compress@file'
+      - "--entrypoints.websecure.address=:443/tcp"
+      - "--entrypoints.websecure.http.middlewares=crowdsec@file,hsts@file,compress@file"
       # HTTP3
-      - '--entrypoints.websecure.http3'
+      - "--entrypoints.websecure.http3"
       # Web Public
-      - '--entrypoints.web-pub.address=:8081/tcp'
-      - '--entrypoints.web-pub.http.redirections.entryPoint.to=websecure-pub'
+      - "--entrypoints.web-pub.address=:8081/tcp"
+      - "--entrypoints.web-pub.http.redirections.entryPoint.to=websecure-pub"
       # Websecure Public
-      - '--entrypoints.websecure-pub.address=:8443/tcp'
-      - '--entrypoints.websecure-pub.http.middlewares=crowdsec@file,hsts@file,compress@file'
+      - "--entrypoints.websecure-pub.address=:8443/tcp"
+      - "--entrypoints.websecure-pub.http.middlewares=crowdsec@file,hsts@file,compress@file"
       # HTTP3 Public
-      - '--entrypoints.websecure-pub.http3.advertisedPort=443'
+      - "--entrypoints.websecure-pub.http3.advertisedPort=443"
       # Dashboard
-      - '--api.dashboard=true'
-      - '--api.disabledashboardad=true'
-      - '--api.insecure=true' # for homepage
+      - "--api.dashboard=true"
+      - "--api.disabledashboardad=true"
+      - "--api.insecure=true" # for homepage
       # LetsEncrypt
-      - '--certificatesresolvers.letsencrypt.acme.email=${LETSENCRYPT_EMAIL}'
-      - '--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json'
-      - '--certificatesresolvers.letsencrypt.acme.dnsChallenge.provider=cloudflare'
-      - '--entrypoints.websecure.http.tls.certResolver=letsencrypt'
-      - '--entrypoints.websecure-pub.http.tls.certResolver=letsencrypt'
+      - "--certificatesresolvers.letsencrypt.acme.email=${LETSENCRYPT_EMAIL}"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.dnsChallenge.provider=cloudflare"
+      - "--entrypoints.websecure.http.tls.certResolver=letsencrypt"
+      - "--entrypoints.websecure-pub.http.tls.certResolver=letsencrypt"
       # Docker
-      - '--providers.docker.watch=true'
-      - '--providers.docker.network=traefik'
-      - '--providers.docker.exposedByDefault=false'
+      - "--providers.docker.watch=true"
+      - "--providers.docker.network=traefik"
+      - "--providers.docker.exposedByDefault=false"
       # File
-      - '--providers.file.directory=/dynamic/'
+      - "--providers.file.directory=/dynamic/"
       # InsecureSkipVerify
-      - '--serverstransport.insecureSkipVerify=true'
+      - "--serverstransport.insecureSkipVerify=true"
       # crowdsec
-      - '--experimental.plugins.bouncer.moduleName=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin'
-      - '--experimental.plugins.bouncer.version=v1.4.6'
+      - "--experimental.plugins.bouncer.moduleName=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+      - "--experimental.plugins.bouncer.version=v1.4.6"
       # see https://github.com/traefik/traefik/issues/12399 TODO remove when fixed
-      - '--entryPoints.websecure.http.encodedCharacters.allowEncodedSlash=true'
-      - '--entryPoints.websecure.http.encodedCharacters.allowEncodedQuestionMark=true'
-      - '--entryPoints.websecure-pub.http.encodedCharacters.allowEncodedSlash=true'
-      - '--entryPoints.websecure-pub.http.encodedCharacters.allowEncodedQuestionMark=true'
+      - "--entryPoints.websecure.http.encodedCharacters.allowEncodedSlash=true"
+      - "--entryPoints.websecure.http.encodedCharacters.allowEncodedQuestionMark=true"
+      - "--entryPoints.websecure-pub.http.encodedCharacters.allowEncodedSlash=true"
+      - "--entryPoints.websecure-pub.http.encodedCharacters.allowEncodedQuestionMark=true"
     restart: unless-stopped
     healthcheck:
-      test: [ 'CMD', 'traefik', 'healthcheck', '--ping' ]
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
     security_opt:
       - no-new-privileges:true
 
