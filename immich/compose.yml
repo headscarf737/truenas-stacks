@@ -15,6 +15,7 @@ services:
     networks:
       immich:
     restart: unless-stopped
+    user: 568:568
     security_opt:
       - no-new-privileges:true
     shm_size: 128mb
