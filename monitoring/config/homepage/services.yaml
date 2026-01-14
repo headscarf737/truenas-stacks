@@ -14,20 +14,20 @@
             enableBlocks: true
 
     - Seerr:
-      href: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: jellyseerr
-      widgets:
-        - type: jellyseerr
-          url: http://media:5055
-          # prettier-ignore
-          key: {{HOMEPAGE_VAR_SEERR_KEY}}
+        href: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: jellyseerr
+        widgets:
+          - type: jellyseerr
+            url: http://media:5055
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_SEERR_KEY}}
 
     - Stash:
-      href: https://stash.{{HOMEPAGE_VAR_DOMAIN}}
-      icon: stash
-      widgets:
-        - type: stash
-          url: http://media:9998
+        href: https://stash.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: stash
+        widgets:
+          - type: stash
+            url: http://media:9998
 
 - Files:
     - Immich:
