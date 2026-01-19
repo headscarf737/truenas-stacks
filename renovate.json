@@ -1,11 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "docker:enableMajor", "docker:pinDigests"],
+  "extends": [
+    "config:best-practices",
+    "docker:enableMajor",
+    "schedule:earlyMondays"
+  ],
   "timezone": "Europe/Berlin",
-  "schedule": ["before 9am on monday"],
   "automerge": false,
-  "updateNotScheduled": false,
-  "prHourlyLimit": 3,
+  "ignoreTests": true,
+  "prHourlyLimit": 0,
   "packageRules": [
     {
       "matchDatasources": ["docker"],
@@ -20,7 +23,8 @@
     {
       "groupName": "docker-digest",
       "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["digest"]
+      "matchUpdateTypes": ["digest"],
+      "automerge": true
     }
   ]
 }

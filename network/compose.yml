@@ -2,7 +2,7 @@ name: network
 
 services:
   cloudflare-ddns:
-    image: favonia/cloudflare-ddns:1.15.1@sha256:a4e2089b3531eec8c9328c7a9a586f80e8d67dcd94856e0b596b7896e1de3f62
+    image: docker.io/favonia/cloudflare-ddns:1.15.1@sha256:a4e2089b3531eec8c9328c7a9a586f80e8d67dcd94856e0b596b7896e1de3f62
     container_name: cloudflare-ddns
     environment:
       - CLOUDFLARE_API_TOKEN=${CF_DNS_API_TOKEN}
@@ -19,7 +19,7 @@ services:
       - no-new-privileges:true
 
   crowdsec:
-    image: crowdsecurity/crowdsec:v1.7.4@sha256:4312a5109057f2a6b1237431abe638cd1026ecb3a9c2707c6ccc1ed09e4cb994
+    image: docker.io/crowdsecurity/crowdsec:v1.7.4@sha256:4312a5109057f2a6b1237431abe638cd1026ecb3a9c2707c6ccc1ed09e4cb994
     container_name: crowdsec
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -43,7 +43,7 @@ services:
     restart: unless-stopped
 
   dns:
-    image: technitium/dns-server:14.3.0@sha256:322b236403ca25028032f28736e2270a860527b030b162c9f82451c6494c4698
+    image: docker.io/technitium/dns-server:14.3.0@sha256:322b236403ca25028032f28736e2270a860527b030b162c9f82451c6494c4698
     container_name: dns
     volumes:
       - ${APPS_FOLDER}/network/dns:/etc/dns
@@ -65,7 +65,7 @@ services:
     hostname: dns-server
 
   traefik:
-    image: traefik:v3.6.7@sha256:ebe7d3fc715e28f033cea8265e9105b9d64705867f5b916e2d9ed0b62c530192
+    image: docker.io/library/traefik:v3.6.7@sha256:ebe7d3fc715e28f033cea8265e9105b9d64705867f5b916e2d9ed0b62c530192
     container_name: traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

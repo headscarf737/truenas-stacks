@@ -2,7 +2,7 @@ name: monitoring
 
 services:
   dozzle:
-    image: amir20/dozzle:v9.0.1@sha256:a7529f02748a9520a4f372f7b349e099bb0bc6ae93c2be9d85945f51d45f8967
+    image: docker.io/amir20/dozzle:v9.0.1@sha256:a7529f02748a9520a4f372f7b349e099bb0bc6ae93c2be9d85945f51d45f8967
     container_name: dozzle
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -20,7 +20,7 @@ services:
       - no-new-privileges:true
 
   fluentbit:
-    image: fluent/fluent-bit:4.2.2@sha256:7d727245767ae632eb296c2ff4d206bf2e205b5f244c1f37b8fdd61f9fb33985
+    image: docker.io/fluent/fluent-bit:4.2.2@sha256:7d727245767ae632eb296c2ff4d206bf2e205b5f244c1f37b8fdd61f9fb33985
     container_name: fluentbit
     volumes:
       - ./config/fluentbit/config.yaml:/fluent-bit/etc/fluent-bit.yaml:ro
@@ -99,7 +99,7 @@ services:
       - no-new-privileges:true
 
   victorialogs:
-    image: victoriametrics/victoria-logs:v1.43.1@sha256:3db89651b2ffa0f4fe5a0f8805ede409701f41ca63ebdd64cfa4a3cb63976b43
+    image: docker.io/victoriametrics/victoria-logs:v1.43.1@sha256:3db89651b2ffa0f4fe5a0f8805ede409701f41ca63ebdd64cfa4a3cb63976b43
     container_name: victorialogs
     volumes:
       - ${APPS_FOLDER}/monitoring/victorialogs:/vlogs
@@ -125,7 +125,7 @@ services:
       - no-new-privileges:true
 
   vmauth:
-    image: victoriametrics/vmauth:v1.133.0@sha256:fc0d94af02dac36d19647e06cf80f25003451539ae428dd0340bf8e521d7e3cc
+    image: docker.io/victoriametrics/vmauth:v1.133.0@sha256:fc0d94af02dac36d19647e06cf80f25003451539ae428dd0340bf8e521d7e3cc
     container_name: vmauth
     depends_on:
       victorialogs:
