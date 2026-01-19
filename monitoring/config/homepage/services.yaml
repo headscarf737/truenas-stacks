@@ -81,11 +81,13 @@
     - TrueNAS:
         href: https://{{HOMEPAGE_VAR_TRUENAS_ADDRESS}}
         icon: truenas
-        # widgets:
-        #   - type: truenas
-        #     url: https://{{HOMEPAGE_VAR_TRUENAS_ADDRESS}}
-        #     # prettier-ignore
-        #     key: {{HOMEPAGE_VAR_TRUENAS_KEY}}
+        widgets:
+          - type: truenas
+            url: https://{{HOMEPAGE_VAR_TRUENAS_ADDRESS}}
+            version: 2
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_TRUENAS_KEY}}
+            enablePools: true
 
     - Authelia:
         href: https://auth.{{HOMEPAGE_VAR_DOMAIN}}
