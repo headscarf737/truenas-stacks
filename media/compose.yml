@@ -196,7 +196,7 @@ services:
       - no-new-privileges:true
 
   seerr:
-    image: ghcr.io/hotio/seerr:nightly@sha256:c5350c3df7634faf046ca0c5c9e891a2c04d764b1be1db566b60b536f24036d7
+    image: ghcr.io/hotio/seerr:nightly@sha256:2f9393c4fd0e3ef54c48305937643702f34f95ec8d409dae851420cfb80afd85
     container_name: seerr
     depends_on:
       gluetun:
