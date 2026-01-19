@@ -252,7 +252,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:db2bfef99a3023d01596c377ddbc68b79d5c233fff40c2a1775a5815259c05db
+    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:d279598c5ed262e09390deb651b0afca9fd2018e38c1fb35ec143f5909b7419d
     container_name: stash
     depends_on:
       gluetun:
