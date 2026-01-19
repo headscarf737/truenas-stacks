@@ -10,6 +10,8 @@ Create immich key with `server.statistics` permissions
 
 Create nextcloud key using instructions provided under Settings > System
 
+Create TrueNAS key with Readonly Admin access
+
 ### Technitium DNS
 
 Create new user with long random password
