@@ -46,7 +46,7 @@ services:
       - CHOWN
 
   mariadb:
-    image: docker.io/library/mariadb:11.4.9@sha256:54ac814d243128263e18cf818f7abb611bf43a7a95ce8aa102d18f527b1516d1
+    image: docker.io/library/mariadb:12.1.2@sha256:f54db0cb3ccfe9431aba6d08c65a1763c499789b116b4cb651dd7fcf325965b3
     container_name: nextcloud-db
     volumes:
       - ${APPS_FOLDER}/nextcloud/db:/var/lib/mysql
