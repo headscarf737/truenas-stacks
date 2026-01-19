@@ -137,11 +137,6 @@ services:
       # crowdsec
       - "--experimental.plugins.bouncer.moduleName=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
       - "--experimental.plugins.bouncer.version=v1.4.6"
-      # see https://github.com/traefik/traefik/issues/12399 TODO remove when fixed
-      - "--entryPoints.websecure.http.encodedCharacters.allowEncodedSlash=true"
-      - "--entryPoints.websecure.http.encodedCharacters.allowEncodedQuestionMark=true"
-      - "--entryPoints.websecure-pub.http.encodedCharacters.allowEncodedSlash=true"
-      - "--entryPoints.websecure-pub.http.encodedCharacters.allowEncodedQuestionMark=true"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "traefik", "healthcheck", "--ping"]
