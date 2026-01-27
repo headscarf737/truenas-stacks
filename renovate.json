@@ -10,7 +10,7 @@
   "ignoreTests": true,
   "prHourlyLimit": 0,
   "packageRules": [
-    {
+    /*{
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/hotio/stash"],
       "versioning": "regex:^release-v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
@@ -19,6 +19,11 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/hotio/whisparr"],
       "versioning": "regex:^v3-v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
+    },*/
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/hotio/"],
+      "versionCompatibility": "^(?<compatibility>.*)-(?<version>.*)$"
     },
     {
       "groupName": "docker-digest",
