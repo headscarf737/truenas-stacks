@@ -74,6 +74,7 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 - `media/sonarr`
 - `media/stash`
 - `media/whisparr`
+- `media/whisparr2`
 
 ### Monitoring
 

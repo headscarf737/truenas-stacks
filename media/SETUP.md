@@ -32,9 +32,20 @@ See <https://trash-guides.info/Downloaders/SABnzbd/Basic-Setup>:
 
 Get API Key for Sonarr/Radarr/Whisparr integration.
 
+## Whisparr2
+
+Edit `${APPS_FOLDER}/media/whisparr2/config.xml`
+
+```xml
+<Port>6968</Port>
+<ApiKey>$WHISPARR_API_KEY$</ApiKey>
+<AuthenticationMethod>External</AuthenticationMethod>
+<AnalyticsEnabled>False</AnalyticsEnabled>
+```
+
 ## Prowlarr
 
-Add Sonarr, Radarr, Whisparr instances with API keys.
+Add Sonarr, Radarr, Whisparr, Whisparr2 instances with API keys.
 
 Use `media` as hostname instead of `localhost`
 
@@ -45,6 +56,7 @@ Add you preferred indexers.
 Add Download Client. Add SABnzbd instance. Use `media` as hostname instead of `localhost`.
 
 Use category `adult` for Whisparr
+Use category `adult2` for Whisparr2
 
 Media Management: Propers and Repacks: Do Not Prefer
 
@@ -53,6 +65,7 @@ Media Management: Root Folders:
 - /media/tv (Sonarr)
 - /media/movies (Radarr)
 - /media/adult (Whisparr)
+- /media/adult2 (Whisparr2)
 
 ## Stash
 
