@@ -3,7 +3,7 @@
     "aaron-bond.better-comments",
     "streetsidesoftware.code-spell-checker",
     "DavidAnson.vscode-markdownlint",
-    "prettier.prettier-vscode",
+    "esbenp.prettier-vscode",
     "docker.docker",
     "ms-azuretools.vscode-docker"
   ]
