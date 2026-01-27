@@ -58,6 +58,7 @@ access_control:
         - sonarr.{{ env "DOMAIN" }}
         - stash.{{ env "DOMAIN" }}
         - whisparr.{{ env "DOMAIN" }}
+        - whisparr2.{{ env "DOMAIN" }}
 
         - dozzle.{{ env "DOMAIN" }}
         - homepage.{{ env "DOMAIN" }}

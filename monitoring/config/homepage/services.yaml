@@ -165,7 +165,7 @@
         href: https://whisparr2.{{HOMEPAGE_VAR_DOMAIN}}
         icon: whisparr
         widgets:
-          - type: radarr
+          - type: sonarr
             fields: ["wanted", "queued"]
             url: http://media:6968
             # prettier-ignore
