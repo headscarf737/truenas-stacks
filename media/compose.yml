@@ -310,6 +310,38 @@ services:
     security_opt:
       - no-new-privileges:true
 
+  whisparr2:
+    image: ghcr.io/hotio/whisparr:v2-v2.1.0
+    container_name: whisparr2
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}:/media
+      - ${APPS_FOLDER}/media/whisparr2:/config
+      - ${APPS_FOLDER}/media/usenet:/data/usenet
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      WHISPARR__AUTH__METHOD: External
+      WHISPARR__AUTH__APIKEY: ${WHISPARR_API_KEY}
+      WHISPARR__LOG__LEVEL: info
+      WHISPARR__LOG__ANALYTICSENABLED: False
+      WHISPARR__SERVER__PORT: 6968
+    network_mode: service:gluetun
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.whisparr2.rule=Host(`whisparr2.${DOMAIN}`)
+      - traefik.http.routers.whisparr2.entrypoints=websecure
+      - traefik.http.routers.whisparr2.middlewares=authelia@docker
+      - traefik.http.routers.whisparr2.service=whisparr2
+      - traefik.http.services.whisparr2.loadbalancer.server.port=6968
+    security_opt:
+      - no-new-privileges:true
+
 networks:
   media:
     external: false

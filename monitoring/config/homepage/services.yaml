@@ -161,6 +161,16 @@
             # prettier-ignore
             key: {{HOMEPAGE_VAR_WHISPARR_KEY}}
 
+    - Whisparr2:
+        href: https://whisparr2.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: whisparr
+        widgets:
+          - type: radarr
+            fields: ["wanted", "queued"]
+            url: http://media:6968
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_WHISPARR_KEY}}
+
 - Monitoring:
     - Scrutiny:
         href: https://scrutiny.{{HOMEPAGE_VAR_DOMAIN}}

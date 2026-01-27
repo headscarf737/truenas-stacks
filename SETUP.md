@@ -109,6 +109,7 @@ Set Record size to 1M on the media dataset
 - `media/movies` - Movies (Radarr)
 - `media/tv` - TV Shows (Sonarr)
 - `media/adult` - Adult Content (Whisparr)
+- `media/adult2` - Adult Content (Whisparr2)
 
 `CONTENT_FOLDER` should be the path to the content dataset (e.g. `/mnt/tank/content`).
 
