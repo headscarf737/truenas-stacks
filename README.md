@@ -93,6 +93,13 @@ To lint the docker compose files, you can use [docker-compose-linter](https://gi
 pnpm dlx dclint -r .
 ```
 
+## Test Renovate
+
+```shell
+fnm use lts-krypton
+LOG_LEVEL=debug pnpm dlx --allow-build=re2 renovate --platform=local --repository-cache=reset
+```
+
 ## Resources
 
 - <https://github.com/tomMoulard/make-my-server>
