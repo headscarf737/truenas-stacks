@@ -280,7 +280,7 @@ services:
       - no-new-privileges:true
 
   whisparr:
-    image: ghcr.io/hotio/whisparr:v3-v3.2.2@sha256:0e825c39f468fd477d1da319ab720b0410f972dece7184b5adc7486901718c7a
+    image: ghcr.io/hotio/whisparr:v3-v3.2.3@sha256:eb349fdeb2219942ea3b0f70b1d2b319c0f9e5458af5f328cb7e765cc2397071
     container_name: whisparr
     depends_on:
       gluetun:
