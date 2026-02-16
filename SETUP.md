@@ -153,7 +153,22 @@ In Settings > General enter your email information and send a test email to veri
 
 ## Snapshots
 
-Create snapshot tasks for your `docker` dataset (e.g. daily, but exclude `media/usenet`) and your `content` dataset (e.g. hourly).
+Create `recursive` snapshot tasks:
+
+- apps/docker
+  - Exclude:
+    - `apps/docker/media/usenet`
+    - `apps/docker/immich/model-cache`
+    - `apps/docker/immich/model-dotcache`
+    - `apps/docker/immich/model-config`
+  - Lifetime: 2 Weeks
+  - Schedule: Daily
+- tank/content
+  - No excludes
+  - Lifetime: 2 Weeks
+  - Schedule: Hourly
+
+Create snapshots for any other datasets as needed.
 
 ## Smb User Shares
 
