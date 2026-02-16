@@ -25,6 +25,8 @@ services:
     container_name: immich_machine_learning
     volumes:
       - ${APPS_FOLDER}/immich/model-cache:/cache
+      - ${APPS_FOLDER}/immich/model-dotcache:/.cache
+      - ${APPS_FOLDER}/immich/model-config:/.config
     environment:
       TZ: Europe/Berlin
     networks:
