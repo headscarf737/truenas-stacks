@@ -2,7 +2,7 @@ name: media
 
 services:
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.5.5@sha256:d40ee61030a9afafddfdd58d160281b865bfcad7cb66e920116fd6fd40668cbb
+    image: lscr.io/linuxserver/bazarr:1.5.5@sha256:18ff732dffcebd559d15a91845fc3360d49652ea01dccfbfd98b8248ceb86e38
     container_name: bazarr
     depends_on:
       gluetun:
@@ -83,7 +83,7 @@ services:
     hostname: media
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:7b29a93a6020f8d5f6c60df381a5ab7d57aa83cda4beb3631bd2bfbbcb1497af
+    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:45814a5515fdb81cd41f5db946cfd53a3c5e91f0665b40b55bae30cab4b3cd2e
     container_name: jellyfin
     depends_on:
       gluetun:
@@ -110,7 +110,7 @@ services:
       - no-new-privileges:true
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:2.3.0@sha256:5339e9050cfcc0cb5331e9c98610ed9d4ce70ef481a5461ea664a13dda3f1eb0
+    image: lscr.io/linuxserver/prowlarr:2.3.0@sha256:e74a1e093dcc223d671d4b7061e2b4946f1989a4d3059654ff4e623b731c9134
     container_name: prowlarr
     depends_on:
       gluetun:
@@ -139,7 +139,7 @@ services:
       - no-new-privileges:true
 
   radarr:
-    image: lscr.io/linuxserver/radarr:6.0.4@sha256:f08dda38e7d12e5a722d9a5cb6e54acaf63c8598fefeefec88effe0c0d0038dd
+    image: lscr.io/linuxserver/radarr:6.0.4@sha256:6d3e68474ea146f995af98d3fb2cb1a14e2e4457ddaf035aa5426889e2f9249c
     container_name: radarr
     depends_on:
       gluetun:
@@ -170,7 +170,7 @@ services:
       - no-new-privileges:true
 
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:4.5.5@sha256:d4583bb3e7cc2d65ffe7fab2de9627878b7ea259889b3e99ceacd4fede7eb266
+    image: lscr.io/linuxserver/sabnzbd:4.5.5@sha256:1a26f56dfc047b62d5ddc20bc92bdebfbe7c3cb58d2d3523958838a09182d77a
     container_name: sabnzbd
     depends_on:
       gluetun:
@@ -221,7 +221,7 @@ services:
       - no-new-privileges:true
 
   sonarr:
-    image: lscr.io/linuxserver/sonarr:4.0.16@sha256:6f73bbba33391a338e20d836a60c86beaf2a865a89b706b339fc8cb0b8ce1559
+    image: lscr.io/linuxserver/sonarr:4.0.16@sha256:37be832b78548e3f55f69c45b50e3b14d18df1b6def2a4994258217e67efb1a1
     container_name: sonarr
     depends_on:
       gluetun:
@@ -252,7 +252,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:5a453fb3769fac1c59ecc8e10cc026b6e3ad8ba6ef901c3114f4cb4887c2a443
+    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:b7e19cabe72943b077bbfc629f5860166729727daa51cf46a9315403a9e8e5f0
     container_name: stash
     depends_on:
       gluetun:
@@ -280,7 +280,7 @@ services:
       - no-new-privileges:true
 
   whisparr:
-    image: ghcr.io/hotio/whisparr:v3-v3.2.3@sha256:eb349fdeb2219942ea3b0f70b1d2b319c0f9e5458af5f328cb7e765cc2397071
+    image: ghcr.io/hotio/whisparr:v3-v3.2.3@sha256:3adfb944493a5f6e51c9d9e81f3861b1c464b95a0a6fde93c2b1161aa8ff1c14
     container_name: whisparr
     depends_on:
       gluetun:
