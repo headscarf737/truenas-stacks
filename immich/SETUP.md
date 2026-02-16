@@ -1,5 +1,9 @@
 # Immich
 
+## Settings
+
+Disable Video Transcoding
+
 ## OAuth2
 
 | Setting                            | Value                                                   |
