@@ -63,7 +63,7 @@ services:
     user: 568:568
 
   nextcloud:
-    image: docker.io/library/nextcloud:32.0.6@sha256:5c4e09f72f096cd68379a8ae69f71e61d13da5a07430fc4a17c702a14e6a4267
+    image: docker.io/library/nextcloud:33.0.0@sha256:ff2cbaab14c85e587b5541e3aff4216a8a484e06424ebae661581937c0c8da0c
     container_name: nextcloud
     depends_on:
       - collabora
