@@ -105,7 +105,7 @@ services:
     user: 568:568
 
   nextcloud-whiteboard:
-    image: ghcr.io/nextcloud-releases/whiteboard:v1.5.6
+    image: ghcr.io/nextcloud-releases/whiteboard:v1.5.7@sha256:4ca6103eeab072c010b1d7acb04e0af08d48b1f6f53b0328c4180a40ae5d89ad
     environment:
       TZ: Europe/Berlin
       NEXTCLOUD_URL: https://nextcloud.${DOMAIN}
