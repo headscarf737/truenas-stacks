@@ -70,13 +70,13 @@ services:
       - mariadb
       - nextcloud-whiteboard
       - redis
-    volumes: &nextcloud_volumes
+    volumes:
       - ${CONTENT_FOLDER}/files:/var/www/html/data
       - ${APPS_FOLDER}/nextcloud/app:/var/www/html
       - ${APPS_FOLDER}/nextcloud/redis/redis-session.ini:/usr/local/etc/php/conf.d/redis-session.ini
       # Logs
       - ${APPS_FOLDER}/nextcloud/logs:/var/log/nextcloud
-    environment: &nextcloud_env
+    environment:
       TZ: Europe/Berlin
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
@@ -103,22 +103,6 @@ services:
       - traefik.http.routers.nextcloud.entrypoints=websecure,websecure-pub
       - traefik.http.routers.nextcloud.service=nextcloud
       - traefik.http.services.nextcloud.loadbalancer.server.port=80
-    user: 568:568
-
-  nextcloud-cron:
-    image: docker.io/library/nextcloud:33.0.0@sha256:ff2cbaab14c85e587b5541e3aff4216a8a484e06424ebae661581937c0c8da0c
-    container_name: nextcloud-cron
-    depends_on:
-      - nextcloud
-    volumes: *nextcloud_volumes
-    environment: *nextcloud_env
-    networks:
-      nextcloud:
-      auth_internal:
-        ipv4_address: 172.31.254.7
-        ipv6_address: fdd0:0:0:fff::7
-    entrypoint: /cron.sh
-    restart: unless-stopped
     user: 568:568
 
   nextcloud-whiteboard:

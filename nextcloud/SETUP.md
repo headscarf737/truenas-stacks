@@ -56,6 +56,16 @@ Expert > Internal Username set to `user_id`
 
 Set Background jobs to `Cron` in the Basic Settings
 
+Add a TrueNAS Cron Job with the following command
+
+```shell
+docker exec -u 568:568 nextcloud php ./cron.php
+```
+
+Run as user `root`
+
+Custom Schedule: `*/5 * * * *` (It should display `Every 5 minutes`)
+
 ## Install Whiteboard
 
 Generate JWT Secret
