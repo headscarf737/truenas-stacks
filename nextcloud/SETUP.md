@@ -53,3 +53,19 @@ Base-DN: `ou=people,dc=sodium,dc=example,dc=com`
 User Filter: `(&(objectclass=person)(memberOf=cn=files,ou=groups,dc=sodium,dc=example,dc=com))`
 
 Expert > Internal Username set to `user_id`
+
+## Install Whiteboard
+
+Generate JWT Secret
+
+```shell
+openssl rand -hex 16
+```
+
+Go to Apps and install `Whiteboard`
+
+Go into Settings > Administration > Whiteboard and set the Server address to `https://whiteboard.${DOMAIN}`
+
+Paste the generated JWT Secret into the Shared Secret field
+
+Adjust max image size
