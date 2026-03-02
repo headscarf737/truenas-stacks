@@ -2,7 +2,7 @@ name: media
 
 services:
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.5.5@sha256:1cf40186b1bc35bec87f4e4892d5d8c06086da331010be03e3459a86869c5e74
+    image: lscr.io/linuxserver/bazarr:1.5.5@sha256:c381924dcfd79930e8f3ee75e024671185b810b0f71c984aa8712854c74c1bbb
     container_name: bazarr
     depends_on:
       gluetun:
@@ -83,7 +83,7 @@ services:
     hostname: media
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:4ee07757abcaa0b74fbc74179392311dc2874c03b0bef04bc2d79e9e1a875793
+    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:ba3773e77f0bf571e44cb2aad028f240cfac6b1bb261634c5762992995b50b89
     container_name: jellyfin
     depends_on:
       gluetun:
@@ -139,7 +139,7 @@ services:
       - no-new-privileges:true
 
   radarr:
-    image: lscr.io/linuxserver/radarr:6.0.4@sha256:6d3e68474ea146f995af98d3fb2cb1a14e2e4457ddaf035aa5426889e2f9249c
+    image: lscr.io/linuxserver/radarr:6.0.4@sha256:a360633a3682d41e96f71a07ff36ecbdf2394a9628465b84b0a8437087715b41
     container_name: radarr
     depends_on:
       gluetun:
@@ -196,7 +196,7 @@ services:
       - no-new-privileges:true
 
   seerr:
-    image: ghcr.io/hotio/seerr:release-v3.0.1@sha256:197c0e4e40e772ebac612fe88f6a960fdff5d2a8a45471d1d76acfa3800cc412
+    image: ghcr.io/hotio/seerr:release-v3.0.1@sha256:8b87ab38cc49459d74a5e17c41bb889d2530cc2990e5e89f158d97c8b6263a3d
     container_name: seerr
     depends_on:
       gluetun:
@@ -252,7 +252,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:4fe86a506cbcbdb2c1de4b0a2e5a869c8a535d1ab8e3088b5a54b913046fa901
+    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:c6c0065dd398a377abe46756424bc0a65f5d284b69befef2cd9ddc45d88438ac
     container_name: stash
     depends_on:
       gluetun:
@@ -311,7 +311,7 @@ services:
       - no-new-privileges:true
 
   whisparr2:
-    image: ghcr.io/hotio/whisparr:v2-v2.1.0@sha256:f993265894c0f7af93321e4589c04c5599115ec9b059c1250a0facde55a4bb17
+    image: ghcr.io/hotio/whisparr:v2-v2.1.0@sha256:8d87b217aa5ef2480695b3c5039b10cd0a45df743de065885d0a0a49f99169ac
     container_name: whisparr2
     depends_on:
       gluetun:
