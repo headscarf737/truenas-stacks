@@ -26,8 +26,6 @@ TODO fonts
 
 ## Basic Configs
 
-TODO CRON
-
 ```shell
 ./occ maintenance:repair --include-expensive
 ./occ config:system:set maintenance_window_start --type=integer --value=1
@@ -53,6 +51,10 @@ Base-DN: `ou=people,dc=sodium,dc=example,dc=com`
 User Filter: `(&(objectclass=person)(memberOf=cn=files,ou=groups,dc=sodium,dc=example,dc=com))`
 
 Expert > Internal Username set to `user_id`
+
+### Cron
+
+Set Background jobs to `Cron` in the Basic Settings
 
 ## Install Whiteboard
 
