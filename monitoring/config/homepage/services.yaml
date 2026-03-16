@@ -15,9 +15,9 @@
 
     - Seerr:
         href: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}
-        icon: jellyseerr
+        icon: seerr
         widgets:
-          - type: jellyseerr
+          - type: seerr
             url: http://media:5055
             # prettier-ignore
             key: {{HOMEPAGE_VAR_SEERR_KEY}}
