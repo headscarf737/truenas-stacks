@@ -192,3 +192,17 @@ Use <https://github.com/JoeSchmuck/Multi-Report/blob/main/Multi_Report_Quick_Sta
 ./docker-all <docker-commands>
 # e.g. ./docker-all compose up -d
 ```
+
+## Maintenance
+
+Run docker cleanup commands regularly to keep your system tidy:
+
+```shell
+sudo docker system prune
+```
+
+See disk usage with
+
+```shell
+sudo docker system df
+```

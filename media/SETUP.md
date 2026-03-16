@@ -84,6 +84,8 @@ sudo docker compose --profile=manual up -d
 sudo docker compose logs -f configarr
 ```
 
+Run these commands regularly or set up a cronjob
+
 ## Jellyfin
 
 Go to the Transcoding settings and set the Engine to VAAPI
