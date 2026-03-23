@@ -83,7 +83,7 @@ services:
     hostname: media
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:aae645d1ff11c42b1d2d3b80694e34e0e1ea4a51879900843c8ab6e8b127a32a
+    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:5c7691c30033c7e880c253090735c4839cc032fcd51f3a794d5689d2c5637046
     container_name: jellyfin
     depends_on:
       gluetun:
@@ -170,7 +170,7 @@ services:
       - no-new-privileges:true
 
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:4.5.5@sha256:9b6662d5871518346655bfd3acb4c94e11f31c79c103ef04154558dab927c852
+    image: lscr.io/linuxserver/sabnzbd:4.5.5@sha256:15b1220aaa1f8ff428790a3d56f5ca2822427ea0b33e978eee43554e42579d0f
     container_name: sabnzbd
     depends_on:
       gluetun:
@@ -252,7 +252,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:c6c0065dd398a377abe46756424bc0a65f5d284b69befef2cd9ddc45d88438ac
+    image: ghcr.io/hotio/stash:release-v0.30.1@sha256:3e1a5da5e925f45e2be9d4977be1c1ae5e95e35a844a905bafc0c4cd226af0a7
     container_name: stash
     depends_on:
       gluetun:
