@@ -2,7 +2,7 @@ name: media
 
 services:
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.5.6@sha256:05f9d5b24884f37120453dc1a008a47be244eebec32099ae1bd29032e75b67aa
+    image: lscr.io/linuxserver/bazarr:1.5.6@sha256:9a631194c0dee21c85b5bff59e23610e1ae2f54594e922973949d271102e585e
     container_name: bazarr
     depends_on:
       gluetun:
@@ -83,7 +83,7 @@ services:
     hostname: media
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:5c7691c30033c7e880c253090735c4839cc032fcd51f3a794d5689d2c5637046
+    image: lscr.io/linuxserver/jellyfin:10.11.6@sha256:0a2f7e2c1c34e1a0e553b8521208ac1cc9ffa6a0efc2cf4acb4a45229b390e65
     container_name: jellyfin
     depends_on:
       gluetun:
@@ -139,7 +139,7 @@ services:
       - no-new-privileges:true
 
   radarr:
-    image: lscr.io/linuxserver/radarr:6.0.4@sha256:ca43905eaf2dd11425efdcfe184892e43806b1ae0a830440c825cecbc2629cfb
+    image: lscr.io/linuxserver/radarr:6.0.4@sha256:c8a55bd83672d3b63dc20edf325277ce7dc3b69d4400568cc5bbc9e6a227ebf4
     container_name: radarr
     depends_on:
       gluetun:
