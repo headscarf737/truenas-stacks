@@ -137,3 +137,18 @@ Add Sonarr and Radarr instances like in Prowlarr section.
 For Sonarr make sure to enable Season Folders
 
 Setting up Email notifications is recommended.
+
+## sabnzbd Problems
+
+Temporarily change download category to prevent arr to auto import.
+
+When the download contains unextracted rar files use following commands to fix it:
+
+```shell
+sudo docker compose exec -it sabnzbd /bin/bash
+cd /data/usenet/complete/
+# based on the broken release
+cd movies/Big.Buck.Bunny.1080p
+unrar x name.part01.rar
+# If it asks for a password, its probably in sabnzbd
+```
