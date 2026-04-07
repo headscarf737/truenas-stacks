@@ -32,6 +32,8 @@ services:
       - traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/authz/forward-auth
       - traefik.http.middlewares.authelia.forwardAuth.trustForwardHeader=true
       - traefik.http.middlewares.authelia.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email
+      - traefik.http.middlewares.authelia.forwardAuth.maxBodySize=104857600 # 100MB
+      - traefik.http.middlewares.authelia.forwardAuth.maxResponseBodySize=104857600 # 100MB
     user: 568:568
     cap_drop:
       - ALL
