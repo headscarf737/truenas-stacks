@@ -144,11 +144,11 @@ services:
     user: 568:568
     security_opt:
       - no-new-privileges:true
+
 networks:
   traefik:
     external: true
     name: traefik
-
   metrics_internal:
     external: false
     name: metrics_internal
