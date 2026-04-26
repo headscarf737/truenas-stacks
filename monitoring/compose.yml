@@ -66,7 +66,7 @@ services:
       - no-new-privileges:true
 
   scrutiny:
-    image: ghcr.io/analogj/scrutiny:v0.8.6-omnibus@sha256:8dcc722855198da5c198f8b0cdb1b0a33dac7ca91df57bc01fc24052e18ce49f
+    image: ghcr.io/analogj/scrutiny:v0.9.1-omnibus@sha256:bf68c1469b780616e0efda19d3ae7f4f713b357240ccc50e17e3496da4923dc7
     container_name: scrutiny
     volumes:
       - /run/udev:/run/udev:ro
