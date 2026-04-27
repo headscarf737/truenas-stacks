@@ -10,6 +10,8 @@ http:
         bouncer:
           enabled: true
           logLevel: INFO
+          crowdsecMode: live
+          crowdsecLapiHost: crowdsec:8080
           # prettier-ignore
           crowdsecLapiKey: {{env "CROWDSEC_API_KEY"}}
           crowdsecAppsecEnabled: true

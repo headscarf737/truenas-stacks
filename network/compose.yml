@@ -136,6 +136,7 @@ services:
       - "--serverstransport.insecureSkipVerify=true"
       # crowdsec
       - "--experimental.plugins.bouncer.moduleName=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+      # renovate: datasource=github-releases depName=maxlerebourg/crowdsec-bouncer-traefik-plugin
       - "--experimental.plugins.bouncer.version=v1.4.6"
     restart: unless-stopped
     healthcheck:
