@@ -21,5 +21,15 @@
       "matchUpdateTypes": ["digest"],
       "automerge": true
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Traefik Plugins in CLI Format",
+      "managerFilePatterns": ["/(^|/)(?:docker-)?compose[^/]*\\.ya?ml$/"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)\\s.+?\"--experimental\\.plugins\\..+?\\.version=(?<currentValue>.+?)\""
+      ]
+    }
   ]
 }
