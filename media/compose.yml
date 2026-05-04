@@ -185,7 +185,7 @@ services:
       PGID: 568
       TZ: Europe/Berlin
       RADARR__AUTH__METHOD: External
-      RADARR__AUTH__APIKEY: ${RADARR-UHD_API_KEY}
+      RADARR__AUTH__APIKEY: ${RADARR_UHD_API_KEY}
       RADARR__LOG__LEVEL: info
       RADARR__LOG__ANALYTICSENABLED: False
       RADARR__SERVER__PORT: 7879
@@ -299,7 +299,7 @@ services:
       PGID: 568
       TZ: Europe/Berlin
       SONARR__AUTH__METHOD: External
-      SONARR__AUTH__APIKEY: ${SONARR-UHD_API_KEY}
+      SONARR__AUTH__APIKEY: ${SONARR_UHD_API_KEY}
       SONARR__LOG__LEVEL: info
       SONARR__LOG__ANALYTICSENABLED: False
       SONARR__SERVER__PORT: 8988

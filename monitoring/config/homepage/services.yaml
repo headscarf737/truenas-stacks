@@ -140,7 +140,7 @@
           - type: radarr
             url: http://media:7879
             # prettier-ignore
-            key: {{HOMEPAGE_VAR_RADARR_KEY}}
+            key: {{HOMEPAGE_VAR_RADARR_UHD_KEY}}
 
     - SABnzbd:
         href: https://sabnzbd.{{HOMEPAGE_VAR_DOMAIN}}
@@ -167,7 +167,7 @@
           - type: sonarr
             url: http://media:8988
             # prettier-ignore
-            key: {{HOMEPAGE_VAR_SONARR_KEY}}
+            key: {{HOMEPAGE_VAR_SONARR_UHD_KEY}}
 
     - Whisparr:
         href: https://whisparr.{{HOMEPAGE_VAR_DOMAIN}}

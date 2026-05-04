@@ -9,7 +9,7 @@ See <https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/mullvad.md>
 Generate Keys with:
 
 ```shell
-openssl rand -hex 16
+openssl rand -hex 32
 ```
 
 ## sabnzbd

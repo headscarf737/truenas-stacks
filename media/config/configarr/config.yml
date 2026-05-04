@@ -124,7 +124,7 @@ sonarr:
 
   uhd:
     base_url: http://media:8988
-    api_key: !env SONARR-UHD_API_KEY
+    api_key: !env SONARR_UHD_API_KEY
 
     root_folders:
       - /media/tv-uhd
@@ -281,7 +281,7 @@ radarr:
 
   uhd:
     base_url: http://media:7879
-    api_key: !env RADARR-UHD_API_KEY
+    api_key: !env RADARR_UHD_API_KEY
 
     root_folders:
       - /media/movies-uhd
