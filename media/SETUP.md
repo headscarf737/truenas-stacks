@@ -62,8 +62,6 @@ Media Management: Propers and Repacks: Do Not Prefer
 
 Media Management: Root Folders:
 
-- /media/tv (Sonarr)
-- /media/movies (Radarr)
 - /media/adult (Whisparr)
 - /media/adult2 (Whisparr2)
 

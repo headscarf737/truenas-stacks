@@ -5,8 +5,8 @@ sonarr:
     base_url: http://media:8989
     api_key: !env SONARR_API_KEY
 
-    quality_definition:
-      type: series
+    root_folders:
+      - /media/tv
 
     media_naming:
       series: default
@@ -16,6 +16,18 @@ sonarr:
         standard: default
         daily: default
         anime: default
+
+    quality_definition:
+      type: series
+
+    delete_unmanaged_custom_formats:
+      enabled: true
+
+    include:
+      - template: dca7e5e9e99c703bcbdaaa471dd40e98 # [German] HD Bluray + WEB
+        source: TRASH
+      - template: 0dd5f085ed61a1e01f6d347779dfa1bc # [German] HD Remux + WEB
+        source: TRASH
 
     quality_profiles:
       - name: "[GERMAN] FHD Remux, Bluray, WEB"
@@ -109,6 +121,9 @@ radarr:
     base_url: http://media:7878
     api_key: !env RADARR_API_KEY
 
+    root_folders:
+      - /media/movies
+
     media_naming:
       folder: default
       movie:
@@ -117,6 +132,15 @@ radarr:
 
     quality_definition:
       type: movie
+
+    delete_unmanaged_custom_formats:
+      enabled: true
+
+    include:
+      - template: 2b90e905c99490edc7c7a5787443748b # [German] HD Bluray + WEB
+        source: TRASH
+      - template: c13c33fdd2c306266b34cb9946de5919 # [German] HD Remux + WEB
+        source: TRASH
 
     quality_profiles:
       - name: "[GERMAN] FHD Remux, Bluray, WEB"
