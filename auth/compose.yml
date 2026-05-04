@@ -30,6 +30,7 @@ services:
       - traefik.http.routers.authelia.rule=Host(`auth.${DOMAIN}`)
       - traefik.http.routers.authelia.entrypoints=websecure,websecure-pub
       - traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/authz/forward-auth
+      # todo: deprecated, disable?
       - traefik.http.middlewares.authelia.forwardAuth.trustForwardHeader=true
       - traefik.http.middlewares.authelia.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email
       - traefik.http.middlewares.authelia.forwardAuth.maxBodySize=104857600 # 100MB
