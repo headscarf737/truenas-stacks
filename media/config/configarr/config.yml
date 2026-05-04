@@ -144,6 +144,32 @@ sonarr:
     delete_unmanaged_custom_formats:
       enabled: true
 
+    include:
+      - template: 3b0fa37fddaaefc931b75f2889d4b4f5 # [German] UHD Bluray + WEB
+        source: TRASH
+      - template: 08cececf1840290f6fd490b7d79e8642 # [German] UHD Remux + WEB
+        source: TRASH
+
+    quality_profiles:
+      - name: "[GERMAN] UHD Remux, Bluray, WEB"
+        reset_unmatched_scores:
+          enabled: true
+        score_set: german
+        upgrade:
+          allowed: true
+          until_quality: Merged QPs
+          until_score: 35000
+          min_format_score: 1
+        min_format_score: 1700
+        quality_sort: top
+        qualities:
+          - name: Merged QPs
+            qualities:
+              - Bluray-2160p Remux
+              - Bluray-2160p
+              - WEBDL-2160p
+              - WEBRip-2160p
+
 radarr:
   fhd:
     base_url: http://media:7878
@@ -297,3 +323,29 @@ radarr:
 
     delete_unmanaged_custom_formats:
       enabled: true
+
+    include:
+      - template: 27cc3d153c0a799fd139ef1ff4c4cc42 # [German] UHD Bluray + WEB
+        source: TRASH
+      - template: 79faa9943cef2f510b997b1f2a9f3ea6 # [German] Remux + WEB 2160p
+        source: TRASH
+
+    quality_profiles:
+      - name: "[GERMAN] UHD Remux, Bluray, WEB"
+        reset_unmatched_scores:
+          enabled: true
+        score_set: german
+        upgrade:
+          allowed: true
+          until_quality: Merged QPs
+          until_score: 35000
+          min_format_score: 1
+        min_format_score: 1700
+        quality_sort: top
+        qualities:
+          - name: Merged QPs
+            qualities:
+              - Remux-2160p
+              - Bluray-2160p
+              - WEBDL-2160p
+              - WEBRip-2160p

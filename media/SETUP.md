@@ -135,7 +135,7 @@ See <https://github.com/jnk22/kodinerds-iptv/blob/master/iptv/clean/clean.m3u> a
 
 Setting up seerr is straight forward. Just follow the onboarding steps.
 
-Add Sonarr and Radarr instances like in Prowlarr section.
+Add Sonarr (+UHD) and Radarr (+UHD) instances like in Prowlarr section.
 
 For Sonarr make sure to enable Season Folders
 
