@@ -54,8 +54,10 @@ access_control:
         - bazarr.{{ env "DOMAIN" }}
         - prowlarr.{{ env "DOMAIN" }}
         - radarr.{{ env "DOMAIN" }}
+        - radarr-uhd.{{ env "DOMAIN" }}
         - sabnzbd.{{ env "DOMAIN" }}
         - sonarr.{{ env "DOMAIN" }}
+        - sonarr-uhd.{{ env "DOMAIN" }}
         - stash.{{ env "DOMAIN" }}
         - whisparr.{{ env "DOMAIN" }}
         - whisparr2.{{ env "DOMAIN" }}

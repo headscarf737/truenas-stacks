@@ -124,12 +124,21 @@
             # prettier-ignore
             key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
-    - Radarr:
+    - Radarr-FHD:
         href: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}
         icon: radarr
         widgets:
           - type: radarr
             url: http://media:7878
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_RADARR_KEY}}
+
+    - Radarr-UHD:
+        href: https://radarr-uhd.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: radarr
+        widgets:
+          - type: radarr
+            url: http://media:7879
             # prettier-ignore
             key: {{HOMEPAGE_VAR_RADARR_KEY}}
 
@@ -142,12 +151,21 @@
             # prettier-ignore
             key: {{HOMEPAGE_VAR_SABNZBD_KEY}}
 
-    - Sonarr:
+    - Sonarr-FHD:
         href: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
         icon: sonarr
         widgets:
           - type: sonarr
             url: http://media:8989
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_SONARR_KEY}}
+
+    - Sonarr-UHD:
+        href: https://sonarr-uhd.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: sonarr
+        widgets:
+          - type: sonarr
+            url: http://media:8988
             # prettier-ignore
             key: {{HOMEPAGE_VAR_SONARR_KEY}}
 

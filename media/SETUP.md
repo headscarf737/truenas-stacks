@@ -21,8 +21,12 @@ Completed Download Folder: `/data/usenet/complete`
 
 Categories:
 movies -> movies
+movies-uhd -> movies-uhd
 tv -> tv
+tv-uhd -> tv-uhd
 adult -> adult
+adult2 -> adult2
+other -> other
 
 See <https://trash-guides.info/Downloaders/SABnzbd/Basic-Setup>:
 

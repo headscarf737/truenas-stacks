@@ -1,7 +1,7 @@
 # TODO: add download client
 
 sonarr:
-  instance1:
+  fhd:
     base_url: http://media:8989
     api_key: !env SONARR_API_KEY
 
@@ -122,8 +122,30 @@ sonarr:
       #    - name: "[GERMAN] FHD Remux, Bluray, WEB"
       # No Audio
 
+  uhd:
+    base_url: http://media:8988
+    api_key: !env SONARR-UHD_API_KEY
+
+    root_folders:
+      - /media/tv-uhd
+
+    media_naming:
+      series: default
+      season: default
+      episodes:
+        rename: true
+        standard: default
+        daily: default
+        anime: default
+
+    quality_definition:
+      type: series
+
+    delete_unmanaged_custom_formats:
+      enabled: true
+
 radarr:
-  instance1:
+  fhd:
     base_url: http://media:7878
     api_key: !env RADARR_API_KEY
 
@@ -256,3 +278,22 @@ radarr:
           - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
+
+  uhd:
+    base_url: http://media:7879
+    api_key: !env RADARR-UHD_API_KEY
+
+    root_folders:
+      - /media/movies-uhd
+
+    media_naming:
+      folder: default
+      movie:
+        rename: true
+        standard: standard
+
+    quality_definition:
+      type: movie
+
+    delete_unmanaged_custom_formats:
+      enabled: true
