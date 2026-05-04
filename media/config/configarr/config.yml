@@ -208,13 +208,22 @@ radarr:
 
           # Unwanted
           - bfd8eb01832d646a0a89c4deb46f8564 # Upscaled
+
+          # [Unwanted] Unwanted Formats German Defaults
+          - b8cd450cbfa689c0259a01d9e29ba3d6 # 3D
+          - cae4ca30163749b891686f95532519bd # AV1
+          - ed38b889b31be83fda192888e2286d83 # BR-DISK
+          - 0a3f082873eb454bde444150b70253cc # Extras
+          - 90a6f9a284dff5103f6346090e6280c8 # LQ
+          - e204b80c87be9497a8a6eaff48f72905 # LQ (Release Title)
+
+          # [Optional] Golden Rule HD Defaults
+          - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
       - trash_ids:
           - e6886871085226c3da1830830146846c # Generated Dynamic HDR
-          # should be included by Golden Rule HD
-          # - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -10000
@@ -232,15 +241,15 @@ radarr:
           - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      - trash_guide:
-          - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
-        assign_scores_to:
-          - name: "[GERMAN] FHD Remux, Bluray, WEB"
+      #- trash_guide:
+      #    - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
+      #  assign_scores_to:
+      #    - name: "[GERMAN] FHD Remux, Bluray, WEB"
       - trash_guide:
           - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      - trash_guide:
-          - id: f8bf8eab4617f12dfdbd16303d8da245 # [Optional] Golden Rule HD
-        assign_scores_to:
-          - name: "[GERMAN] FHD Remux, Bluray, WEB"
+      #- trash_guide:
+      #    - id: f8bf8eab4617f12dfdbd16303d8da245 # [Optional] Golden Rule HD
+      #  assign_scores_to:
+      #    - name: "[GERMAN] FHD Remux, Bluray, WEB"
