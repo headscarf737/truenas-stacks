@@ -91,15 +91,6 @@ sonarr:
 
           # Unwanted
           - 23297a736ca77c0fc8e70f8edd7ee56c # Upscaled
-
-          # [Unwanted] Unwanted Formats German Defaults
-          - 15a05bc7c1a36e2b57fd628f8977e2fc # AV1
-          - 85c61753df5da1fb2aab6f2a47426b09 # BR-DISK
-          - fbcb31d8dabd2a319072b84fc0b7249c # Extras
-          - 9c11cd3f07101cdba90a2d81cf0e56b4 # LQ
-          - e2315f990da2e2cbfc9fa5b7a6fcfe48 # LQ (Release Title)
-
-          # No Audio
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
@@ -116,10 +107,10 @@ sonarr:
           - id: abe720fab2d27682adc2a735136cec02 # [Streaming Services] General
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      #- trash_guide:
-      #    - id: 6f0872eebfc95b1f93474b7ac866ced0 # [Unwanted] Unwanted Formats German
-      #  assign_scores_to:
-      #    - name: "[GERMAN] FHD Remux, Bluray, WEB"
+      - trash_guide:
+          - id: 6f0872eebfc95b1f93474b7ac866ced0 # [Unwanted] Unwanted Formats German
+        assign_scores_to:
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
       # No Audio
 
   uhd:
@@ -262,14 +253,6 @@ radarr:
 
           # Unwanted
           - bfd8eb01832d646a0a89c4deb46f8564 # Upscaled
-
-          # [Unwanted] Unwanted Formats German Defaults
-          - b8cd450cbfa689c0259a01d9e29ba3d6 # 3D
-          - cae4ca30163749b891686f95532519bd # AV1
-          - ed38b889b31be83fda192888e2286d83 # BR-DISK
-          - 0a3f082873eb454bde444150b70253cc # Extras
-          - 90a6f9a284dff5103f6346090e6280c8 # LQ
-          - e204b80c87be9497a8a6eaff48f72905 # LQ (Release Title)
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
@@ -283,6 +266,7 @@ radarr:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -10000
 
+      # my phone does not support atmos
       - trash_ids:
           - 496f355514737f7d83bf7aa4d24f8169 # TrueHD ATMOS
           - 417804f7f2c4308c1f4c5d380d4c4475 # ATMOS (undefined)
@@ -296,10 +280,10 @@ radarr:
           - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      #- trash_guide:
-      #    - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
-      #  assign_scores_to:
-      #    - name: "[GERMAN] FHD Remux, Bluray, WEB"
+      - trash_guide:
+          - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
+        assign_scores_to:
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
       - trash_guide:
           - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
         assign_scores_to:
