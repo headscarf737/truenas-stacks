@@ -104,14 +104,11 @@ sonarr:
 
     custom_format_groups:
       - trash_guide:
+          - id: 6f0872eebfc95b1f93474b7ac866ced0 # [Unwanted] Unwanted Formats German
+          # No Audio
           - id: abe720fab2d27682adc2a735136cec02 # [Streaming Services] General
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      - trash_guide:
-          - id: 6f0872eebfc95b1f93474b7ac866ced0 # [Unwanted] Unwanted Formats German
-        assign_scores_to:
-          - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      # No Audio
 
   uhd:
     base_url: http://media:8988
@@ -160,6 +157,59 @@ sonarr:
               - Bluray-2160p
               - WEBDL-2160p
               - WEBRip-2160p
+
+    custom_formats:
+      - trash_ids:
+          # Resolution
+          - b493cd40d8a3bbf2839127a706bdb673 # German 2160p Booster
+
+          # German Audio
+          - 8a9fcdbb445f2add0505926df3bb7b8a # German
+          - ed51973a811f51985f14e2f6f290e47a # German DL
+          - c5dd0fd675f85487ad5bdf97159180bd # German DL (undefined)
+          - 133589380b89f8f8394320901529bac1 # Not German or English
+
+          # German HQ Release Groups
+          - da0f005f9c3edf34fc26e18dce8c6573 # German Remux Tier 01
+          - 6bc5ccd80a03e7abb8f556eecd174b73 # German Remux Tier 02
+          - 7940b2fb0278f27cf4f70187f2be95d6 # German Bluray Tier 01
+          - 83b336a90d90d6b35ca673b007f80661 # German Bluray Tier 02
+          - d8f8e1539827967e0e564833e6c08d33 # German Bluray Tier 03
+          - 68be37323132b35cf333c81a2ac8fc16 # German Web Tier 01
+          - f51b96a50b0e6196cb69724b7833d837 # German Web Tier 02
+          - bda67c2c0aae257308a4723d92475b86 # German Web Tier 03
+          - c2eec878fa1989599c226ce4c287d6a7 # German Scene
+
+          # HQ Release Groups
+          # No Remux Tiers
+          # No UHD Bluray Tiers
+          - e6258996055b9fbab7e9cb2f75819294 # WEB Tier 01
+          - 58790d4e2fdcd9733aa7ae68ba2bb503 # WEB Tier 02
+          - d84935abd3f8556dcd51d4f27e22d0a6 # WEB Tier 03
+
+          # German Unwanted
+          - a6a6c33d057406aaad978a6902823c35 # German LQ
+          - d80c9f7cd2aad50271f1bd4e53125778 # German LQ (Release Title)
+          - 237eda4ef550a97da2c9d87b437e500b # German Microsized
+
+          # Misc
+          - ec8fa7296b64e8cd390a1600981f3923 # Repack/Proper
+          - eb3d5cc0a2be0db205fb823640db6a3c # Repack2
+          - 44e7c4de10ae50265753082e5dc76047 # Repack3
+
+          # Unwanted
+          - 23297a736ca77c0fc8e70f8edd7ee56c # Upscaled
+        assign_scores_to:
+          - name: "[GERMAN] UHD Remux, Bluray, WEB"
+
+    custom_format_groups:
+      - trash_guide:
+          - id: 7e1724c5da59e7474803ad25be98f6a3 # [HDR Formats] HDR
+          - id: 6f0872eebfc95b1f93474b7ac866ced0 # [Unwanted] Unwanted Formats German
+          # No Audio
+          - id: abe720fab2d27682adc2a735136cec02 # [Streaming Services] General
+        assign_scores_to:
+          - name: "[GERMAN] UHD Remux, Bluray, WEB"
 
 radarr:
   fhd:
@@ -277,15 +327,9 @@ radarr:
 
     custom_format_groups:
       - trash_guide:
-          - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
-        assign_scores_to:
-          - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      - trash_guide:
           - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
-        assign_scores_to:
-          - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      - trash_guide:
           - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
+          - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
@@ -333,3 +377,69 @@ radarr:
               - Bluray-2160p
               - WEBDL-2160p
               - WEBRip-2160p
+
+    custom_formats:
+      - trash_ids:
+          # Resolution
+          - cc7b1e64e2513a6a271090cdfafaeb55 # German 2160p Booster
+
+          # German Audio
+          - 86bc3115eb4e9873ac96904a4a68e19e # German
+          - f845be10da4f442654c13e1f2c3d6cd5 # German DL
+          - 6aad77771dabe9d3e9d7be86f310b867 # German DL (undefined)
+          - 4eadb75fb23d09dfc0a8e3f687e72287 # Not German or English
+
+          # German HQ Release Groups
+          - 8608a2ed20c636b8a62de108e9147713 # German Remux Tier 01
+          - f9cf598d55ce532d63596b060a6db9ee # German Remux Tier 02
+          - 54795711b78ea87e56127928c423689b # German Bluray Tier 01
+          - 1bfc773c53283d47c68e535811da30b7 # German Bluray Tier 02
+          - aee01d40cd1bf4bcded81ee62f0f3659 # German Bluray Tier 03
+          - a2ab25194f463f057a5559c03c84a3df # German Web Tier 01
+          - 08d120d5a003ec4954b5b255c0691d79 # German Web Tier 02
+          - 439f9d71becaed589058ec949e037ff3 # German Web Tier 03
+          - 2d136d4e33082fe573d06b1f237c40dd # German Scene
+
+          # German Unwanted
+          - 263943bc5d99550c68aad0c4278ba1c7 # German LQ
+          - a826ee9e46607bc61795c85a6f2b1279 # German LQ (Release Title)
+          - 03c430f326f10a27a9739b8bc83c30e4 # German Microsized
+          - c465ccc73923871b3eb1802042331306 # Line/Mic Dubbed
+
+          # HQ Release Groups
+          - 3a3ff47579026e76d6504ebea39390de # Remux Tier 01
+          - 9f98181fe5a3fbeb0cc29340da2a468a # Remux Tier 02
+          - 8baaf0b3142bf4d94c42a724f034e27a # Remux Tier 03
+          - 4d74ac4c4db0b64bff6ce0cffef99bf0 # UHD Bluray Tier 01
+          - a58f517a70193f8e578056642178419d # UHD Bluray Tier 02
+          - e71939fae578037e7aed3ee219bbe7c1 # UHD Bluray Tier 03
+          - c20f169ef63c5f40c2def54abaf4438e # WEB Tier 01
+          - 403816d65392c79236dcb6dd591aeda4 # WEB Tier 02
+          - af94e0fe497124d1f9ce732069ec8c3b # WEB Tier 03
+
+          # Misc
+          - e7718d7a3ce595f289bfee26adc178f5 # Repack/Proper
+          - ae43b294509409a6a13919dedd4764c4 # Repack2
+          - 5caaaa1c08c1742aa4342d8c4cc463f2 # Repack3
+
+          # Unwanted
+          - bfd8eb01832d646a0a89c4deb46f8564 # Upscaled
+        assign_scores_to:
+          - name: "[GERMAN] UHD Remux, Bluray, WEB"
+
+      # these formats need override as they have score 0 for german
+      - trash_ids:
+          # from Unwanted Formats
+          - e6886871085226c3da1830830146846c # Generated Dynamic HDR
+        assign_scores_to:
+          - name: "[GERMAN] UHD Remux, Bluray, WEB"
+            score: -10000
+
+    custom_format_groups:
+      - trash_guide:
+          - id: ef20e67b95a381fb3bc6d1f06ea24f46 # [HDR Formats] HDR
+          - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
+          - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
+          - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
+        assign_scores_to:
+          - name: "[GERMAN] UHD Remux, Bluray, WEB"
