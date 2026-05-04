@@ -71,9 +71,11 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 - `media/jellyfin`
 - `media/prowlarr`
 - `media/radarr`
+- `media/radarr-uhd`
 - `media/sabnzbd`
 - `media/seerr`
 - `media/sonarr`
+- `media/sonarr-uhd`
 - `media/stash`
 - `media/whisparr`
 - `media/whisparr2`
@@ -110,7 +112,9 @@ Set Record size to 1M on the media dataset
 
 - `media`
 - `media/movies` - Movies (Radarr)
+- `media/movies-uhd` - Movies (Radarr-UHD)
 - `media/tv` - TV Shows (Sonarr)
+- `media/tv-uhd` - TV Shows (Sonarr-UHD)
 - `media/adult` - Adult Content (Whisparr)
 - `media/adult2` - Adult Content (Whisparr2)
 
