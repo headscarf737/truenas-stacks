@@ -26,7 +26,6 @@ tv -> tv
 tv-uhd -> tv-uhd
 adult -> adult
 adult2 -> adult2
-other -> other
 
 See <https://trash-guides.info/Downloaders/SABnzbd/Basic-Setup>:
 
@@ -49,7 +48,7 @@ Edit `${APPS_FOLDER}/media/whisparr2/config.xml`
 
 ## Prowlarr
 
-Add Sonarr, Radarr, Whisparr, Whisparr2 instances with API keys.
+Add Sonarr (+UHD), Radarr (+UHD), Whisparr, Whisparr2 instances with API keys.
 
 Use `media` as hostname instead of `localhost`
 
@@ -59,6 +58,8 @@ Add you preferred indexers.
 
 Add Download Client. Add SABnzbd instance. Use `media` as hostname instead of `localhost`.
 
+Use category `tv-uhd` for Sonarr-UHD
+Use category `movies-uhd` for Radarr-UHD
 Use category `adult` for Whisparr
 Use category `adult2` for Whisparr2
 
