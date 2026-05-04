@@ -164,10 +164,13 @@ radarr:
 
     custom_formats:
       - trash_ids:
+          # Resolution
+          - 3bc8df3a71baaac60a31ef696ea72d36 # German 1080p Booster
+
           # German Audio
           - 86bc3115eb4e9873ac96904a4a68e19e # German
-          - 6aad77771dabe9d3e9d7be86f310b867 # German DL (undefined)
           - f845be10da4f442654c13e1f2c3d6cd5 # German DL
+          - 6aad77771dabe9d3e9d7be86f310b867 # German DL (undefined)
           - 4eadb75fb23d09dfc0a8e3f687e72287 # Not German or English
 
           # German HQ Release Groups
@@ -183,11 +186,9 @@ radarr:
 
           # German Unwanted
           - 263943bc5d99550c68aad0c4278ba1c7 # German LQ
-          - 03c430f326f10a27a9739b8bc83c30e4 # German Microsized
           - a826ee9e46607bc61795c85a6f2b1279 # German LQ (Release Title)
-
-          # Resolution
-          - 3bc8df3a71baaac60a31ef696ea72d36 # German 1080p Booster
+          - 03c430f326f10a27a9739b8bc83c30e4 # German Microsized
+          - c465ccc73923871b3eb1802042331306 # Line/Mic Dubbed
 
           # HQ Release Groups
           - 3a3ff47579026e76d6504ebea39390de # Remux Tier 01
@@ -206,33 +207,14 @@ radarr:
           - 5caaaa1c08c1742aa4342d8c4cc463f2 # Repack3
 
           # Unwanted
-          - ed38b889b31be83fda192888e2286d83 # BR-DISK
-          - 90a6f9a284dff5103f6346090e6280c8 # LQ
-          - e204b80c87be9497a8a6eaff48f72905 # LQ (Release Title)
-          - b8cd450cbfa689c0259a01d9e29ba3d6 # 3D
           - bfd8eb01832d646a0a89c4deb46f8564 # Upscaled
-          - 0a3f082873eb454bde444150b70253cc # Extras
-          - cae4ca30163749b891686f95532519bd # AV1
-          - c465ccc73923871b3eb1802042331306 # Line/Mic Dubbed
-
-          # Audio
-          - 2f22d89048b01681dde8afe203bf2e95 # DTS X
-          - 3cafb66171b47f226146a0770576870f # TrueHD
-          - dcf3ec6938fa32445f590a4da84256cd # DTS-HD MA
-          - a570d4a0e56a2874b64e5bfa55202a1b # FLAC
-          - e7c2fcae07cbada050a0af3357491d7b # PCM
-          - 8e109e50e0a0b83a5098b056e13bf6db # DTS-HD HRA
-          - 185f1dd7264c4562b9022d963ac37424 # DD+
-          - f9f847ac70a0af62ea4a08280b859636 # DTS-ES
-          - 1c1a4c5e823891c75bc50380a6866f73 # DTS
-          - 240770601cc226190c367ef59aba7463 # AAC
-          - c2998bd0d90ed5621d8df281e839436e # DD
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
       - trash_ids:
           - e6886871085226c3da1830830146846c # Generated Dynamic HDR
-          - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
+          # should be included by Golden Rule HD
+          # - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -10000
@@ -248,5 +230,17 @@ radarr:
     custom_format_groups:
       - trash_guide:
           - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
+        assign_scores_to:
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
+      - trash_guide:
+          - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
+        assign_scores_to:
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
+      - trash_guide:
+          - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
+        assign_scores_to:
+          - name: "[GERMAN] FHD Remux, Bluray, WEB"
+      - trash_guide:
+          - id: f8bf8eab4617f12dfdbd16303d8da245 # [Optional] Golden Rule HD
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
