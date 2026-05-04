@@ -205,6 +205,9 @@ sonarr:
     custom_format_groups:
       - trash_guide:
           - id: 7e1724c5da59e7474803ad25be98f6a3 # [HDR Formats] HDR
+          - id: e0b2774083df4265f25c9e5bc6c80940 # [HDR Formats] DV Boost
+          - id: 7d366c213e5c23a052b157356fac1921 # [HDR Formats] HDR10+ Boost
+          - id: d776a1ea912a117d66d83b880ff2055d # [HDR Formats] DV (w/o HDR fallback)
           - id: 6f0872eebfc95b1f93474b7ac866ced0 # [Unwanted] Unwanted Formats German
           # No Audio
           - id: abe720fab2d27682adc2a735136cec02 # [Streaming Services] General
@@ -438,6 +441,9 @@ radarr:
     custom_format_groups:
       - trash_guide:
           - id: ef20e67b95a381fb3bc6d1f06ea24f46 # [HDR Formats] HDR
+          - id: 1616617ab3a14397a2b2321bcbda44d1 # [HDR Formats] DV Boost
+          - id: b29413a7487478fe98228ce79e5689e4 # [HDR Formats] HDR10+ Boost
+          - id: 7fc2751eef7e6bdc70b74136e5e35c76 # [HDR Formats] DV (w/o HDR fallback)
           - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
           - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
           - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
