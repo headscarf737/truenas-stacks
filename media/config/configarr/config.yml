@@ -216,14 +216,15 @@ radarr:
           - 0a3f082873eb454bde444150b70253cc # Extras
           - 90a6f9a284dff5103f6346090e6280c8 # LQ
           - e204b80c87be9497a8a6eaff48f72905 # LQ (Release Title)
-
-          # [Optional] Golden Rule HD Defaults
-          - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
 
+      # these formats need override as they have score 0 for german
       - trash_ids:
+          # from Unwanted Formats
           - e6886871085226c3da1830830146846c # Generated Dynamic HDR
+          # from Golden Rule HD
+          - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -10000
@@ -249,7 +250,3 @@ radarr:
           - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
-      #- trash_guide:
-      #    - id: f8bf8eab4617f12dfdbd16303d8da245 # [Optional] Golden Rule HD
-      #  assign_scores_to:
-      #    - name: "[GERMAN] FHD Remux, Bluray, WEB"
