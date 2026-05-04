@@ -193,11 +193,11 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.radarr.rule=Host(`radarr-uhd.${DOMAIN}`)
-      - traefik.http.routers.radarr.entrypoints=websecure
-      - traefik.http.routers.radarr.middlewares=authelia@docker
-      - traefik.http.routers.radarr.service=radarr
-      - traefik.http.services.radarr.loadbalancer.server.port=7879
+      - traefik.http.routers.radarr-uhd.rule=Host(`radarr-uhd.${DOMAIN}`)
+      - traefik.http.routers.radarr-uhd.entrypoints=websecure
+      - traefik.http.routers.radarr-uhd.middlewares=authelia@docker
+      - traefik.http.routers.radarr-uhd.service=radarr-uhd
+      - traefik.http.services.radarr-uhd.loadbalancer.server.port=7879
     security_opt:
       - no-new-privileges:true
 
@@ -307,11 +307,11 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.sonarr.rule=Host(`sonarr-uhd.${DOMAIN}`)
-      - traefik.http.routers.sonarr.entrypoints=websecure
-      - traefik.http.routers.sonarr.middlewares=authelia@docker
-      - traefik.http.routers.sonarr.service=sonarr
-      - traefik.http.services.sonarr.loadbalancer.server.port=8988
+      - traefik.http.routers.sonarr-uhd.rule=Host(`sonarr-uhd.${DOMAIN}`)
+      - traefik.http.routers.sonarr-uhd.entrypoints=websecure
+      - traefik.http.routers.sonarr-uhd.middlewares=authelia@docker
+      - traefik.http.routers.sonarr-uhd.service=sonarr-uhd
+      - traefik.http.services.sonarr-uhd.loadbalancer.server.port=8988
     security_opt:
       - no-new-privileges:true
 
