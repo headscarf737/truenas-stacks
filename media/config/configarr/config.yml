@@ -97,7 +97,7 @@ sonarr:
           - 85c61753df5da1fb2aab6f2a47426b09 # BR-DISK
           - fbcb31d8dabd2a319072b84fc0b7249c # Extras
           - 9c11cd3f07101cdba90a2d81cf0e56b4 # LQ
-          - 9c11cd3f07101cdba90a2d81cf0e56b4 # LQ (Release Title)
+          - e2315f990da2e2cbfc9fa5b7a6fcfe48 # LQ (Release Title)
 
           # No Audio
         assign_scores_to:
