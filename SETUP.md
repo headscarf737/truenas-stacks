@@ -153,7 +153,13 @@ sudo docker network create --internal --subnet 172.31.254.0/24 --subnet fdd0:0:0
 
 ## Email
 
-In Settings > General enter your email information and send a test email to verify that everything is working.
+In System > General Settings enter your email information and send a test email to verify that everything is working.
+
+## Alerts
+
+In System > Alert Settings set Email Level to Notice.
+
+Under the Category System change Update Available to NOTICE.
 
 ## Snapshots
 
