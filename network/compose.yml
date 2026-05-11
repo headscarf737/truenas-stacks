@@ -122,8 +122,12 @@ services:
       - "--api.insecure=true" # for homepage
       # LetsEncrypt
       - "--certificatesresolvers.letsencrypt.acme.email=${LETSENCRYPT_EMAIL}"
+      #- "--certificatesresolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.dnsChallenge.provider=cloudflare"
+      - "--certificatesresolvers.letsencrypt.acme.keytype=EC384"
+      - "--certificatesresolvers.letsencrypt.acme.profile=shortlived"
+      - "--certificatesresolvers.letsencrypt.acme.certificatesDuration=160"
       - "--entrypoints.websecure.http.tls.certResolver=letsencrypt"
       - "--entrypoints.websecure-pub.http.tls.certResolver=letsencrypt"
       # Docker
