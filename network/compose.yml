@@ -43,7 +43,7 @@ services:
     restart: unless-stopped
 
   dns:
-    image: docker.io/technitium/dns-server:15.1.0@sha256:9f26522bf1d484e85f7753a324876c5cb4a3ab6deab5a753997007de98fda300
+    image: docker.io/technitium/dns-server:15.2.0@sha256:23d3b63d959e997800b095fe93009b3fae271b5258234ff2ade8535cb33682c8
     container_name: dns
     volumes:
       - ${APPS_FOLDER}/network/dns:/etc/dns
