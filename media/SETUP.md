@@ -74,6 +74,8 @@ Media Management: Root Folders:
 
 Create account <https://guidelines.stashdb.org/docs/faq_getting-started/stashdb/accessing-stashdb/>. Add API to Metadata providers.
 
+Set Credentials under Settings > Security and generate an API key.
+
 Whisparr: Add Connection Stash, Port: 9998, match Settings like manual settings in Stash. Enable Identify Task
 
 ## Bazarr

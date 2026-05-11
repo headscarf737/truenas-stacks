@@ -332,7 +332,7 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
-      STASH_STASH: /media/adult
+      #STASH_STASH: /media/adult
       STASH_PORT: 9998
     network_mode: service:gluetun
     restart: unless-stopped
@@ -340,7 +340,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.stash.rule=Host(`stash.${DOMAIN}`)
       - traefik.http.routers.stash.entrypoints=websecure
-      - traefik.http.routers.stash.middlewares=authelia@docker
+      #- traefik.http.routers.stash.middlewares=authelia@docker
       - traefik.http.routers.stash.service=stash
       - traefik.http.services.stash.loadbalancer.server.port=9998
     security_opt:
