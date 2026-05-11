@@ -125,6 +125,7 @@ services:
       #- "--certificatesresolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.dnsChallenge.provider=cloudflare"
+      - "--certificatesresolvers.letsencrypt.acme.dnsChallenge.resolvers=1.1.1.1:53"
       - "--certificatesresolvers.letsencrypt.acme.keytype=EC384"
       - "--certificatesresolvers.letsencrypt.acme.profile=shortlived"
       - "--certificatesresolvers.letsencrypt.acme.certificatesDuration=160"
