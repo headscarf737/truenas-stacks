@@ -205,7 +205,7 @@ services:
       - no-new-privileges:true
 
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:5.0.1@sha256:c65265edbfb42a1e4b6c68d3926e4aab4cf9cf185be1fafd1a692cb195cc9b0e
+    image: lscr.io/linuxserver/sabnzbd:5.0.3@sha256:f567ed2e26b964690e93d708d9660db011fcd0a4057f927cae1b6ec23387efd5
     container_name: sabnzbd
     depends_on:
       gluetun:
