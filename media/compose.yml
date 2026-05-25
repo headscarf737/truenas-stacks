@@ -3,7 +3,7 @@ name: media
 services:
   # todo: add bazarr-uhd
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.5.6@sha256:4b7bb6d861c08bbf0c388b936ada8b2ba57669ca9974323f504e974577d19d63
+    image: lscr.io/linuxserver/bazarr:1.5.6@sha256:95f27692c3de6dbe130cd035d342d8138ec74ade7b62cfc52e11ae222c52c855
     container_name: bazarr
     depends_on:
       gluetun:
@@ -113,7 +113,7 @@ services:
       - no-new-privileges:true
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:2.3.5@sha256:a89f252d6a22bd25af14a5380aec0adcc3c3af2e3282164f981680e6844070f3
+    image: lscr.io/linuxserver/prowlarr:2.3.5@sha256:c9fe528f34b1fd3715438b6f6d6991d64e2965f2c055db36398bc66a0e7eab01
     container_name: prowlarr
     depends_on:
       gluetun:
@@ -205,7 +205,7 @@ services:
       - no-new-privileges:true
 
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:5.0.3@sha256:f567ed2e26b964690e93d708d9660db011fcd0a4057f927cae1b6ec23387efd5
+    image: lscr.io/linuxserver/sabnzbd:5.0.3@sha256:6b392fce45ed587ba7213259fbce6f9f725b157b746b36ec53d3f08ee415602e
     container_name: sabnzbd
     depends_on:
       gluetun:
@@ -231,7 +231,7 @@ services:
       - no-new-privileges:true
 
   seerr:
-    image: ghcr.io/hotio/seerr:release-v3.2.0@sha256:9009275779863463a6dfed165812bbe55ca7f98f6f01645f50426dbdb34084f3
+    image: ghcr.io/hotio/seerr:release-v3.2.0@sha256:226c5775bcc823ba4d2fc68a0588e32fb61ebd0a40b3c93a4f3fe578bcbe5b36
     container_name: seerr
     depends_on:
       gluetun:
@@ -256,7 +256,7 @@ services:
       - no-new-privileges:true
 
   sonarr:
-    image: lscr.io/linuxserver/sonarr:4.0.17@sha256:60f3b6b5c7647ba2bafd81163acfe34b11117b9b834ebd7fbcc3e5f1b309c7ef
+    image: lscr.io/linuxserver/sonarr:4.0.17@sha256:0b5c4803f92456fb9b65bae8375716ea120b4ea17b3cced7da32b63f0085782b
     container_name: sonarr
     depends_on:
       gluetun:
@@ -287,7 +287,7 @@ services:
       - no-new-privileges:true
 
   sonarr-uhd:
-    image: lscr.io/linuxserver/sonarr:4.0.17@sha256:60f3b6b5c7647ba2bafd81163acfe34b11117b9b834ebd7fbcc3e5f1b309c7ef
+    image: lscr.io/linuxserver/sonarr:4.0.17@sha256:0b5c4803f92456fb9b65bae8375716ea120b4ea17b3cced7da32b63f0085782b
     container_name: sonarr-uhd
     depends_on:
       gluetun:
@@ -319,7 +319,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0.31.1@sha256:71c1ca2f810b34b41165c5fd17bd6e52ef40d4fc4289b7180471a6cb3dcfbc9b
+    image: ghcr.io/hotio/stash:release-v0.31.1@sha256:01656a36043594669fa3480a64cad324fafc6addc9e9e9239376f09f59264494
     container_name: stash
     depends_on:
       gluetun:
