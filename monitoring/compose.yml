@@ -20,7 +20,7 @@ services:
       - no-new-privileges:true
 
   fluentbit:
-    image: docker.io/fluent/fluent-bit:5.0.5@sha256:18dcc82ddc16f3ff567effd3dc6f7c7f8d542cebefbb1b7ecd8bc28c04daf871
+    image: docker.io/fluent/fluent-bit:5.0.6@sha256:1abcf78fe8c9dee0c57fc2199693370a5a1f84e0af4716beddcd153b40cbbbb1
     container_name: fluentbit
     volumes:
       - ./config/fluentbit/config.yaml:/fluent-bit/etc/fluent-bit.yaml:ro
