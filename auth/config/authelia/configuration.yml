@@ -62,6 +62,7 @@ access_control:
         - whisparr.{{ env "DOMAIN" }}
         - whisparr2.{{ env "DOMAIN" }}
 
+        - crowdsec.{{ env "DOMAIN" }}
         - dozzle.{{ env "DOMAIN" }}
         - homepage.{{ env "DOMAIN" }}
         - scrutiny.{{ env "DOMAIN" }}

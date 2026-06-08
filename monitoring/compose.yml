@@ -1,6 +1,30 @@
 name: monitoring
 
 services:
+  crowdsec-ui:
+    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.6.3@sha256:fb4f7e321f83461d1becc6d29d30b6ff32fa5e4e5cf09c38c18fa7e28e23abb0
+    container_name: crowdsec_ui
+    volumes:
+      - ${APPS_FOLDER}/monitoring/crowdsec:/app/data
+    environment:
+      TZ: Europe/Berlin
+      CROWDSEC_URL: http://crowdsec:8080
+      CROWDSEC_USER: crowdsec-ui
+      CROWDSEC_PASSWORD: ${CROWDSEC_API_KEY}
+    networks:
+      traefik:
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.crowdsec_ui.rule=Host(`crowdsec.${DOMAIN}`)
+      - traefik.http.routers.crowdsec_ui.entrypoints=websecure
+      - traefik.http.routers.crowdsec_ui.middlewares=authelia@docker
+      - traefik.http.routers.crowdsec_ui.service=crowdsec_ui
+      - traefik.http.services.crowdsec_ui.loadbalancer.server.port=3000
+    user: 568:568
+    security_opt:
+      - no-new-privileges:true
+
   dozzle:
     image: docker.io/amir20/dozzle:v10.6.5@sha256:fa12525776bf665147d82bf031ff262ee89a0a12454122558a353ec38ada4aaf
     container_name: dozzle

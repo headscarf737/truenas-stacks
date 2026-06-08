@@ -62,6 +62,7 @@
             key: {{HOMEPAGE_VAR_TRAEFIK_KEY}}
 
     - Crowdsec:
+        href: https://crowdsec.{{HOMEPAGE_VAR_DOMAIN}}
         icon: crowdsec
         widgets:
           - type: crowdsec

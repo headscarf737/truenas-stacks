@@ -1,5 +1,19 @@
 # Monitoring
 
+## Crowdsec UI
+
+Generate API key
+
+```shell
+openssl rand -hex 32
+```
+
+Create machine (in the `network` stack)
+
+```shell
+sudo docker compose exec crowdsec cscli machines add crowdsec-ui --password <generated_password> -f /dev/null
+```
+
 ## Setup Homepage
 
 Get keys from the various places
