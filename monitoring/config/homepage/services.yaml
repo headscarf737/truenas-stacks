@@ -203,3 +203,7 @@
     - Dozzle:
         href: https://dozzle.{{HOMEPAGE_VAR_DOMAIN}}
         icon: dozzle
+
+    - Grafana:
+        href: https://grafana.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: grafana
