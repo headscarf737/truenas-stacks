@@ -2,7 +2,7 @@ name: monitoring
 
 services:
   crowdsec-ui:
-    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.6.3@sha256:fb4f7e321f83461d1becc6d29d30b6ff32fa5e4e5cf09c38c18fa7e28e23abb0
+    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.6.4@sha256:4be75e6a644f02532fd4bc5dc60532985c5101a3411b116c4c181ce0583ba229
     container_name: crowdsec_ui
     volumes:
       - ${APPS_FOLDER}/monitoring/crowdsec:/app/data
@@ -26,7 +26,7 @@ services:
       - no-new-privileges:true
 
   dozzle:
-    image: docker.io/amir20/dozzle:v10.6.5@sha256:fa12525776bf665147d82bf031ff262ee89a0a12454122558a353ec38ada4aaf
+    image: docker.io/amir20/dozzle:v10.6.6@sha256:2e14180fa14c195b8e86705b7ab2234b87599215bcf06f7f56396cb45f57f963
     container_name: dozzle
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -86,7 +86,7 @@ services:
       - no-new-privileges:true
 
   homepage:
-    image: ghcr.io/gethomepage/homepage:v1.13.1@sha256:d8d784e5090111b6e4c56dfd90e272d2953a2094e87349f647165df0fa6c4401
+    image: ghcr.io/gethomepage/homepage:v1.13.2@sha256:a0b71c8e757298d02560186bab9fbe3fc2d375c523a62cc1019177b37e48aa28
     container_name: homepage
     volumes:
       - ./config/homepage/widgets.yaml:/app/config/widgets.yaml
@@ -148,7 +148,7 @@ services:
       - no-new-privileges:true
 
   victorialogs:
-    image: docker.io/victoriametrics/victoria-logs:v1.50.0@sha256:ae9bea8d8a3b0fc47c7f0058bcca410e79c84b4a0acd12d4dac71b9302526590
+    image: docker.io/victoriametrics/victoria-logs:v1.51.0@sha256:e16dd33a95623cc21730cf5285344ed9f97419eeaff7d24b039c135beb85ee7e
     container_name: victorialogs
     volumes:
       - ${APPS_FOLDER}/monitoring/victorialogs:/vlogs
@@ -166,7 +166,7 @@ services:
       - no-new-privileges:true
 
   vmauth:
-    image: docker.io/victoriametrics/vmauth:v1.144.0@sha256:a9e7baea67f554394aea405d9325591816f86ebe7f7c62b5df255852fca9c739
+    image: docker.io/victoriametrics/vmauth:v1.145.0@sha256:c816c52c4d9187566c3dc23298dbd7c273352bfbacc811c353ff6e7f41921e10
     container_name: vmauth
     depends_on:
       victorialogs:
