@@ -28,8 +28,6 @@
         widgets:
           - type: stash
             url: http://media:9998
-            # prettier-ignore
-            key: {{HOMEPAGE_VAR_STASH_KEY}}
 
 - Files:
     - Immich:

@@ -58,7 +58,7 @@ access_control:
         - sabnzbd.{{ env "DOMAIN" }}
         - sonarr.{{ env "DOMAIN" }}
         - sonarr-uhd.{{ env "DOMAIN" }}
-        #- stash.{{ env "DOMAIN" }}
+        - stash.{{ env "DOMAIN" }}
         - whisparr.{{ env "DOMAIN" }}
         - whisparr2.{{ env "DOMAIN" }}
 
