@@ -28,6 +28,8 @@ sonarr:
         source: TRASH
       - template: 0dd5f085ed61a1e01f6d347779dfa1bc # [German] HD Remux + WEB
         source: TRASH
+      - template: 6fe5937e1dcc2269e23b49eb46dfe6d6 # [German] Anime HD Bluray + WEB
+        source: TRASH
 
     quality_profiles:
       - name: "[GERMAN] FHD Remux, Bluray, WEB"
@@ -238,6 +240,8 @@ radarr:
       - template: 2b90e905c99490edc7c7a5787443748b # [German] HD Bluray + WEB
         source: TRASH
       - template: c13c33fdd2c306266b34cb9946de5919 # [German] HD Remux + WEB
+        source: TRASH
+      - template: bf3cc2e99ad9a804a9b0d0e538e1fbba # [German] Anime HD Bluray + WEB
         source: TRASH
 
     quality_profiles:
