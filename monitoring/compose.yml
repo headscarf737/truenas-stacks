@@ -2,7 +2,7 @@ name: monitoring
 
 services:
   crowdsec-ui:
-    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.6.4@sha256:4be75e6a644f02532fd4bc5dc60532985c5101a3411b116c4c181ce0583ba229
+    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.7.4@sha256:09a952655999e2e078998cb3d9b6cc05f9ca90e107c382a1fd3b7404f32da987
     container_name: crowdsec_ui
     volumes:
       - ${APPS_FOLDER}/monitoring/crowdsec:/app/data
@@ -26,7 +26,7 @@ services:
       - no-new-privileges:true
 
   dozzle:
-    image: docker.io/amir20/dozzle:v10.6.6@sha256:2e14180fa14c195b8e86705b7ab2234b87599215bcf06f7f56396cb45f57f963
+    image: docker.io/amir20/dozzle:v10.6.7@sha256:43d933ebda116990c920e054d68a1aed286ab01fd31657983c53bbdf46cc0aa8
     container_name: dozzle
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -44,7 +44,7 @@ services:
       - no-new-privileges:true
 
   fluentbit:
-    image: docker.io/fluent/fluent-bit:5.0.7@sha256:c96ee743cba9b1d5a38654931f411700af80bb7652697afbe67daad46cae237b
+    image: docker.io/fluent/fluent-bit:5.0.9@sha256:ccda4cbd0f87be1e04cc1d5425bc84a6669051d4ac93a6b7a053c3ba9832aa14
     container_name: fluentbit
     volumes:
       - ./config/fluentbit/config.yaml:/fluent-bit/etc/fluent-bit.yaml:ro
@@ -61,7 +61,7 @@ services:
       - no-new-privileges:true
 
   grafana:
-    image: docker.io/grafana/grafana:13.0.2-slim@sha256:d79e3168ace75e8d56dd0fbb56182a32a6ad329f250ce1c7642d84fc19f44590
+    image: docker.io/grafana/grafana:13.1.0-slim@sha256:39fc2aa468222bf25ea7033187aac37c669128937e6703371f27e4da85afdcbb
     container_name: grafana
     volumes:
       - ${APPS_FOLDER}/monitoring/grafana:/var/lib/grafana
@@ -166,7 +166,7 @@ services:
       - no-new-privileges:true
 
   vmauth:
-    image: docker.io/victoriametrics/vmauth:v1.145.0@sha256:c816c52c4d9187566c3dc23298dbd7c273352bfbacc811c353ff6e7f41921e10
+    image: docker.io/victoriametrics/vmauth:v1.146.0@sha256:a18c3abb9860576118fb20fbfdc3d651a8919fc2e223a342c74154d6f6111502
     container_name: vmauth
     depends_on:
       victorialogs:

@@ -2,7 +2,7 @@ name: nextcloud
 
 services:
   collabora:
-    image: docker.io/collabora/code:26.04.1.4.1@sha256:75859dc9f9084d1877ce36cf96ec86600f495bade33289c9cbc27e0a0ee23b81
+    image: docker.io/collabora/code:26.04.2.1.1@sha256:fece3a479b4ca57e7186d0c715155526170e337deef55bbbbbc79ee93b0e72e1
     container_name: collabora
     environment:
       PUID: 568
@@ -52,7 +52,7 @@ services:
       - CHOWN
 
   mariadb:
-    image: docker.io/library/mariadb:11.8.8@sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61
+    image: docker.io/library/mariadb:11.8.8@sha256:efb4959ef2c835cd735dbc388eb9ad6aab0c78dd64febcd51bc17481111890c4
     container_name: nextcloud-db
     volumes:
       - ${APPS_FOLDER}/nextcloud/db:/var/lib/mysql
@@ -69,7 +69,7 @@ services:
     user: 568:568
 
   nextcloud:
-    image: docker.io/library/nextcloud:33.0.5@sha256:fe5166b04f217c9e3a263bfe76eef5e13de0dd3919966827de1b47bae2308b01
+    image: docker.io/library/nextcloud:34.0.1@sha256:e74a21b3d94e016831f06a6cdb3891f48ee981f6679df0bbd29af6e6f890e7c4
     container_name: nextcloud
     depends_on:
       - collabora
@@ -132,7 +132,7 @@ services:
     user: 568:568
 
   redis:
-    image: docker.io/library/redis:8.8.0-alpine@sha256:09160599abd229764c0fb44cb6be640294e1d360a54b19985ab4843dcf2d90f1
+    image: docker.io/library/redis:8.8.0-alpine@sha256:9d317178eceac8454a2284a9e6df2466b93c745529947f0cd42a0fa9609d7005
     container_name: nextcloud-redis
     networks:
       nextcloud:
