@@ -346,6 +346,30 @@ services:
     security_opt:
       - no-new-privileges:true
 
+  thelounge:
+    image: lscr.io/linuxserver/thelounge:4.5.1@sha256:52e89facb130597ea868cbea41b5b27c108e3a7372b58e75f84729aa1ed8dcfe
+    container_name: thelounge
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${APPS_FOLDER}/media/thelounge:/config
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+    network_mode: service:gluetun
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.thelounge.rule=Host(`thelounge.${DOMAIN}`)
+      - traefik.http.routers.thelounge.entrypoints=websecure
+      - traefik.http.routers.thelounge.service=thelounge
+      - traefik.http.services.thelounge.loadbalancer.server.port=9000
+    security_opt:
+      - no-new-privileges:true
+
   whisparr:
     image: ghcr.io/hotio/whisparr:v3-v3.3.4@sha256:3f66304a50be72fd4bd24b899a2688659a2a135f27bf04e03ae5e6425bd4812b
     container_name: whisparr

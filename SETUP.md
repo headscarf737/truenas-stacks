@@ -24,21 +24,23 @@ The third one will be used for TrueNAS web interface and services not using the 
 
 Set your TrueNAS web interface to only listen on the third IP address.
 
-## Apps Datasets
+## Docker Datasets
 
-These datasets should be created on your SSD pool
+These datasets should be created on your SSD pool (`apps`).
 
-`APPS_FOLDER` should be the path to the apps dataset (e.g. `/mnt/apps/docker`).
+`APPS_FOLDER` should be the path to the docker dataset (e.g. `/mnt/apps/docker`).
 
-Enable Auto TRIM on the SSD pool
+Enable Auto TRIM on the SSD pool.
 
-Set Record size to 16K on the Docker dataset
+Set Record size to 16K on the Docker dataset.
+
+Enable Encryption if you want to use it.
 
 ### ACL
 
-Set owner and group to `apps`. Don't forget to check the box to apply
+Set owner and group to `apps`. Don't forget to check the box to apply.
 
-Permissions should only contain `builtin_administrators` with Full Control, and `apps` with Modify
+Permissions should only contain `builtin_administrators` with Full Control, and `apps` with Modify.
 
 When using git, make sure to set add the following config to avoid permission issues:
 
@@ -77,6 +79,7 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 - `media/sonarr`
 - `media/sonarr-uhd`
 - `media/stash`
+- `media/thelounge`
 - `media/whisparr`
 - `media/whisparr2`
 
@@ -106,27 +109,38 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 
 ## Media / Content Datasets
 
-These datasets should be created on your HDD pool
+These datasets should be created on your HDD pool (`tank`).
 
 `MEDIA_FOLDER` should be the path to the media dataset (e.g. `/mnt/tank/media`).
 
-Set Record size to 1M on the media dataset
+Set Record size to 1M on the media dataset.
 
 - `media`
+
+<!--
+TODO: migrate
+No child datasets to be able to hardlink
 - `media/movies` - Movies (Radarr)
 - `media/movies-uhd` - Movies (Radarr-UHD)
 - `media/tv` - TV Shows (Sonarr)
 - `media/tv-uhd` - TV Shows (Sonarr-UHD)
 - `media/adult` - Adult Content (Whisparr)
 - `media/adult2` - Adult Content (Whisparr2)
+-->
 
 `CONTENT_FOLDER` should be the path to the content dataset (e.g. `/mnt/tank/content`).
 
-Keep default Record size 128K on the content dataset
+Keep default Record size 128K on the content dataset.
+
+Enable Encryption if you want to use it.
 
 - `content`
 - `content/files` - Files (Nextcloud)
 - `content/images` - Photos and Videos (Immich)
+
+## Encryption
+
+TODO
 
 ## Git
 
