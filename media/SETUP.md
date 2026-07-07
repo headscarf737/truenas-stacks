@@ -143,6 +143,21 @@ For Sonarr make sure to enable Season Folders
 
 Setting up Email notifications is recommended.
 
+## The Lounge
+
+Edit `${APPS_FOLDER}/media/thelounge/config.js`:
+
+Set `public` to `false`
+Set `reverseProxy` to `true`
+Set `leaveMessage` to `""`
+Under `ldap`:
+Set `enable` to `true`
+Set `url` to `ldap://lldap:3890`
+Under `ldap.searchDN`:
+Set `rootDN` to `uid=service,ou=people,dc=sodium,dc=example,dc=com`
+set `filter` to `(memberOf=cn=admin,ou=groups,dc=sodium,dc=example,dc=com)`
+Set `base` to `dc=sodium,dc=example,dc=com`
+
 ## sabnzbd Problems
 
 Temporarily change download category to prevent arr to auto import.
