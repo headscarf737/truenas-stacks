@@ -251,3 +251,43 @@ cp -a --reflink=auto old-temp old
 Now delete the dataset `old-temp`
 
 If you have snapshots enabled on the (parent) dataset you should delete the snapshots first, otherwise you will use twice the space for the lifetime of the snapshots.
+
+## EPC
+
+To improve the longevity of your drives you should tune the EPC settings, specifically `idle_b`.
+
+Download SeaChest Utilities, if you don't have Seagate branded drives, you probably need something different.
+
+list drives
+
+```shell
+sudo ./SeaChest_PowerControl_linux_x86_64 -s
+```
+
+set `idle_b` to 6 minutes
+
+```shell
+sudo ./SeaChest_PowerControl_linux_x86_64 -d DRIVE_HANDLE --idle_b 360000
+```
+
+verify settings
+
+```shell
+sudo ./SeaChest_PowerControl_linux_x86_64 -d DRIVE_HANDLE --showEPCSettings
+```
+
+should look something like this:
+
+```txt
+===EPC Settings===
+	* = timer is enabled
+	C column = Changeable
+	S column = Savable
+	All times are in 100 milliseconds
+
+Name      Current Timer Default Timer Saved Timer Recovery Time Min Timer   Max Timer   C S
+Idle A    *1            *1            *1          1             0           10          Y Y
+Idle B    *3600         *1200         *3600       4             0           42949672    Y Y
+Idle C     0             6000          6000       20            0           42949672    Y Y
+Standby Z  0             9000          9000       110           0           42949672    Y Y
+```
