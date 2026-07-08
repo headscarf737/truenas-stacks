@@ -32,7 +32,7 @@ These datasets should be created on your SSD pool (`apps`).
 
 Enable Auto TRIM on the SSD pool.
 
-Set Record size to 16K on the Docker dataset.
+Set Record size to 16K on the docker dataset.
 
 Enable Encryption if you want to use it.
 
@@ -117,16 +117,7 @@ Set Record size to 1M on the media dataset.
 
 - `media`
 
-<!--
-TODO: migrate
-No child datasets to be able to hardlink
-- `media/movies` - Movies (Radarr)
-- `media/movies-uhd` - Movies (Radarr-UHD)
-- `media/tv` - TV Shows (Sonarr)
-- `media/tv-uhd` - TV Shows (Sonarr-UHD)
-- `media/adult` - Adult Content (Whisparr)
-- `media/adult2` - Adult Content (Whisparr2)
--->
+There are no child datasets to allow hardlinks.
 
 `CONTENT_FOLDER` should be the path to the content dataset (e.g. `/mnt/tank/content`).
 
@@ -232,3 +223,31 @@ See disk usage with
 ```shell
 sudo docker system df
 ```
+
+## Copy Data
+
+To copy data between datasets, use `cp --reflink=auto` for faster transfer.
+
+As TrueNAS ships with an older version of `cp`, use this docker image to copy data:
+
+```shell
+sudo docker run --rm -it -v VOLUME_MAPPING debian
+```
+
+### Merge Datasets
+
+Rename child dataset
+
+```shell
+sudo zfs rename old old-temp
+```
+
+Merge child dataset into parent dataset
+
+```shell
+cp -a --reflink=auto old-temp old
+```
+
+Now delete the dataset `old-temp`
+
+If you have snapshots enabled on the (parent) dataset you should delete the snapshots first, otherwise you will use twice the space for the lifetime of the snapshots.
