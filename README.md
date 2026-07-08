@@ -38,26 +38,31 @@ This repo includes the following stacks:
   - Sonarr: TV show collection manager
   - Whisparr: Adult collection manager
   - Bazarr: Subtitle management
-  - Sabnzbd: Usenet downloader
+  - SABnzbd: Usenet downloader
   - Seerr: Media request management
   - Stash: Adult media manager
+  - Configarr: Configuration management
+  - The Lounge: Web IRC client
 
 - [monitoring](./monitoring): Monitoring stack for server health and performance
   - Dozzle: Log viewer for docker containers
   - fluentbit: Observability Pipeline processor
   - Homepage: Dashboard for quick access to services
-  - Scrutiny: SMART monitoring for drives
+  - scrutiny: SMART monitoring for drives
+  - CrowdSec Web UI: Web interface for CrowdSec
+  - Grafana: Visualization and analytics platform
+  - VictoriaLogs: Log aggregation and analysis platform
 
 - [network](./network): Network services stack
   - Traefik: Traefik reverse proxy with Cloudflare DNS ACME
   - CrowdSec: Security tool to protect against attacks
   - Technitium DNS Server: Split DNS server
+  - Cloudflare DDNS: Dynamic DNS updater for Cloudflare
 
 - [nextcloud](./nextcloud): Nextcloud self-hosted cloud storage and collaboration platform
   - Nextcloud: Core application for file storage and sharing
-  - MariaDB: Database backend for Nextcloud
-  - Redis: Caching server to improve performance
   - Collabora: Online office suite integration
+  - Nextcloud Whiteboard: Collaborative whiteboard tool
 
 ## Planned Content
 
