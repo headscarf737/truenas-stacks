@@ -17,8 +17,19 @@ openssl rand -hex 32
 Settings > Web UI
 
 - Set Password
+- Generate API Key
 - Enable `Bypass authentication for clients on localhost`
 - Enable `Bypass authentication for clients in whitelisted IP subnets`
   - Enter `172.31.255.0/24,fdd0:0:0:1000::/64`
 - Enable `Enable reverse proxy support`
   - Enter `172.31.255.0/24,fdd0:0:0:1000::/64`
+
+## Qui
+
+Add Instance
+
+URL: `http://torrent:8080`
+
+Enable Local Filesystem Access
+
+Use API Key from Qbittorrent
