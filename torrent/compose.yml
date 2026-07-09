@@ -70,8 +70,8 @@ services:
       - ${APPS_FOLDER}/torrent/qui:/config
     environment:
       QUI__AUTH_DISABLED: true
-      I_ACKNOWLEDGE_THIS_IS_A_BAD_IDEA: true
-      authDisabledAllowedCIDRs: 0.0.0.0/0
+      QUI__I_ACKNOWLEDGE_THIS_IS_A_BAD_IDEA: true
+      QUI__AUTH_DISABLED_ALLOWED_CIDRS: 172.31.255.0/24,fdd0:0:0:1000::/64
     network_mode: service:gluetun
     restart: unless-stopped
     labels:
