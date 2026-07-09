@@ -83,6 +83,12 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 - `media/whisparr`
 - `media/whisparr2`
 
+### Torrent
+
+- `torrent/gluetun`
+- `torrent/qbittorrent`
+- `torrent/qui`
+
 ### Monitoring
 
 - `monitoring/crowdsec`

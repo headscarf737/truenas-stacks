@@ -62,6 +62,9 @@ access_control:
         - whisparr.{{ env "DOMAIN" }}
         - whisparr2.{{ env "DOMAIN" }}
 
+        - qbittorrent.{{ env "DOMAIN" }}
+        - qui.{{ env "DOMAIN" }}
+
         - crowdsec.{{ env "DOMAIN" }}
         - dozzle.{{ env "DOMAIN" }}
         - grafana.{{ env "DOMAIN" }}

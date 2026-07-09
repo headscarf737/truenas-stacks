@@ -1,0 +1,94 @@
+name: torrent
+
+services:
+  gluetun:
+    image: docker.io/qmcgaw/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
+    container_name: torrent-gluetun
+    volumes:
+      - ${APPS_FOLDER}/torrent/gluetun:/gluetun
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+      UPDATER_PERIOD: 24h
+      HTTP_CONTROL_SERVER_AUTH_DEFAULT_ROLE: '{"auth":"apikey","apikey":"${GLUETUN_API_KEY}"}'
+      VPN_SERVICE_PROVIDER: protonvpn
+      VPN_TYPE: wireguard
+      WIREGUARD_PRIVATE_KEY: ${WG_PRIV_KEY}
+      SERVER_COUNTRIES: Germany
+      SERVER_CITIES: Frankfurt
+      PORT_FORWARD_ONLY: on
+      VPN_PORT_FORWARDING: on
+      BLOCK_MALICIOUS: off
+      VPN_PORT_FORWARDING_UP_COMMAND: /bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":{{PORT}},\"current_network_interface\":\"{{VPN_INTERFACE}}\",\"random_port\":false,\"upnp\":false}" http://torrent:8080/api/v2/app/setPreferences'
+      VPN_PORT_FORWARDING_DOWN_COMMAND: /bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":0,\"current_network_interface\":\"lo\"}" http://torrent:8080/api/v2/app/setPreferences'
+    networks:
+      torrent:
+      traefik:
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    hostname: torrent
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:5.2.3@sha256:2e074403c7b72e6d89cee3d0d41a47f7b5708c6a9e5316f3958c90765cbe12ce
+    container_name: qbittorrent
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}/torrent:/data/torrent
+      - ${APPS_FOLDER}/torrent/qbittorrent:/config
+    environment:
+      PUID: 568
+      PGID: 568
+      TZ: Europe/Berlin
+    network_mode: service:gluetun
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.${DOMAIN}`)
+      - traefik.http.routers.qbittorrent.entrypoints=websecure
+      - traefik.http.routers.qbittorrent.middlewares=authelia@docker
+      - traefik.http.routers.qbittorrent.service=qbittorrent
+      - traefik.http.services.qbittorrent.loadbalancer.server.port=8080
+    security_opt:
+      - no-new-privileges:true
+
+  qui:
+    image: ghcr.io/autobrr/qui:v1.22.0@sha256:5d4f98d973129edc3ac04a2b74e3e791c86c5c92ef4d5dae64622be000578e80
+    container_name: qui
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${MEDIA_FOLDER}/torrent:/data/torrent
+      - ${APPS_FOLDER}/torrent/qui:/config
+    environment:
+      QUI__AUTH_DISABLED: true
+      I_ACKNOWLEDGE_THIS_IS_A_BAD_IDEA: true
+      authDisabledAllowedCIDRs: 0.0.0.0/0
+    network_mode: service:gluetun
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.qui.rule=Host(`qui.${DOMAIN}`)
+      - traefik.http.routers.qui.entrypoints=websecure
+      - traefik.http.routers.qui.middlewares=authelia@docker
+      - traefik.http.routers.qui.service=qui
+      - traefik.http.services.qui.loadbalancer.server.port=7476
+    user: 568:568
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  torrent:
+    external: false
+    name: torrent
+  traefik:
+    external: true
+    name: traefik
