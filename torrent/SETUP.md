@@ -44,3 +44,5 @@ Use Auth none
 - Add Indexer
 - Add Download Client
   - Host: `http://torrent:8080`
+  - Enable Rules
+    - Max active downloads: 2
