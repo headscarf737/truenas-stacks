@@ -15,13 +15,10 @@ services:
       VPN_SERVICE_PROVIDER: protonvpn
       VPN_TYPE: wireguard
       WIREGUARD_PRIVATE_KEY: ${WG_PRIV_KEY}
-      SERVER_COUNTRIES: Germany
-      SERVER_CITIES: Frankfurt
+      SERVER_COUNTRIES: Switzerland
       PORT_FORWARD_ONLY: on
       VPN_PORT_FORWARDING: on
       BLOCK_MALICIOUS: off
-      VPN_PORT_FORWARDING_UP_COMMAND: /bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":{{PORT}},\"current_network_interface\":\"{{VPN_INTERFACE}}\",\"random_port\":false,\"upnp\":false}" http://torrent:8080/api/v2/app/setPreferences'
-      VPN_PORT_FORWARDING_DOWN_COMMAND: /bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":0,\"current_network_interface\":\"lo\"}" http://torrent:8080/api/v2/app/setPreferences'
     networks:
       traefik:
     restart: unless-stopped
@@ -45,6 +42,8 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
+      DOCKER_MODS: ghcr.io/techclusterhq/qbt-portchecker:main
+      PORTCHECKER_GLUETUN_API_KEY: ${GLUETUN_API_KEY}
     network_mode: service:gluetun
     restart: unless-stopped
     labels:

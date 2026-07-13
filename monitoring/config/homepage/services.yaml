@@ -196,6 +196,7 @@
         icon: gluetun
         widgets:
           - type: gluetun
+            fields: ["public_ip", "region", "country", "port_forwarded"]
             url: http://torrent:8000
             # prettier-ignore
             key: {{HOMEPAGE_VAR_TORRENT_GLUETUN_KEY}}
