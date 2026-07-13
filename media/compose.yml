@@ -346,7 +346,7 @@ services:
       - no-new-privileges:true
 
   thelounge:
-    image: lscr.io/linuxserver/thelounge:4.5.1@sha256:c6cfd5cdba6b14be11feaf70bb9a3eb226d520cee1acb95cd6566f708199c201
+    image: lscr.io/linuxserver/thelounge:4.5.2@sha256:a7e863b43b237c9914e14e36cd8a21ec9691fc190384c8fa1921bd9234f48aca
     container_name: thelounge
     depends_on:
       gluetun:
