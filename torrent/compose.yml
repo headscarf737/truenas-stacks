@@ -42,6 +42,7 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
+      WEBUI_PORT: 8080
       DOCKER_MODS: ghcr.io/techclusterhq/qbt-portchecker:main
       PORTCHECKER_GLUETUN_API_KEY: ${GLUETUN_API_KEY}
     network_mode: service:gluetun
