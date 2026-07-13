@@ -24,6 +24,11 @@ Settings > Web UI
 - Enable `Enable reverse proxy support`
   - Enter `172.31.255.0/24,fdd0:0:0:1000::/64`
 
+See <https://trash-guides.info/Downloaders/qBittorrent/Basic-Setup/>:
+
+- Basic Setup
+- Categories
+
 ## Qui
 
 Add Instance
@@ -32,4 +37,10 @@ URL: `http://torrent:8080`
 
 Enable Local Filesystem Access
 
-Use API Key from Qbittorrent
+Use Auth none
+
+## Autobrr
+
+- Add Indexer
+- Add Download Client
+  - Host: `http://torrent:8080`

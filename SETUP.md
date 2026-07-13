@@ -85,6 +85,7 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 
 ### Torrent
 
+- `torrent/autobrr`
 - `torrent/gluetun`
 - `torrent/qbittorrent`
 - `torrent/qui`

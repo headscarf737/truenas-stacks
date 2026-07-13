@@ -64,10 +64,15 @@ This repo includes the following stacks:
   - Collabora: Online office suite integration
   - Nextcloud Whiteboard: Collaborative whiteboard tool
 
+- [torrent](./torrent): Torrent stack for downloading and managing torrents
+  - Gluetun: VPN client for secure torrenting
+  - Qbittorrent: Torrent client
+  - Qui: Web UI for managing torrents
+  - Autobrr: Automation tool for managing torrent downloads
+
 ## Planned Content
 
 - OpenCloud - Nextcloud alternative
-- Tdarr - Pre-transcode media
 - UmlautAdaptarr - Fix issues with german umlauts
 
 ## Updates

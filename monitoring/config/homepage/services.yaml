@@ -212,6 +212,13 @@
         href: https://qui.{{HOMEPAGE_VAR_DOMAIN}}
         icon: qui
 
+    - Autobrr:
+        href: https://autobrr.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: autobrr
+        widgets:
+          - type: autobrr
+            url: http://torrent:7474
+
 - Monitoring:
     - Scrutiny:
         href: https://scrutiny.{{HOMEPAGE_VAR_DOMAIN}}

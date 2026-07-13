@@ -1,6 +1,31 @@
 name: torrent
 
 services:
+  autobrr:
+    image: ghcr.io/autobrr/autobrr:v1.81.0@sha256:491e3e1a81fe5ced6b542621e49985d0dea58d23257684b0b19d881761736303
+    container_name: autobrr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${APPS_FOLDER}/torrent/autobrr:/config
+    environment:
+      TZ: Europe/Berlin
+      AUTOBRR__LOG_LEVEL: INFO
+    network_mode: service:gluetun
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.autobrr.rule=Host(`autobrr.${DOMAIN}`)
+      - traefik.http.routers.autobrr.entrypoints=websecure
+      - traefik.http.routers.autobrr.middlewares=authelia@docker
+      - traefik.http.routers.autobrr.service=autobrr
+      - traefik.http.services.autobrr.loadbalancer.server.port=7474
+    user: 568:568
+    security_opt:
+      - no-new-privileges:true
+
   gluetun:
     image: docker.io/qmcgaw/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
     container_name: torrent-gluetun
@@ -68,6 +93,7 @@ services:
       - ${MEDIA_FOLDER}/torrent:/data/torrent
       - ${APPS_FOLDER}/torrent/qui:/config
     environment:
+      TZ: Europe/Berlin
       QUI__AUTH_DISABLED: true
       QUI__I_ACKNOWLEDGE_THIS_IS_A_BAD_IDEA: true
       QUI__AUTH_DISABLED_ALLOWED_CIDRS: 172.31.255.0/24,fdd0:0:0:1000::/64
