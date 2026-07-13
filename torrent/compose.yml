@@ -10,7 +10,7 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
-      UPDATER_PERIOD: 24h
+      UPDATER_PERIOD: 0
       HTTP_CONTROL_SERVER_AUTH_DEFAULT_ROLE: '{"auth":"apikey","apikey":"${GLUETUN_API_KEY}"}'
       VPN_SERVICE_PROVIDER: protonvpn
       VPN_TYPE: wireguard
