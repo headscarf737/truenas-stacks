@@ -66,9 +66,9 @@ This repo includes the following stacks:
 
 - [torrent](./torrent): Torrent stack for downloading and managing torrents
   - Gluetun: VPN client for secure torrenting
-  - Qbittorrent: Torrent client
-  - Qui: Web UI for managing torrents
-  - Autobrr: Automation tool for managing torrent downloads
+  - qBittorrent: Torrent client
+  - qui: Web UI for managing torrents
+  - autobrr: Automation tool for managing torrent downloads
 
 ## Planned Content
 

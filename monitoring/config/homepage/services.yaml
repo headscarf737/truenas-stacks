@@ -59,7 +59,7 @@
             # prettier-ignore
             key: {{HOMEPAGE_VAR_TRAEFIK_KEY}}
 
-    - Crowdsec:
+    - CrowdSec:
         href: https://crowdsec.{{HOMEPAGE_VAR_DOMAIN}}
         icon: crowdsec
         widgets:
@@ -208,11 +208,11 @@
           - type: qbittorrent
             url: http://torrent:8080
 
-    - Qui:
+    - qui:
         href: https://qui.{{HOMEPAGE_VAR_DOMAIN}}
         icon: qui
 
-    - Autobrr:
+    - autobrr:
         href: https://autobrr.{{HOMEPAGE_VAR_DOMAIN}}
         icon: autobrr
         widgets:
@@ -220,7 +220,7 @@
             url: http://torrent:7474
 
 - Monitoring:
-    - Scrutiny:
+    - scrutiny:
         href: https://scrutiny.{{HOMEPAGE_VAR_DOMAIN}}
         icon: scrutiny
         widgets:
