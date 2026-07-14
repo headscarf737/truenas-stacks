@@ -46,3 +46,23 @@ Use Auth none
   - Host: `http://torrent:8080`
   - Enable Rules
     - Max active downloads: 2
+
+## Uppollo (WIP)
+
+```shell
+sudo docker run --rm -it --user 568:568 -v ${MEDIA_FOLDER}:${MEDIA_FOLDER} -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network traefik --entrypoint /usr/local/bin/upPollo uppollo/uppollo:stable upload --modq
+```
+
+- Set tmdb_api_key
+- Set trackers
+- Set qbittorrent
+- Set screenshots
+- Set crowdnfo
+
+```yaml
+# TODO: check if needed
+path_mapping: # if you run qbittorrent on a remote server, you will need to map the paths
+  enabled: true
+  local: "/mnt/tank/media/torrent" # path to download folder on your local machine
+  remote: "/data/torrent"
+```
