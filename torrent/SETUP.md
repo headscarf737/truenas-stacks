@@ -31,9 +31,11 @@ See <https://trash-guides.info/Downloaders/qBittorrent/Basic-Setup/>:
 
 ## Qui
 
+Download Proton VPN config and copy to `${APPS_FOLDER}/torrent/qbittorrent/wireguard/wg0.conf`
+
 Add Instance
 
-URL: `http://torrent:8080`
+URL: `http://qbittorrent:8080`
 
 Enable Local Filesystem Access
 
@@ -43,7 +45,7 @@ Use Auth none
 
 - Add Indexer
 - Add Download Client
-  - Host: `http://torrent:8080`
+  - Host: `http://qbittorrent:8080`
   - Enable Rules
     - Max active downloads: 2
 
