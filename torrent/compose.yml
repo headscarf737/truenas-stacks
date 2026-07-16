@@ -80,6 +80,8 @@ services:
       - traefik.http.routers.qbittorrent.middlewares=authelia@docker
       - traefik.http.routers.qbittorrent.service=qbittorrent
       - traefik.http.services.qbittorrent.loadbalancer.server.port=8080
+    cap_add:
+      - NET_ADMIN
     security_opt:
       - no-new-privileges:true
 
