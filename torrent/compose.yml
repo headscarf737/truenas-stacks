@@ -43,7 +43,6 @@ services:
       SERVER_COUNTRIES: Switzerland
       BLOCK_MALICIOUS: off
     networks:
-      torrent:
       traefik:
     restart: unless-stopped
     cap_add:
@@ -70,7 +69,6 @@ services:
       VPN_AUTO_PORT_FORWARD: true
       VPN_HEALTHCHECK_ENABLED: true
     networks:
-      torrent:
       traefik:
     restart: unless-stopped
     labels:
@@ -114,9 +112,6 @@ services:
       - no-new-privileges:true
 
 networks:
-  torrent:
-    internal: true
-    name: torrent
   traefik:
     external: true
     name: traefik
