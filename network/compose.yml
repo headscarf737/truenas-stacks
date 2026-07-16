@@ -19,7 +19,7 @@ services:
       - no-new-privileges:true
 
   crowdsec:
-    image: docker.io/crowdsecurity/crowdsec:v1.7.8@sha256:2f527c9bb8b367120eb08b82890aa912ce96bfa1ada93dda0721700e4b4e0dde
+    image: ghcr.io/crowdsecurity/crowdsec:v1.7.8@sha256:2f527c9bb8b367120eb08b82890aa912ce96bfa1ada93dda0721700e4b4e0dde
     container_name: crowdsec
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -65,7 +65,7 @@ services:
     hostname: dns-server
 
   traefik:
-    image: docker.io/library/traefik:v3.7.7@sha256:1cb3845d7a05e1473c9086351426597e911db49db382b6e4769f9b0744962ac8
+    image: ghcr.io/traefik/traefik:v3.7.7@sha256:1cb3845d7a05e1473c9086351426597e911db49db382b6e4769f9b0744962ac8
     container_name: traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

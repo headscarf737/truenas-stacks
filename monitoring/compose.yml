@@ -26,7 +26,7 @@ services:
       - no-new-privileges:true
 
   dozzle:
-    image: docker.io/amir20/dozzle:v10.6.9@sha256:6f4644814cce31e11fe80f2610515df6a5a2e40120b4087c298a72df8d65866b
+    image: ghcr.io/amir20/dozzle:v10.6.9@sha256:6f4644814cce31e11fe80f2610515df6a5a2e40120b4087c298a72df8d65866b
     container_name: dozzle
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -44,7 +44,7 @@ services:
       - no-new-privileges:true
 
   fluentbit:
-    image: docker.io/fluent/fluent-bit:5.0.9@sha256:ccda4cbd0f87be1e04cc1d5425bc84a6669051d4ac93a6b7a053c3ba9832aa14
+    image: ghcr.io/fluent/fluent-bit:5.0.9@sha256:ccda4cbd0f87be1e04cc1d5425bc84a6669051d4ac93a6b7a053c3ba9832aa14
     container_name: fluentbit
     volumes:
       - ./config/fluentbit/config.yaml:/fluent-bit/etc/fluent-bit.yaml:ro

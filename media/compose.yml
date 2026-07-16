@@ -52,7 +52,7 @@ services:
       - manual
 
   gluetun:
-    image: docker.io/qmcgaw/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
+    image: ghcr.io/qdm12/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
     container_name: gluetun
     volumes:
       - ${APPS_FOLDER}/media/gluetun:/gluetun
@@ -66,8 +66,7 @@ services:
       VPN_TYPE: wireguard
       WIREGUARD_PRIVATE_KEY: ${WG_PRIV_KEY}
       WIREGUARD_ADDRESSES: ${WG_ADDRESS}
-      SERVER_COUNTRIES: Germany
-      SERVER_CITIES: Frankfurt
+      SERVER_COUNTRIES: Switzerland
       OWNED_ONLY: yes
       BLOCK_MALICIOUS: off
     networks:

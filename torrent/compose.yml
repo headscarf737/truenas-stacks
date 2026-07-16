@@ -27,7 +27,7 @@ services:
       - no-new-privileges:true
 
   gluetun:
-    image: docker.io/qmcgaw/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
+    image: ghcr.io/qdm12/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
     container_name: torrent-gluetun
     volumes:
       - ${APPS_FOLDER}/torrent/gluetun:/gluetun
@@ -41,10 +41,9 @@ services:
       VPN_TYPE: wireguard
       WIREGUARD_PRIVATE_KEY: ${WG_PRIV_KEY}
       SERVER_COUNTRIES: Switzerland
-      PORT_FORWARD_ONLY: on
-      VPN_PORT_FORWARDING: on
       BLOCK_MALICIOUS: off
     networks:
+      torrent:
       traefik:
     restart: unless-stopped
     cap_add:
@@ -54,12 +53,8 @@ services:
     hostname: torrent
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:5.2.3@sha256:352371a7242e8b4aa10958ca02076d1023758070519b89a10251475fb9f1a35a
+    image: ghcr.io/hotio/qbittorrent:release-v5.2.3@sha256:26689d60b283a8d026965e7d9a0c941f4c168fbe1af028b31e9db42ce6aa357b
     container_name: qbittorrent
-    depends_on:
-      gluetun:
-        condition: service_healthy
-        restart: true
     volumes:
       - ${MEDIA_FOLDER}/torrent:/data/torrent
       - ${APPS_FOLDER}/torrent/qbittorrent:/config
@@ -67,10 +62,16 @@ services:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
-      WEBUI_PORT: 8080
-      DOCKER_MODS: ghcr.io/techclusterhq/qbt-portchecker:main
-      PORTCHECKER_GLUETUN_API_KEY: ${GLUETUN_API_KEY}
-    network_mode: service:gluetun
+      WEBUI_PORTS: 8080/tcp
+      LIBTORRENT: v2
+      VPN_ENABLED: true
+      VPN_CONF: wg0
+      VPN_PROVIDER: proton
+      VPN_AUTO_PORT_FORWARD: true
+      VPN_HEALTHCHECK_ENABLED: true
+    networks:
+      torrent:
+      traefik:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -111,6 +112,9 @@ services:
       - no-new-privileges:true
 
 networks:
+  torrent:
+    internal: true
+    name: torrent
   traefik:
     external: true
     name: traefik
