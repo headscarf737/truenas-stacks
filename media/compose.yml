@@ -70,7 +70,8 @@ services:
       OWNED_ONLY: yes
       BLOCK_MALICIOUS: off
     networks:
-      traefik:
+      media:
+      traefik_internal:
       auth_internal:
         ipv4_address: 172.31.254.5
         ipv6_address: fdd0:0:0:fff::5
@@ -431,9 +432,12 @@ services:
       - no-new-privileges:true
 
 networks:
-  traefik:
+  media:
+    external: false
+    name: media
+  traefik_internal:
     external: true
-    name: traefik
+    name: traefik_internal
   auth_internal:
     external: true
     name: auth_internal

@@ -13,7 +13,7 @@ services:
       POSTGRES_DB: ${DB_DATABASE_NAME}
       POSTGRES_INITDB_ARGS: --data-checksums
     networks:
-      immich:
+      immich_internal:
     restart: unless-stopped
     user: 568:568
     security_opt:
@@ -54,11 +54,11 @@ services:
       - .env
     networks:
       immich:
-      traefik:
+      immich_internal:
+      traefik_internal:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.docker.network=traefik
       - traefik.http.routers.immich.rule=Host(`immich.${DOMAIN}`)
       - traefik.http.routers.immich.entrypoints=websecure
       - traefik.http.routers.immich.service=immich
@@ -77,7 +77,7 @@ services:
     image: ghcr.io/valkey-io/valkey:9.1.0-alpine@sha256:a35428eba9043cc0b79dbe54100f0c92784f2de00ad09b01182bfb1c5c83d1bd
     container_name: immich_redis
     networks:
-      immich:
+      immich_internal:
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "redis-cli ping || exit 1"]
@@ -88,6 +88,10 @@ networks:
   immich:
     external: false
     name: immich
-  traefik:
+  immich_internal:
+    external: false
+    name: immich_internal
+    internal: true
+  traefik_internal:
     external: true
-    name: traefik
+    name: traefik_internal

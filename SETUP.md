@@ -161,7 +161,7 @@ chmod 600 .env
 ## Docker Networks
 
 ```shell
-sudo docker network create --subnet 172.31.255.0/24 --subnet fdd0:0:0:1000::/64 traefik
+sudo docker network create --internal --subnet 172.31.255.0/24 --subnet fdd0:0:0:1000::/64 traefik_internal
 sudo docker network create --internal --subnet 172.31.254.0/24 --subnet fdd0:0:0:fff::/64 auth_internal
 ```
 

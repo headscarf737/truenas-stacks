@@ -12,7 +12,7 @@ services:
       CROWDSEC_USER: crowdsec-ui
       CROWDSEC_PASSWORD: ${CROWDSEC_API_KEY}
     networks:
-      traefik:
+      traefik_internal:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -31,7 +31,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
-      traefik:
+      traefik_internal:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -71,8 +71,9 @@ services:
       TZ: Europe/Berlin
       GF_PLUGINS_PREINSTALL: victoriametrics-logs-datasource
     networks:
+      monitoring:
       metrics_internal:
-      traefik:
+      traefik_internal:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -102,7 +103,8 @@ services:
     env_file:
       - homepage.env
     networks:
-      traefik:
+      monitoring:
+      traefik_internal:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -122,7 +124,7 @@ services:
       - ${APPS_FOLDER}/monitoring/scrutiny/config:/opt/scrutiny/config
       - ${APPS_FOLDER}/monitoring/scrutiny/data:/opt/scrutiny/influxdb
     networks:
-      traefik:
+      traefik_internal:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -187,9 +189,12 @@ services:
       - no-new-privileges:true
 
 networks:
-  traefik:
+  monitoring:
+    external: false
+    name: monitoring
+  traefik_internal:
     external: true
-    name: traefik
+    name: traefik_internal
   metrics_internal:
     external: false
     name: metrics_internal

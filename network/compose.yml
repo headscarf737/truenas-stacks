@@ -10,6 +10,8 @@ services:
       - PROXIED=false
       # todo enable ipv6
       - IP6_PROVIDER=none
+    networks:
+      network:
     restart: unless-stopped
     user: 568:568
     cap_drop:
@@ -39,7 +41,8 @@ services:
       ENROLL_KEY: ${CROWDSEC_ENROLL_KEY}
       ENROLL_INSTANCE_NAME: ${CROWDSEC_INSTANCE_NAME}
     networks:
-      traefik:
+      network:
+      traefik_internal:
     restart: unless-stopped
 
   dns:
@@ -61,6 +64,8 @@ services:
       - "${NET_INTERFACE_DNS4}:53443:53443/tcp"
       - "${NET_INTERFACE_DNS6}:53:53/tcp"
       - "${NET_INTERFACE_DNS6}:53:53/udp"
+    networks:
+      network:
     restart: unless-stopped
     hostname: dns-server
 
@@ -84,7 +89,8 @@ services:
       - "${NET_INTERFACE_INTERNAL}:443:443/tcp"
       - "${NET_INTERFACE_INTERNAL}:443:443/udp"
     networks:
-      traefik:
+      network:
+      traefik_internal:
         ipv4_address: 172.31.255.254
         ipv6_address: fdd0:0:0:1000::fe
       auth_internal:
@@ -133,7 +139,7 @@ services:
       - "--entrypoints.websecure-pub.http.tls.certResolver=letsencrypt"
       # Docker
       - "--providers.docker.watch=true"
-      - "--providers.docker.network=traefik"
+      - "--providers.docker.network=traefik_internal"
       - "--providers.docker.exposedByDefault=false"
       # File
       - "--providers.file.directory=/dynamic/"
@@ -150,9 +156,12 @@ services:
       - no-new-privileges:true
 
 networks:
-  traefik:
+  network:
+    external: false
+    name: network
+  traefik_internal:
     external: true
-    name: traefik
+    name: traefik_internal
   auth_internal:
     external: true
     name: auth_internal

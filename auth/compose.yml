@@ -19,10 +19,10 @@ services:
     env_file:
       - authelia.env
     networks:
+      auth:
       auth_internal:
         ipv4_address: 172.31.254.3
         ipv6_address: fdd0:0:0:fff::3
-      default:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -70,6 +70,9 @@ services:
       - no-new-privileges:true
 
 networks:
+  auth:
+    external: false
+    name: auth
   auth_internal:
     external: true
     name: auth_internal
