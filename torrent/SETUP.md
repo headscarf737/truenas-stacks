@@ -38,13 +38,14 @@ URL: `http://qbittorrent:8080`
 
 Enable Local Filesystem Access
 
-Use Auth none
+Enter API Key
 
 ## Autobrr
 
 - Add Indexer
 - Add Download Client
   - Host: `http://qbittorrent:8080`
+  - Enter API Key
   - Enable Rules
     - Max active downloads: 2
 
