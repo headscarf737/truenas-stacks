@@ -37,7 +37,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ./config/configarr/config.yml:/app/config/config.yml
+      - ./config/configarr/config.yml:/app/config/config.yml:ro
       - ${APPS_FOLDER}/media/configarr:/app/repos
     environment:
       TZ: Europe/Berlin

@@ -25,7 +25,7 @@ services:
     container_name: crowdsec
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./config/acquis:/etc/crowdsec/acquis.d/
+      - ./config/acquis:/etc/crowdsec/acquis.d/:ro
       - ${APPS_FOLDER}/network/crowdsec/data:/var/lib/crowdsec/data/
       - ${APPS_FOLDER}/network/crowdsec/config:/etc/crowdsec/
       # Logs

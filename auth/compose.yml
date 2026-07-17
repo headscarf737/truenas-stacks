@@ -5,7 +5,7 @@ services:
     image: ghcr.io/authelia/authelia:4.39.20@sha256:1b363e9279e742397966333f364e0876ae02bf5c876de73e83af6d48c57ff51b
     container_name: authelia
     volumes:
-      - ./config/authelia:/config
+      - ./config/authelia:/config:ro
       - ${APPS_FOLDER}/auth/authelia/secrets:/secrets:ro
       - ${APPS_FOLDER}/auth/authelia/keys:/keys:ro
       - ${APPS_FOLDER}/auth/authelia/db:/db
@@ -30,8 +30,6 @@ services:
       - traefik.http.routers.authelia.rule=Host(`auth.${DOMAIN}`)
       - traefik.http.routers.authelia.entrypoints=websecure,websecure-pub
       - traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/authz/forward-auth
-      # todo: deprecated, disable?
-      - traefik.http.middlewares.authelia.forwardAuth.trustForwardHeader=true
       - traefik.http.middlewares.authelia.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email
       - traefik.http.middlewares.authelia.forwardAuth.maxBodySize=104857600 # 100MB
       - traefik.http.middlewares.authelia.forwardAuth.maxResponseBodySize=104857600 # 100MB
