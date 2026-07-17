@@ -55,29 +55,29 @@ chmod 0700 ${APPS_FOLDER}/auth/authelia/secrets
 Generate secrets
 
 ```shell
-docker run --rm -u 568:568 -v ${APPS_FOLDER}/auth/authelia/secrets:/secrets authelia/authelia sh -c "cd /secrets && authelia crypto rand --length 64 session_secret.txt storage_encryption_key.txt jwt_secret.txt"
+sudo docker run --rm -u 568:568 -v ${APPS_FOLDER}/auth/authelia/secrets:/secrets authelia/authelia sh -c "cd /secrets && authelia crypto rand --length 64 session_secret.txt storage_encryption_key.txt jwt_secret.txt"
 ```
 
 Generate Keys
 
 ```shell
-docker run --rm -u 568:568 -v ${APPS_FOLDER}/auth/authelia/keys:/keys authelia/authelia authelia crypto pair rsa generate --directory /keys
+sudo docker run --rm -u 568:568 -v ${APPS_FOLDER}/auth/authelia/keys:/keys authelia/authelia authelia crypto pair rsa generate --directory /keys
 ```
 
 Generate Hmac Secret
 
 ```shell
-docker run --rm authelia/authelia authelia crypto rand --length 72 --charset alphanumeric
+sudo docker run --rm authelia/authelia authelia crypto rand --length 72 --charset alphanumeric
 ```
 
 Generate Client ID
 
 ```shell
-docker run --rm authelia/authelia authelia crypto rand --length 72 --charset rfc3986
+sudo docker run --rm authelia/authelia authelia crypto rand --length 72 --charset rfc3986
 ```
 
 Generate Client Secret
 
 ```shell
-docker run --rm authelia/authelia authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986
+sudo docker run --rm authelia/authelia authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986
 ```

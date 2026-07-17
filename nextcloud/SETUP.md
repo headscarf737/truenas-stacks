@@ -16,9 +16,15 @@ Remove `nextcloud.log` from `${CONTENT_FOLDER}/files`
 
 Go to Apps and install `Nextcloud Office`
 
-Go into Settings > Administration > Nextcloud Office and set the Document Server address to `https://collabora.${DOMAIN}`
+Go into Settings > Administration > Nextcloud Office and set the Document Server address to `http://collabora:9980`
 
 Enable OOXML as default
+
+Set the internal WOPI callback URL:
+
+```shell
+sudo docker compose exec nextcloud ./occ config:app:set richdocuments wopi_callback_url --value='http://nextcloud'
+```
 
 Add `172.31.253.2/32,fdd0:0:0:ffe::2/128` to the WOPI allow list
 

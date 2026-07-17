@@ -10,7 +10,7 @@ services:
       TZ: Europe/Berlin
       password: ${COLLABORA_PASSWORD}
       username: ${COLLABORA_USERNAME}
-      aliasgroup1: https://nextcloud.${DOMAIN}:443,http://nextcloud:80
+      aliasgroup1: https://nextcloud.${DOMAIN}:443
       server_name: collabora.${DOMAIN}
       DONT_GEN_SSL_CERT: "YES"
       extra_params: |
@@ -19,12 +19,15 @@ services:
         --o:logging.level=warning \
         --o:logging.level_startup=warning \
         --o:welcome.enable=false \
+        --o:net.frame_ancestors=https://nextcloud.${DOMAIN} \
         --o:remote_font_config.url=https://nextcloud.${DOMAIN}/apps/richdocuments/settings/fonts.json \
     networks:
       nextcloud:
         ipv4_address: 172.31.253.2
         ipv6_address: fdd0:0:0:ffe::2
       traefik_internal:
+    extra_hosts:
+      - "nextcloud.${DOMAIN}:172.31.253.3"
     command: ["coolconfig generate-proof-key && /start-collabora-online.sh"]
     entrypoint: ["/bin/bash", "-c"]
     restart: unless-stopped
