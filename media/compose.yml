@@ -345,14 +345,14 @@ services:
       - no-new-privileges:true
 
   thelounge:
-    image: lscr.io/linuxserver/thelounge:4.5.2@sha256:a7e863b43b237c9914e14e36cd8a21ec9691fc190384c8fa1921bd9234f48aca
+    image: ghcr.io/lordbex/thelounge:4.8.10@sha256:08c109fba2749e356dcc40b3864c7a1bf75c84c1be38494463bf835b85111886
     container_name: thelounge
     depends_on:
       gluetun:
         condition: service_healthy
         restart: true
     volumes:
-      - ${APPS_FOLDER}/media/thelounge:/config
+      - ${APPS_FOLDER}/media/thelounge:/var/opt/thelounge
     environment:
       PUID: 568
       PGID: 568
