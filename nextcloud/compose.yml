@@ -22,6 +22,8 @@ services:
         --o:remote_font_config.url=https://nextcloud.${DOMAIN}/apps/richdocuments/settings/fonts.json \
     networks:
       nextcloud:
+        ipv4_address: 172.31.253.2
+        ipv6_address: fdd0:0:0:ffe::2
       traefik_internal:
     command: ["coolconfig generate-proof-key && /start-collabora-online.sh"]
     entrypoint: ["/bin/bash", "-c"]
@@ -96,6 +98,8 @@ services:
       NC_serverid: 1
     networks:
       nextcloud:
+        ipv4_address: 172.31.253.3
+        ipv6_address: fdd0:0:0:ffe::3
       nextcloud_internal:
       traefik_internal:
       auth_internal:
@@ -119,6 +123,8 @@ services:
       JWT_SECRET_KEY: ${WHITEBOARD_SECRET}
     networks:
       nextcloud:
+        ipv4_address: 172.31.253.4
+        ipv6_address: fdd0:0:0:ffe::4
       traefik_internal:
     restart: unless-stopped
     labels:
@@ -141,6 +147,11 @@ networks:
   nextcloud:
     external: false
     name: nextcloud
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 172.31.253.0/24
+        - subnet: fdd0:0:0:ffe::/64
   nextcloud_internal:
     external: false
     name: nextcloud_internal

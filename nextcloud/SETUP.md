@@ -20,7 +20,7 @@ Go into Settings > Administration > Nextcloud Office and set the Document Server
 
 Enable OOXML as default
 
-Add `172.31.255.0/24` to wopi allow list
+Add `172.31.253.2/32,fdd0:0:0:ffe::2/128` to the WOPI allow list
 
 TODO fonts
 
