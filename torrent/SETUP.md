@@ -18,11 +18,10 @@ Settings > Web UI
 
 - Set Password
 - Generate API Key
-- Enable `Bypass authentication for clients on localhost`
 - Enable `Bypass authentication for clients in whitelisted IP subnets`
-  - Enter `172.31.255.0/24,fdd0:0:0:1000::/64`
+  - Enter `172.31.255.254/32,fdd0:0:0:1000::fe/128`
 - Enable `Enable reverse proxy support`
-  - Enter `172.31.255.0/24,fdd0:0:0:1000::/64`
+  - Enter `172.31.255.254/32,fdd0:0:0:1000::fe/128`
 
 See <https://trash-guides.info/Downloaders/qBittorrent/Basic-Setup/>:
 

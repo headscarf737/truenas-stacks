@@ -89,7 +89,7 @@ services:
       MYSQL_HOST: mariadb
       REDIS_HOST: redis
       REDIS_HOST_PASSWORD: ${REDIS_PASSWORD}
-      TRUSTED_PROXIES: 172.31.255.0/24 fdd0:0:0:1000::/64
+      TRUSTED_PROXIES: 172.31.255.254/32 fdd0:0:0:1000::fe/128
       OVERWRITEHOST: nextcloud.${DOMAIN}
       OVERWRITECLIURL: https://nextcloud.${DOMAIN}
       OVERWRITEPROTOCOL: https

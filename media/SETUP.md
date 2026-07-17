@@ -121,7 +121,7 @@ LDAP Admin Filter: `(memberof=cn=admin,ou=groups,dc=sodium,dc=example,dc=com)`
 
 ### Network
 
-Network > Known Proxies : `172.31.255.0/24,fdd0:0:0:1000::/64`
+Network > Known Proxies : `172.31.255.254/32,fdd0:0:0:1000::fe/128`
 
 ### Public Live TV Channels
 

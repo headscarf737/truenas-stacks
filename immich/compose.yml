@@ -49,7 +49,7 @@ services:
       - ${CONTENT_FOLDER}/images:/data
     environment:
       TZ: Europe/Berlin
-      IMMICH_TRUSTED_PROXIES: 172.31.255.0/24,fdd0:0:0:1000::/64
+      IMMICH_TRUSTED_PROXIES: 172.31.255.254/32,fdd0:0:0:1000::fe/128
     env_file:
       - .env
     networks:
