@@ -354,8 +354,6 @@ services:
     volumes:
       - ${APPS_FOLDER}/media/thelounge:/var/opt/thelounge
     environment:
-      PUID: 568
-      PGID: 568
       TZ: Europe/Berlin
     network_mode: service:gluetun
     restart: unless-stopped
@@ -365,6 +363,7 @@ services:
       - traefik.http.routers.thelounge.entrypoints=websecure
       - traefik.http.routers.thelounge.service=thelounge
       - traefik.http.services.thelounge.loadbalancer.server.port=9000
+    user: 568:568
     security_opt:
       - no-new-privileges:true
 
