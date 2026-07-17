@@ -206,6 +206,8 @@
         widgets:
           - type: qbittorrent
             url: http://qbittorrent:8080
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_QBITTORRENT_KEY}}
 
     - qui:
         href: https://qui.{{HOMEPAGE_VAR_DOMAIN}}
@@ -217,6 +219,8 @@
         widgets:
           - type: autobrr
             url: http://torrent:7474
+            # prettier-ignore
+            key: {{HOMEPAGE_VAR_AUTOBRR_KEY}}
 
 - Monitoring:
     - scrutiny:
