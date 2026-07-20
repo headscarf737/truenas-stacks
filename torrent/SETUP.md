@@ -52,11 +52,11 @@ Enter API Key
 ## upPollo (WIP)
 
 ```shell
-sudo docker run --rm -it --user 568:568 -v ${MEDIA_FOLDER}:${MEDIA_FOLDER} -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq
+sudo docker run --rm -it --user 568:568 -v ${MEDIA_FOLDER}:${MEDIA_FOLDER} -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq --qbit-auto-tmm
 ```
 
 <!--
-sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq
+sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq --qbit-auto-tmm
 -->
 
 - Set tmdb_api_key
