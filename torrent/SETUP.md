@@ -49,11 +49,15 @@ Enter API Key
   - Enable Rules
     - Max active downloads: 2
 
-## Uppollo (WIP)
+## upPollo (WIP)
 
 ```shell
 sudo docker run --rm -it --user 568:568 -v ${MEDIA_FOLDER}:${MEDIA_FOLDER} -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq
 ```
+
+<!--
+sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq
+-->
 
 - Set tmdb_api_key
 - Set trackers
@@ -68,3 +72,13 @@ path_mapping: # if you run qbittorrent on a remote server, you will need to map 
   local: "/mnt/tank/media/torrent" # path to download folder on your local machine
   remote: "/data/torrent"
 ```
+
+## parsec
+
+```shell
+sudo docker run --rm -it --user 568:568 -v ${MEDIA_FOLDER}:${MEDIA_FOLDER} -v /home/truenas_admin/parsec:/home/parsec/.config/parsec --network container:torrent-gluetun --entrypoint /usr/local/bin/parsec uppollo/parsec:nightly check
+```
+
+<!--
+sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /home/truenas_admin/parsec:/home/parsec/.config/parsec --network container:torrent-gluetun --entrypoint /usr/local/bin/parsec uppollo/parsec:nightly check
+-->
