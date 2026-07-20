@@ -158,11 +158,6 @@ services:
       metrics_internal:
     command: --storageDataPath=/vlogs
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9428/health"]
-      interval: 1s
-      timeout: 1s
-      retries: 10
     user: 568:568
     security_opt:
       - no-new-privileges:true
