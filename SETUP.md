@@ -89,6 +89,7 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 - `torrent/gluetun`
 - `torrent/qbittorrent`
 - `torrent/qui`
+- `torrent/repollo`
 
 ### Monitoring
 
