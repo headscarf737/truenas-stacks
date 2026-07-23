@@ -6,7 +6,7 @@ sonarr:
     api_key: !env SONARR_API_KEY
 
     root_folders:
-      - /media/tv
+      - /data/media/tv
 
     media_naming:
       series: default
@@ -117,7 +117,7 @@ sonarr:
     api_key: !env SONARR_UHD_API_KEY
 
     root_folders:
-      - /media/tv-uhd
+      - /data/media/tv-uhd
 
     media_naming:
       series: default
@@ -222,7 +222,7 @@ radarr:
     api_key: !env RADARR_API_KEY
 
     root_folders:
-      - /media/movies
+      - /data/media/movies
 
     media_naming:
       folder: default
@@ -345,7 +345,7 @@ radarr:
     api_key: !env RADARR_UHD_API_KEY
 
     root_folders:
-      - /media/movies-uhd
+      - /data/media/movies-uhd
 
     media_naming:
       folder: default

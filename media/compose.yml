@@ -10,7 +10,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}/media:/data/media
       - ${APPS_FOLDER}/media/bazarr:/config
       - ${APPS_FOLDER}/media/usenet:/data/usenet
     environment:
@@ -92,7 +92,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}/media:/data/media
       - ${APPS_FOLDER}/media/jellyfin:/config
     environment:
       PUID: 568
@@ -148,7 +148,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}:/data
       - ${APPS_FOLDER}/media/radarr:/config
       - ${APPS_FOLDER}/media/usenet:/data/usenet
     environment:
@@ -179,7 +179,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}:/data
       - ${APPS_FOLDER}/media/radarr-uhd:/config
       - ${APPS_FOLDER}/media/usenet:/data/usenet
     environment:
@@ -262,7 +262,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}:/data
       - ${APPS_FOLDER}/media/sonarr:/config
       - ${APPS_FOLDER}/media/usenet:/data/usenet
     environment:
@@ -293,7 +293,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}:/data
       - ${APPS_FOLDER}/media/sonarr-uhd:/config
       - ${APPS_FOLDER}/media/usenet:/data/usenet
     environment:
@@ -325,13 +325,13 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}/media:/data/media
       - ${APPS_FOLDER}/media/stash:/config
     environment:
       PUID: 568
       PGID: 568
       TZ: Europe/Berlin
-      #STASH_STASH: /media/adult
+      #STASH_STASH: /data/media/adult
       STASH_PORT: 9998
     network_mode: service:gluetun
     restart: unless-stopped
@@ -376,7 +376,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}:/data
       - ${APPS_FOLDER}/media/whisparr:/config
       - ${APPS_FOLDER}/media/usenet:/data/usenet
     environment:
@@ -407,7 +407,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}:/media
+      - ${MEDIA_FOLDER}:/data
       - ${APPS_FOLDER}/media/whisparr2:/config
       - ${APPS_FOLDER}/media/usenet:/data/usenet
     environment:

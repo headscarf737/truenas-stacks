@@ -93,7 +93,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ${MEDIA_FOLDER}/torrent:/data/torrent
+      - ${MEDIA_FOLDER}:/data
       - ${APPS_FOLDER}/torrent/qui:/config
     environment:
       TZ: Europe/Berlin

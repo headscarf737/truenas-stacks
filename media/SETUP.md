@@ -67,8 +67,8 @@ Media Management: Propers and Repacks: Do Not Prefer
 
 Media Management: Root Folders:
 
-- /media/adult (Whisparr)
-- /media/adult2 (Whisparr2)
+- /data/media/adult (Whisparr)
+- /data/media/adult2 (Whisparr2)
 
 ## Stash
 
