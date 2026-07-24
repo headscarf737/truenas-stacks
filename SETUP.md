@@ -195,6 +195,24 @@ Create `recursive` snapshot tasks:
 
 Create snapshots for any other datasets as needed.
 
+## Cloud Sync Tasks
+
+Create SSH Keypair. Create SFTP (or your preferred protocol) Cloud Credentials.
+
+Use Direction Push, Mode Sync.
+
+Create a Cloud Sync Task for each Pool.
+
+Select Source (e.g. `/mnt/tank`). Select Target (e.g. `./tank`).
+
+Enable Remote Encryption. Generate random 512-bit Base-64 encoded string for Password and Salt.
+
+Set Excludes. If you want to exclude `/mnt/tank/media`, you have to use `/media/` (the Source is used as the root). Don't forget the slash at the end.
+
+Dry run to see how many files would be included.
+
+See [Snapshots](#snapshots) for recommended excludes.
+
 ## Smb User Shares
 
 If you want to make some disks available via SMB, create a dataset `Users` (with SMB Preset) and one dataset per user inside it (with SMB Preset but without Share).
