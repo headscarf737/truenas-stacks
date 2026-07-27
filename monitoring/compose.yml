@@ -43,49 +43,6 @@ services:
     security_opt:
       - no-new-privileges:true
 
-  fluentbit:
-    image: ghcr.io/fluent/fluent-bit:5.0.9@sha256:ccda4cbd0f87be1e04cc1d5425bc84a6669051d4ac93a6b7a053c3ba9832aa14
-    container_name: fluentbit
-    volumes:
-      - ./config/fluentbit/config.yaml:/fluent-bit/etc/fluent-bit.yaml:ro
-      - ${APPS_FOLDER}/monitoring/fluentbit:/fluent-bit/etc/data:ro
-      # Logs
-      - ${APPS_FOLDER}/network/traefik/logs:/var/log/traefik:ro
-    networks:
-      metrics_internal:
-    command:
-      ["/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.yaml"]
-    restart: unless-stopped
-    user: 568:568
-    security_opt:
-      - no-new-privileges:true
-
-  grafana:
-    image: docker.io/grafana/grafana:13.1.1-slim@sha256:883bb3ccfb38250cdf170e7f12ce5b0013c70e8575b7ab1aea67dd45481016f5
-    container_name: grafana
-    volumes:
-      - ${APPS_FOLDER}/monitoring/grafana:/var/lib/grafana
-      - ./config/grafana/provisioning:/etc/grafana/provisioning:ro
-      - ./config/grafana/grafana.ini:/etc/grafana/grafana.ini:ro
-    environment:
-      TZ: Europe/Berlin
-      GF_PLUGINS_PREINSTALL: victoriametrics-logs-datasource
-    networks:
-      monitoring:
-      metrics_internal:
-      traefik_internal:
-    restart: unless-stopped
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.grafana.rule=Host(`grafana.${DOMAIN}`)
-      - traefik.http.routers.grafana.entrypoints=websecure
-      - traefik.http.routers.grafana.middlewares=authelia@docker
-      - traefik.http.routers.grafana.service=grafana
-      - traefik.http.services.grafana.loadbalancer.server.port=3000
-    user: 568:568
-    security_opt:
-      - no-new-privileges:true
-
   homepage:
     image: ghcr.io/gethomepage/homepage:v1.13.2@sha256:a0b71c8e757298d02560186bab9fbe3fc2d375c523a62cc1019177b37e48aa28
     container_name: homepage
@@ -149,40 +106,6 @@ services:
     security_opt:
       - no-new-privileges:true
 
-  victorialogs:
-    image: docker.io/victoriametrics/victoria-logs:v1.52.0@sha256:47b820890d64c4575a2a0a46415dcd8a4fd59a0f1fcd6a377693d7aea639442e
-    container_name: victorialogs
-    volumes:
-      - ${APPS_FOLDER}/monitoring/victorialogs:/vlogs
-    networks:
-      metrics_internal:
-    command: --storageDataPath=/vlogs
-    restart: unless-stopped
-    user: 568:568
-    security_opt:
-      - no-new-privileges:true
-
-  vmauth:
-    image: docker.io/victoriametrics/vmauth:v1.148.0@sha256:46b832a5a25bf3888783a8bbf84273825129aba8977972c85605765bcb49448b
-    container_name: vmauth
-    depends_on:
-      victorialogs:
-        condition: service_healthy
-    volumes:
-      - ./config/vmauth:/etc/vmauth:ro
-    networks:
-      metrics_internal:
-    command: -auth.config=/etc/vmauth/vmauth.yaml
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8427/health"]
-      interval: 1s
-      timeout: 1s
-      retries: 10
-    user: 568:568
-    security_opt:
-      - no-new-privileges:true
-
 networks:
   monitoring:
     external: false
@@ -190,7 +113,3 @@ networks:
   traefik_internal:
     external: true
     name: traefik_internal
-  metrics_internal:
-    external: false
-    name: metrics_internal
-    internal: true

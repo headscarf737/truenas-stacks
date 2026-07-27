@@ -68,10 +68,8 @@ access_control:
 
         - crowdsec.{{ env "DOMAIN" }}
         - dozzle.{{ env "DOMAIN" }}
-        - grafana.{{ env "DOMAIN" }}
         - homepage.{{ env "DOMAIN" }}
         - scrutiny.{{ env "DOMAIN" }}
-        - victorialogs.{{ env "DOMAIN" }}
       policy: one_factor
       subject:
         - [group:admin]
