@@ -183,6 +183,7 @@ Create `recursive` snapshot tasks:
     - `apps/docker/immich/model-cache`
     - `apps/docker/immich/model-dotcache`
     - `apps/docker/immich/model-config`
+    - `apps/docker/network/traefik/logs`
   - Lifetime: 2 Weeks
   - Schedule: Daily
 - tank/content
