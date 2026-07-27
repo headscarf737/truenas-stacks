@@ -61,7 +61,7 @@ services:
       - no-new-privileges:true
 
   grafana:
-    image: docker.io/grafana/grafana:13.1.0-slim@sha256:39fc2aa468222bf25ea7033187aac37c669128937e6703371f27e4da85afdcbb
+    image: docker.io/grafana/grafana:13.1.1-slim@sha256:883bb3ccfb38250cdf170e7f12ce5b0013c70e8575b7ab1aea67dd45481016f5
     container_name: grafana
     volumes:
       - ${APPS_FOLDER}/monitoring/grafana:/var/lib/grafana
