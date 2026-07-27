@@ -287,10 +287,10 @@ list drives
 sudo ./SeaChest_PowerControl_linux_x86_64 -s
 ```
 
-set `idle_b` to 6 minutes
+set `idle_b` to 16 minutes
 
 ```shell
-sudo ./SeaChest_PowerControl_linux_x86_64 -d DRIVE_HANDLE --idle_b 360000
+sudo ./SeaChest_PowerControl_linux_x86_64 -d DRIVE_HANDLE --idle_b 960000
 ```
 
 verify settings
