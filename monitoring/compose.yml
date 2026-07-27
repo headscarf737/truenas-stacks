@@ -163,7 +163,7 @@ services:
       - no-new-privileges:true
 
   vmauth:
-    image: docker.io/victoriametrics/vmauth:v1.147.0@sha256:93ff53c9ce2b1a9e54064b5158657de141588337e95a6bce7928dd205c73ce8d
+    image: docker.io/victoriametrics/vmauth:v1.148.0@sha256:46b832a5a25bf3888783a8bbf84273825129aba8977972c85605765bcb49448b
     container_name: vmauth
     depends_on:
       victorialogs:
