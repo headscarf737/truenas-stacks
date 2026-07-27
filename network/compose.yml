@@ -148,7 +148,7 @@ services:
       # crowdsec
       - "--experimental.plugins.bouncer.moduleName=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
       # renovate: datasource=github-releases depName=maxlerebourg/crowdsec-bouncer-traefik-plugin
-      - "--experimental.plugins.bouncer.version=v1.6.0"
+      - "--experimental.plugins.bouncer.version=v1.7.0"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "traefik", "healthcheck", "--ping"]
