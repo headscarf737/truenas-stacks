@@ -14,6 +14,8 @@ openssl rand -hex 32
 
 ## Qbittorrent
 
+Download Proton VPN config and copy to `${APPS_FOLDER}/torrent/qbittorrent/wireguard/wg0.conf`. Remove IPv6 from Address
+
 Settings > Web UI
 
 - Set Password
@@ -29,8 +31,6 @@ See <https://trash-guides.info/Downloaders/qBittorrent/Basic-Setup/>:
 - Categories
 
 ## Qui
-
-Download Proton VPN config and copy to `${APPS_FOLDER}/torrent/qbittorrent/wireguard/wg0.conf`
 
 Add Instance
 

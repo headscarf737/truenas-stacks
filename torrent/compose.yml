@@ -69,6 +69,7 @@ services:
       VPN_PROVIDER: proton
       VPN_AUTO_PORT_FORWARD: true
       VPN_HEALTHCHECK_ENABLED: true
+      VPN_NAMESERVERS: 1.1.1.1@853#cloudflare-dns.com
     networks:
       torrent:
       traefik_internal:
