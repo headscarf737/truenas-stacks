@@ -16,3 +16,4 @@ http:
           crowdsecLapiKey: {{env "CROWDSEC_API_KEY"}}
           crowdsecAppsecEnabled: true
           crowdsecAppsecHost: crowdsec:7422
+          crowdsecAppsecUnreadableBodyBlock: false
