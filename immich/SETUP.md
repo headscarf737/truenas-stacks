@@ -25,3 +25,11 @@ Disable Video Transcoding
 | Mobile Redirect                    | URI Override Disable                     |
 
 After verifying OAuth login works, you can disable password login
+
+## Basic Auth
+
+To protect the public facing Immich instance, basic auth is enforced. Generate a password hash using the following command:
+
+```bash
+htpasswd -nbB <username> <password>
+```
