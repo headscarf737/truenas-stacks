@@ -40,11 +40,6 @@ authentication_backend:
           multi_valued: false
           value_type: integer
 
-definitions:
-  user_attributes:
-    role:
-      expression: '"admin" in groups ? "admin" : "user"'
-
 access_control:
   default_policy: deny
   rules:
@@ -114,14 +109,11 @@ identity_providers:
         custom_claims:
           immich-quota:
             attribute: immich-quota
-          role:
-            attribute: role
 
     scopes:
       immich_scope:
         claims:
           - immich-quota
-          - role
 
     authorization_policies:
       images_policy:
@@ -148,6 +140,7 @@ identity_providers:
           - openid
           - profile
           - email
+          - groups
           - immich_scope
         response_types:
           - code
