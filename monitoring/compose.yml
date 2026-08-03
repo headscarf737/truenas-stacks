@@ -2,7 +2,7 @@ name: monitoring
 
 services:
   crowdsec-ui:
-    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.7.21@sha256:5ac7736eb0e6fab444d75026f81907b678b9429c7b2a4aa4eca5ff895bbc1415
+    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.8.1@sha256:efd325713704b1408d90bd682ec304d2758328cee28905f08f0792e043d81b4a
     container_name: crowdsec_ui
     volumes:
       - ${APPS_FOLDER}/monitoring/crowdsec:/app/data
