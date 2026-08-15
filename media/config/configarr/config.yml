@@ -43,6 +43,7 @@ sonarr:
 
     root_folders:
       - /data/media/tv
+      - /data/media/anime
 
     media_naming:
       series: default
