@@ -45,6 +45,9 @@ services:
       RADARR_UHD_API_KEY: ${RADARR_UHD_API_KEY}
       SONARR_API_KEY: ${SONARR_API_KEY}
       SONARR_UHD_API_KEY: ${SONARR_UHD_API_KEY}
+      SABNZBD_API_KEY: ${SABNZBD_API_KEY}
+      QBITTORRENT_API_KEY: ${QBITTORRENT_API_KEY}
+      CONFIGARR_ENABLE_MERGE: true
     network_mode: service:gluetun
     restart: no
     user: 568:568

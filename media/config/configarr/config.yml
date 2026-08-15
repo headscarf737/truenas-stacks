@@ -1,9 +1,45 @@
-# TODO: add download client
+x-download-clients:
+  sab_base: &sb_base
+    name: "SABnzbd"
+    type: sabnzbd
+    enable: true
+    priority: 1
+    remove_completed_downloads: true
+    remove_failed_downloads: true
+    fields: &sb_fields
+      host: media
+      port: 8080
+      apiKey: !env SABNZBD_API_KEY
+  qbit_base: &qb_base
+    name: "qBittorrent"
+    type: qbittorrent
+    enable: true
+    priority: 2
+    remove_completed_downloads: false
+    remove_failed_downloads: true
+    fields: &qb_fields
+      host: qbittorrent
+      port: 8080
+      apiKey: !env QBITTORRENT_API_KEY
 
 sonarr:
   fhd:
     base_url: http://media:8989
     api_key: !env SONARR_API_KEY
+
+    download_clients:
+      data:
+        - <<: *sb_base
+          fields:
+            <<: *sb_fields
+            tv_category: tv
+        - <<: *qb_base
+          fields:
+            <<: *qb_fields
+            tv_category: tv
+      update_password: true
+      delete_unmanaged:
+        enabled: true
 
     root_folders:
       - /data/media/tv
@@ -116,6 +152,20 @@ sonarr:
     base_url: http://media:8988
     api_key: !env SONARR_UHD_API_KEY
 
+    download_clients:
+      data:
+        - <<: *sb_base
+          fields:
+            <<: *sb_fields
+            tv_category: tv-uhd
+        - <<: *qb_base
+          fields:
+            <<: *qb_fields
+            tv_category: tv-uhd
+      update_password: true
+      delete_unmanaged:
+        enabled: true
+
     root_folders:
       - /data/media/tv-uhd
 
@@ -220,6 +270,20 @@ radarr:
   fhd:
     base_url: http://media:7878
     api_key: !env RADARR_API_KEY
+
+    download_clients:
+      data:
+        - <<: *sb_base
+          fields:
+            <<: *sb_fields
+            movieCategory: movies
+        - <<: *qb_base
+          fields:
+            <<: *qb_fields
+            movieCategory: movies
+      update_password: true
+      delete_unmanaged:
+        enabled: true
 
     root_folders:
       - /data/media/movies
@@ -343,6 +407,20 @@ radarr:
   uhd:
     base_url: http://media:7879
     api_key: !env RADARR_UHD_API_KEY
+
+    download_clients:
+      data:
+        - <<: *sb_base
+          fields:
+            <<: *sb_fields
+            movieCategory: movies-uhd
+        - <<: *qb_base
+          fields:
+            <<: *qb_fields
+            movieCategory: movies-uhd
+      update_password: true
+      delete_unmanaged:
+        enabled: true
 
     root_folders:
       - /data/media/movies-uhd
