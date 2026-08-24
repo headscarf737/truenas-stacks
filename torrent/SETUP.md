@@ -78,3 +78,5 @@ sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /h
 -->
 
 ## auditorr
+
+Add qui `http://127.0.0.1:7476`
