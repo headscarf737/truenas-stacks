@@ -57,6 +57,7 @@ access_control:
         - whisparr.{{ env "DOMAIN" }}
         - whisparr2.{{ env "DOMAIN" }}
 
+        - auditorr.{{ env "DOMAIN" }}
         - autobrr.{{ env "DOMAIN" }}
         - qbittorrent.{{ env "DOMAIN" }}
         - qui.{{ env "DOMAIN" }}

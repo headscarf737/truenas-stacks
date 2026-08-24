@@ -49,29 +49,23 @@ Enter API Key
   - Enable Rules
     - Max active downloads: 2
 
-## upPollo (WIP)
+## upPollo
 
 ```shell
 sudo docker run --rm -it --user 568:568 -v ${MEDIA_FOLDER}:${MEDIA_FOLDER} -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq --qbit-auto-tmm
 ```
 
 <!--
-sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --modq --qbit-auto-tmm
+sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /home/truenas_admin/upPollo:/home/uppollo/.config/upPollo --network container:torrent-gluetun --entrypoint /usr/local/bin/upPollo uppollo/uppollo:nightly upload --qbit-auto-tmm
 -->
 
-- Set tmdb_api_key
+- Set TMDB, TVDB API Keys
+- Set Path Mapping `${MEDIA_FOLDER}/torrent:/data/torrent`
 - Set trackers
 - Set qbittorrent
+- Set reuse_hash to `true`
 - Set screenshots
-- Set crowdnfo
-
-```yaml
-# TODO: check if needed
-path_mapping: # if you run qbittorrent on a remote server, you will need to map the paths
-  enabled: true
-  local: "/mnt/tank/media/torrent" # path to download folder on your local machine
-  remote: "/data/torrent"
-```
+- Enable crowdnfo, configure api key
 
 ## parsec
 
@@ -82,3 +76,5 @@ sudo docker run --rm -it --user 568:568 -v ${MEDIA_FOLDER}:${MEDIA_FOLDER} -v /h
 <!--
 sudo docker run --rm -it --user 568:568 -v /mnt/tank/media:/mnt/tank/media -v /home/truenas_admin/parsec:/home/parsec/.config/parsec --network container:torrent-gluetun --entrypoint /usr/local/bin/parsec uppollo/parsec:nightly check
 -->
+
+## auditorr

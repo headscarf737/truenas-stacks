@@ -1,6 +1,32 @@
 name: torrent
 
 services:
+  auditorr:
+    image: ghcr.io/thrill-burn/auditorr:1.7.1@sha256:c796aada842381595d098c80b3ad89bec2a41caea253b63a887b08fd95def994
+    container_name: auditorr
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${APPS_FOLDER}/torrent/auditorr:/app/data
+      - ${MEDIA_FOLDER}:/data:ro
+    environment:
+      TZ: Europe/Berlin
+      HOME: /tmp
+    network_mode: service:gluetun
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.auditorr.rule=Host(`auditorr.${DOMAIN}`)
+      - traefik.http.routers.auditorr.entrypoints=websecure
+      - traefik.http.routers.auditorr.middlewares=authelia@docker
+      - traefik.http.routers.auditorr.service=auditorr
+      - traefik.http.services.auditorr.loadbalancer.server.port=8677
+    user: 568:568
+    security_opt:
+      - no-new-privileges:true
+
   autobrr:
     image: ghcr.io/autobrr/autobrr:v1.84.0@sha256:f4792e86b79965eadb2b24ad290ab46d21cab7ae6c18002ce2d18275fa54a4d0
     container_name: autobrr
@@ -100,7 +126,7 @@ services:
       TZ: Europe/Berlin
       QUI__AUTH_DISABLED: true
       QUI__I_ACKNOWLEDGE_THIS_IS_A_BAD_IDEA: true
-      QUI__AUTH_DISABLED_ALLOWED_CIDRS: 172.31.255.254/32,fdd0:0:0:1000::fe/128
+      QUI__AUTH_DISABLED_ALLOWED_CIDRS: 127.0.0.1/32,172.31.255.254/32,fdd0:0:0:1000::fe/128
     network_mode: service:gluetun
     restart: unless-stopped
     labels:
