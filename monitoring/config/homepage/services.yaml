@@ -128,7 +128,7 @@
 
     - Radarr-UHD:
         href: https://radarr-uhd.{{HOMEPAGE_VAR_DOMAIN}}
-        icon: radarr
+        icon: radarr-4k
         widgets:
           - type: radarr
             url: http://media:7879
@@ -146,7 +146,7 @@
 
     - Sonarr-UHD:
         href: https://sonarr-uhd.{{HOMEPAGE_VAR_DOMAIN}}
-        icon: sonarr
+        icon: sonarr-4k
         widgets:
           - type: sonarr
             url: http://media:8988
@@ -221,6 +221,11 @@
             url: http://torrent:7474
             # prettier-ignore
             key: {{HOMEPAGE_VAR_AUTOBRR_KEY}}
+
+    - auditorr:
+        href: https://auditorr.{{HOMEPAGE_VAR_DOMAIN}}
+        # TODO: use auditorr icon when available
+        icon: mdi-harddisk
 
 - Monitoring:
     - scrutiny:
