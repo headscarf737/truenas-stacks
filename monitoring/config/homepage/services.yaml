@@ -224,8 +224,7 @@
 
     - auditorr:
         href: https://auditorr.{{HOMEPAGE_VAR_DOMAIN}}
-        # TODO: use auditorr icon when available
-        icon: mdi-harddisk
+        icon: auditorr
 
 - Monitoring:
     - scrutiny:

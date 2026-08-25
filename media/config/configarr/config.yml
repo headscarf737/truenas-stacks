@@ -532,3 +532,30 @@ radarr:
           - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
         assign_scores_to:
           - name: "[GERMAN] UHD Remux, Bluray, WEB"
+
+whisparr:
+  v3:
+    base_url: http://media:6969
+    api_key: !env WHISPARR_API_KEY
+
+    download_clients:
+      data:
+        - <<: *sb_base
+          fields:
+            <<: *sb_fields
+            movieCategory: adult
+        - <<: *qb_base
+          fields:
+            <<: *qb_fields
+            movieCategory: adult
+      update_password: true
+      delete_unmanaged:
+        enabled: true
+
+    root_folders:
+      - /data/media/adult
+
+    media_naming_api:
+      renameScenes: true
+      standardSceneFormat: "{Studio CleanTitle} - {Scene CleanTitle} ({Release-Date}) ({Scene PerformersFemale}) [{Quality Full}] [{MediaInfo Simple}]{-Release Group} [{Original Title}]"
+      sceneFolderFormat: "scenes/{Release Date} - {Studio CleanTitle} - {Scene CleanTitle} {[StashId]}"
