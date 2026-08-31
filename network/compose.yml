@@ -109,23 +109,28 @@ services:
       # Web
       - "--entrypoints.web.address=:80/tcp"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.aliasHeadersStrategy=delete"
       # Websecure
       - "--entrypoints.websecure.address=:443/tcp"
       - "--entrypoints.websecure.http.middlewares=crowdsec@file,hsts@file,compress@file"
+      - "--entrypoints.websecure.http.aliasHeadersStrategy=delete"
       # HTTP3
       - "--entrypoints.websecure.http3"
       # Web Public
       - "--entrypoints.web-pub.address=:8081/tcp"
       - "--entrypoints.web-pub.http.redirections.entryPoint.to=websecure-pub"
+      - "--entrypoints.web-pub.http.aliasHeadersStrategy=delete"
       # Websecure Public
       - "--entrypoints.websecure-pub.address=:8443/tcp"
       - "--entrypoints.websecure-pub.http.middlewares=crowdsec@file,hsts@file,compress@file"
+      - "--entrypoints.websecure-pub.http.aliasHeadersStrategy=delete"
       # HTTP3 Public
       - "--entrypoints.websecure-pub.http3.advertisedPort=443"
       # Dashboard
       - "--api.dashboard=true"
       - "--api.disabledashboardad=true"
       - "--api.insecure=true" # for homepage
+      - "--entrypoints.traefik.http.aliasHeadersStrategy=delete"
       # LetsEncrypt
       - "--certificatesresolvers.letsencrypt.acme.email=${LETSENCRYPT_EMAIL}"
       #- "--certificatesresolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
