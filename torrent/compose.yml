@@ -2,7 +2,7 @@ name: torrent
 
 services:
   auditorr:
-    image: ghcr.io/thrill-burn/auditorr:1.7.1@sha256:c796aada842381595d098c80b3ad89bec2a41caea253b63a887b08fd95def994
+    image: ghcr.io/thrill-burn/auditorr:1.7.2@sha256:6d2c728ca396a86bc50978bd30c1753c912ea4c5e3f1e0cda7f778acc52750c6
     container_name: auditorr
     depends_on:
       gluetun:
