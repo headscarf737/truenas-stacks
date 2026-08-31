@@ -30,6 +30,8 @@ See <https://trash-guides.info/Downloaders/qBittorrent/Basic-Setup/>:
 - Basic Setup
 - Categories
 
+Set Advanced > Network Interface to `wg0`
+
 ## Qui
 
 Add Instance

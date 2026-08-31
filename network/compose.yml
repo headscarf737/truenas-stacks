@@ -130,7 +130,6 @@ services:
       - "--api.dashboard=true"
       - "--api.disabledashboardad=true"
       - "--api.insecure=true" # for homepage
-      - "--entrypoints.traefik.http.aliasHeadersStrategy=delete"
       # LetsEncrypt
       - "--certificatesresolvers.letsencrypt.acme.email=${LETSENCRYPT_EMAIL}"
       #- "--certificatesresolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
