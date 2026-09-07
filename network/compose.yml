@@ -21,7 +21,7 @@ services:
       - no-new-privileges:true
 
   crowdsec:
-    image: ghcr.io/crowdsecurity/crowdsec:v1.7.7@sha256:6ca53ad26196ca59ddd4fa692a586b73d8fcde085046163b9ca2f04887dca563
+    image: ghcr.io/crowdsecurity/crowdsec:v1.8.1@sha256:0f2523fa61ef507f15d953045cface490cc880670c62f2755ced17524107f71a
     container_name: crowdsec
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
