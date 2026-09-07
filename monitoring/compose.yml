@@ -26,7 +26,7 @@ services:
       - no-new-privileges:true
 
   dozzle:
-    image: ghcr.io/amir20/dozzle:v10.8.0@sha256:243666b0593ff33ed1373901575236f0d6bed8a2d6b451cdae4345969a7b6d5c
+    image: ghcr.io/amir20/dozzle:v10.10.0@sha256:2875e3c1f31f2244ee99d6067b53852b30666b3e2fb293d179bc8be94b1da5eb
     container_name: dozzle
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
