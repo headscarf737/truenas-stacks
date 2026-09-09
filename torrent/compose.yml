@@ -89,7 +89,7 @@ services:
       PGID: 568
       TZ: Europe/Berlin
       WEBUI_PORTS: 8080/tcp
-      LIBTORRENT: v2
+      LIBTORRENT: v1
       VPN_ENABLED: true
       VPN_CONF: wg0
       VPN_PROVIDER: proton
