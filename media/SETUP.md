@@ -4,6 +4,12 @@
 
 See <https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/mullvad.md> on how to obtain Mullvad credentials.
 
+Fix outdated server list
+
+```shell
+sudo docker compose run --rm gluetun update
+```
+
 ## Env variables
 
 Generate Keys with:
