@@ -16,6 +16,11 @@
       "versionCompatibility": "^(?<compatibility>.*)-(?<version>.*)$"
     },
     {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["lscr.io/linuxserver/**"],
+      "versioning": "regex:^(?<compatibility>[a-z]*-[v]?)?(?<major>\\d+)\\.(?<minor>\\d+)?(?:\\.(?<patch>\\d+))?(?:\\.(?<build>\\d+))?(?:[^0-9]*(?<revision>\\d+))?$"
+    },
+    {
       "groupName": "docker-digest",
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["digest"],
