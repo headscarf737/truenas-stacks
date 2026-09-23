@@ -30,7 +30,7 @@ services:
       - no-new-privileges:true
 
   configarr:
-    image: ghcr.io/raydak-labs/configarr:1.30.2@sha256:ec585b6d2530f6090ee26fdcc9701f279666c24dc96c9087208e88ec867c2416
+    image: ghcr.io/raydak-labs/configarr:1.32.0@sha256:8a94c8355f86619ac4c52298144f15859f9c66311515f96c4688435fa020039e
     container_name: configarr
     depends_on:
       gluetun:
