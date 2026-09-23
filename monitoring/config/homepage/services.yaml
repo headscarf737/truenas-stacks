@@ -11,6 +11,7 @@
             url: http://media:8096
             # prettier-ignore
             key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
+            version: 2
             enableBlocks: true
 
     - Seerr:
