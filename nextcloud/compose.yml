@@ -105,7 +105,7 @@ services:
     user: 568:568
 
   nextcloud-whiteboard:
-    image: ghcr.io/nextcloud-releases/whiteboard:v1.5.9@sha256:b60b7633f90d106ac6922f9bc27e1a1ca2442488b740fefdae4c812f34e9cebc
+    image: ghcr.io/nextcloud-releases/whiteboard:v2.0.0@sha256:059596633333d009890c64858f89f133ccd973a2e0823ad960a0cc05cf8657f1
     container_name: nextcloud-whiteboard
     environment:
       TZ: Europe/Berlin
