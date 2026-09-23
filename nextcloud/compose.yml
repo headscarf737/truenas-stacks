@@ -43,7 +43,7 @@ services:
       - CHOWN
 
   mariadb:
-    image: docker.io/library/mariadb:11.8.9@sha256:2d2f4095530294735a857cfe22bb101e19b0849b416911c796ec4aa81b164a62
+    image: docker.io/library/mariadb:11.8.9@sha256:79d59758afc91b89b120b0a8904d637f5a3b3e1c4900f29b740d6d46c72fef68
     container_name: nextcloud-db
     volumes:
       - ${APPS_FOLDER}/nextcloud/db:/var/lib/mysql
@@ -60,7 +60,7 @@ services:
     user: 568:568
 
   nextcloud:
-    image: docker.io/library/nextcloud:34.0.4@sha256:fca405153f43542409c7351636752e388329c07418557f04e6fcbdeeaf64585d
+    image: docker.io/library/nextcloud:34.0.4@sha256:a5ace30c695afe48c2c406e940ee7886a81e13fa382e57cd68b2416d1a66914c
     container_name: nextcloud
     depends_on:
       - collabora
@@ -126,7 +126,7 @@ services:
     user: 568:568
 
   redis:
-    image: docker.io/library/redis:8.10.1-alpine@sha256:becdda6c7f4b3fb42e42fd7f120bbf5c54c4caaaf16f26da24e4563d2c1f0576
+    image: docker.io/library/redis:8.10.1-alpine@sha256:ef216d85ec44f4fdf7c0e6df2d1757a4734ed32fbb278cabd3181b5a27353b79
     container_name: nextcloud-redis
     networks:
       nextcloud_internal:
