@@ -259,7 +259,7 @@ services:
       - no-new-privileges:true
 
   sonarr:
-    image: lscr.io/linuxserver/sonarr:version-4.0.19.2979@sha256:82172b363f9eddc02aca544f880a044f2ceb9aaf190bc87e4454e2f705eb91d0
+    image: lscr.io/linuxserver/sonarr:version-4.0.20.3014@sha256:a5c1a5fecbef946927ab90ad68df319ac5fe644057e5fc18cd993f01ac07b2b2
     container_name: sonarr
     depends_on:
       gluetun:
@@ -290,7 +290,7 @@ services:
       - no-new-privileges:true
 
   sonarr-uhd:
-    image: lscr.io/linuxserver/sonarr:version-4.0.19.2979@sha256:82172b363f9eddc02aca544f880a044f2ceb9aaf190bc87e4454e2f705eb91d0
+    image: lscr.io/linuxserver/sonarr:version-4.0.20.3014@sha256:a5c1a5fecbef946927ab90ad68df319ac5fe644057e5fc18cd993f01ac07b2b2
     container_name: sonarr-uhd
     depends_on:
       gluetun:
