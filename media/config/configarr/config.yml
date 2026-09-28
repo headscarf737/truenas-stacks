@@ -288,6 +288,7 @@ radarr:
 
     root_folders:
       - /data/media/movies
+      - /data/media/movies-anime
 
     media_naming:
       folder: default
