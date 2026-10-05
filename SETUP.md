@@ -94,9 +94,9 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 
 ### Monitoring
 
+- `monitoring/beszel`
+- `monitoring/beszel-agent`
 - `monitoring/crowdsec`
-- `monitoring/scrutiny/config`
-- `monitoring/scrutiny/data`
 
 ### Network
 

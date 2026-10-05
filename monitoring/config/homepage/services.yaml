@@ -228,12 +228,13 @@
         icon: auditorr
 
 - Monitoring:
-    - scrutiny:
-        href: https://scrutiny.{{HOMEPAGE_VAR_DOMAIN}}
-        icon: scrutiny
+    - Beszel:
+        href: https://beszel.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: beszel
         widgets:
-          - type: scrutiny
-            url: http://scrutiny:8080
+          - type: beszel
+            url: http://beszel:8090
+            version: 2
 
     - Dozzle:
         href: https://dozzle.{{HOMEPAGE_VAR_DOMAIN}}

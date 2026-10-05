@@ -1,6 +1,60 @@
 name: monitoring
 
 services:
+  beszel:
+    image: ghcr.io/henrygd/beszel/beszel:0.21.0@sha256:020d80f5974e66356e6d6440736952edc9b9ea59978ac9f98418b5fb643dc0e2
+    container_name: beszel
+    networks:
+      traefik_internal:
+    volumes:
+      - ${APPS_FOLDER}/monitoring/beszel:/beszel_data
+      - ${APPS_FOLDER}/monitoring/beszel/beszel_socket:/beszel_socket
+    environment:
+      TZ: Europe/Berlin
+      APP_URL: https://beszel.${DOMAIN}
+      DISABLE_PASSWORD_AUTH: true
+      TRUSTED_AUTH_HEADER: Remote-Email
+      TRUSTED_PROXY_IPS: 172.31.255.254/32,fdd0:0:0:1000::fe/128
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.beszel.rule=Host(`beszel.${DOMAIN}`)
+      - traefik.http.routers.beszel.entrypoints=websecure
+      - traefik.http.routers.beszel.middlewares=authelia@docker
+      - traefik.http.routers.beszel.service=beszel
+      - traefik.http.services.beszel.loadbalancer.server.port=8090
+    security_opt:
+      - no-new-privileges:true
+
+  beszel-agent:
+    image: ghcr.io/henrygd/beszel/beszel-agent:0.21.0-alpine@sha256:00612f32da51d84117a299d4ce18f7c661d51a8f1f2592d4f359cbcef3a94aa7
+    container_name: beszel-agent
+    volumes:
+      - ${APPS_FOLDER}/monitoring/beszel-agent:/var/lib/beszel-agent
+      - ${APPS_FOLDER}/monitoring/beszel/beszel_socket:/beszel_socket
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      TZ: Europe/Berlin
+      LISTEN: /beszel_socket/beszel.sock
+    restart: unless-stopped
+    network_mode: host
+    cap_add:
+      - SYS_RAWIO
+      - SYS_ADMIN
+    devices:
+      - /dev/sda
+      - /dev/sdb
+      - /dev/sdc
+      - /dev/sdd
+      - /dev/sde
+      - /dev/sdf
+      - /dev/sdg
+      - /dev/sdh
+      - /dev/nvme0
+      - /dev/zfs
+    security_opt:
+      - no-new-privileges:true
+
   crowdsec-ui:
     image: ghcr.io/theduffman85/crowdsec-web-ui:2026.10.1@sha256:4c6ac131e01c5688beb0a76353fbe558025ac9dd0537398d36e50936c6465f1b
     container_name: crowdsec_ui
@@ -70,39 +124,6 @@ services:
       - traefik.http.routers.homepage.middlewares=authelia@docker
       - traefik.http.routers.homepage.service=homepage
       - traefik.http.services.homepage.loadbalancer.server.port=3000
-    security_opt:
-      - no-new-privileges:true
-
-  scrutiny:
-    image: ghcr.io/analogj/scrutiny:v0.9.5-omnibus@sha256:6ee271ee531458f134220ca8b2c5c8ccc2711a799c827fef953fa865d91e312f
-    container_name: scrutiny
-    volumes:
-      - /run/udev:/run/udev:ro
-      - ${APPS_FOLDER}/monitoring/scrutiny/config:/opt/scrutiny/config
-      - ${APPS_FOLDER}/monitoring/scrutiny/data:/opt/scrutiny/influxdb
-    networks:
-      traefik_internal:
-    restart: unless-stopped
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.scrutiny.rule=Host(`scrutiny.${DOMAIN}`)
-      - traefik.http.routers.scrutiny.entrypoints=websecure
-      - traefik.http.routers.scrutiny.middlewares=authelia@docker
-      - traefik.http.routers.scrutiny.service=scrutiny
-      - traefik.http.services.scrutiny.loadbalancer.server.port=8080
-    cap_add:
-      - SYS_RAWIO
-      - SYS_ADMIN
-    devices:
-      - /dev/sda
-      - /dev/sdb
-      - /dev/sdc
-      - /dev/sdd
-      - /dev/sde
-      - /dev/sdf
-      - /dev/sdg
-      - /dev/sdh
-      - /dev/nvme0
     security_opt:
       - no-new-privileges:true
 
