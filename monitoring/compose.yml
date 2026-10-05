@@ -12,7 +12,6 @@ services:
     environment:
       TZ: Europe/Berlin
       APP_URL: https://beszel.${DOMAIN}
-      DISABLE_PASSWORD_AUTH: true
       TRUSTED_AUTH_HEADER: Remote-Email
       TRUSTED_PROXY_IPS: 172.31.255.254/32,fdd0:0:0:1000::fe/128
     restart: unless-stopped

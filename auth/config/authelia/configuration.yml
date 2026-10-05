@@ -2,6 +2,13 @@
 
 server:
   address: tcp4://:9091
+  # needed for beszel to work with authelia
+  endpoints:
+    authz:
+      forward-auth:
+        implementation: ForwardAuth
+        authn_strategies:
+          - name: CookieSession
 
 log:
   level: info
