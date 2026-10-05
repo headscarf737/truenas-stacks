@@ -235,6 +235,12 @@
           - type: beszel
             url: http://beszel:8090
             version: 2
+            # prettier-ignore
+            username: {{HOMEPAGE_VAR_BESZEL_USERNAME}}
+            # prettier-ignore
+            password: {{HOMEPAGE_VAR_BESZEL_PASSWORD}}
+            # prettier-ignore
+            systemId: {{HOMEPAGE_VAR_BESZEL_SYSTEM_ID}}
 
     - Dozzle:
         href: https://dozzle.{{HOMEPAGE_VAR_DOMAIN}}
