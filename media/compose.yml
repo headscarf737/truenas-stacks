@@ -89,7 +89,7 @@ services:
     hostname: media
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:version-12.1ubu2604@sha256:51252e7a416e703cdc3cd91e8a54673a2430cc80409be8a38abe511411577b95
+    image: lscr.io/linuxserver/jellyfin:version-12.1ubu2604@sha256:b0b6d034aa52ed6e1a76daaa3d7ed29039d2b802a50fa8ffd1d9fc8d3fd836c7
     container_name: jellyfin
     depends_on:
       gluetun:
@@ -145,7 +145,7 @@ services:
       - no-new-privileges:true
 
   radarr:
-    image: lscr.io/linuxserver/radarr:version-6.4.4.10685@sha256:adb6c09d6b729ea5e642c99cea35af72702ef476bf4763f153299ac5db9f0b4f
+    image: lscr.io/linuxserver/radarr:version-6.4.4.10685@sha256:7dfd049e79c00b16fbc29c3f5d96a9e7b9e73a23930b4c5b3c4541d60b366814
     container_name: radarr
     depends_on:
       gluetun:
@@ -176,7 +176,7 @@ services:
       - no-new-privileges:true
 
   radarr-uhd:
-    image: lscr.io/linuxserver/radarr:version-6.4.4.10685@sha256:adb6c09d6b729ea5e642c99cea35af72702ef476bf4763f153299ac5db9f0b4f
+    image: lscr.io/linuxserver/radarr:version-6.4.4.10685@sha256:7dfd049e79c00b16fbc29c3f5d96a9e7b9e73a23930b4c5b3c4541d60b366814
     container_name: radarr-uhd
     depends_on:
       gluetun:
@@ -208,7 +208,7 @@ services:
       - no-new-privileges:true
 
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:version-5.1.3@sha256:4f7ee6c53834bc336365bd0a7c35f4fc870156a72d33a334753010258aa077a4
+    image: lscr.io/linuxserver/sabnzbd:version-5.1.3@sha256:793828eab1722556131d37187115a9d3e3b9703e03a55731a07f2e0fe4edc2c7
     container_name: sabnzbd
     depends_on:
       gluetun:
@@ -234,7 +234,7 @@ services:
       - no-new-privileges:true
 
   seerr:
-    image: ghcr.io/hotio/seerr:release-v3.5.0@sha256:83924e653c1a5b1bb5203fb2db820c058d31ed4527914e69aaca9ded5e35c7b9
+    image: ghcr.io/hotio/seerr:release-v3.5.0@sha256:3872df140628498fffb3fe229aa8ec1f2cf4e3b2c139d822d9425bf192badbaa
     container_name: seerr
     depends_on:
       gluetun:
@@ -322,7 +322,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0.31.1@sha256:f5c3e5ac403daf1562ed3ebb8c36a83b01f4adbe897ac1b932b756a5f5e603cb
+    image: ghcr.io/hotio/stash:release-v0.31.1@sha256:1ff810e01cca85a67d46061e3f869498875227a75c5ad5c55b7e807bbc008e17
     container_name: stash
     depends_on:
       gluetun:
@@ -373,7 +373,7 @@ services:
       - no-new-privileges:true
 
   whisparr:
-    image: ghcr.io/hotio/whisparr:v3-v3.6.2@sha256:0f2af8b840e937f1e7f06aa535179692428f8c4b3f2dc139591f1640e9b4c6fb
+    image: ghcr.io/hotio/whisparr:v3-v3.6.2@sha256:4edd949338a80cf256cb968ec2127d77023df1b6a2c5248b180773dd91853d20
     container_name: whisparr
     depends_on:
       gluetun:
@@ -404,7 +404,7 @@ services:
       - no-new-privileges:true
 
   whisparr2:
-    image: ghcr.io/hotio/whisparr:v2-v2.2.0@sha256:c60aabe2ab85417e8f23dfc56285a33be413c5336ebe47b8f26eca9e7145540c
+    image: ghcr.io/hotio/whisparr:v2-v2.2.0@sha256:9a9a03714b538639a4a3d5c296fff2fc671004f674212d93ed47f294fd2b6a29
     container_name: whisparr2
     depends_on:
       gluetun:
