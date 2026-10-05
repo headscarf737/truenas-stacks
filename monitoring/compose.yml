@@ -35,6 +35,7 @@ services:
     environment:
       TZ: Europe/Berlin
       LISTEN: /beszel_socket/beszel.sock
+      KEY: ${BESZEL_KEY}
     restart: unless-stopped
     network_mode: host
     cap_add:
