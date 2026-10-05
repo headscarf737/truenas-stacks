@@ -79,7 +79,7 @@ services:
     hostname: torrent
 
   qbittorrent:
-    image: ghcr.io/hotio/qbittorrent:release-v5.2.3@sha256:65c5c08ef4adf2c971b3a20f9440fa17a2061584141e0f2eaf501a09baf79e70
+    image: ghcr.io/hotio/qbittorrent:release-v5.2.4@sha256:ec7a0c3cdf1258dbd5f395261b5d341b63655850d0f44d246dd56668dcfcfe7f
     container_name: qbittorrent
     volumes:
       - ${MEDIA_FOLDER}/torrent:/data/torrent
