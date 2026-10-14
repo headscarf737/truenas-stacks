@@ -4,6 +4,10 @@
 
 Disable Video Transcoding
 
+Switch to Smart Search Model `ViT-B-16-SigLIP__webli`
+
+Switch to OCR Model `PP-OCRv5_mobile (Latin script languages)`
+
 ## OAuth2
 
 | Setting                            | Value                                    |

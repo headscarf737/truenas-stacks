@@ -29,6 +29,7 @@ services:
       - ${APPS_FOLDER}/immich/model-config:/.config
     environment:
       TZ: Europe/Berlin
+      MACHINE_LEARNING_MODEL_REVISION: v2
     networks:
       immich:
     restart: unless-stopped
