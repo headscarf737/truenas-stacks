@@ -116,6 +116,8 @@ services:
     networks:
       monitoring:
       traefik_internal:
+        ipv4_address: 172.31.255.253
+        ipv6_address: fdd0:0:0:1000::fd
     restart: unless-stopped
     labels:
       - traefik.enable=true

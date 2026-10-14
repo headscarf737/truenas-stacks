@@ -204,15 +204,13 @@
     - qBittorrent:
         href: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}
         icon: qbittorrent
-        widgets:
-          - type: qbittorrent
-            url: http://qbittorrent:8080
-            # prettier-ignore
-            key: {{HOMEPAGE_VAR_QBITTORRENT_KEY}}
 
     - qui:
         href: https://qui.{{HOMEPAGE_VAR_DOMAIN}}
         icon: qui
+        widgets:
+          - type: qui
+            url: http://torrent:7476
 
     - autobrr:
         href: https://autobrr.{{HOMEPAGE_VAR_DOMAIN}}

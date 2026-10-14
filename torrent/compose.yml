@@ -126,7 +126,7 @@ services:
       TZ: Europe/Berlin
       QUI__AUTH_DISABLED: true
       QUI__I_ACKNOWLEDGE_THIS_IS_A_BAD_IDEA: true
-      QUI__AUTH_DISABLED_ALLOWED_CIDRS: 127.0.0.1/32,172.31.255.254/32,fdd0:0:0:1000::fe/128
+      QUI__AUTH_DISABLED_ALLOWED_CIDRS: 127.0.0.1/32,172.31.255.254/32,fdd0:0:0:1000::fe/128,172.31.255.253/32,fdd0:0:0:1000::fd/128
     network_mode: service:gluetun
     restart: unless-stopped
     labels:
