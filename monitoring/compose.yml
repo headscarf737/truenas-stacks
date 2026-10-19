@@ -56,7 +56,7 @@ services:
       - no-new-privileges:true
 
   crowdsec-ui:
-    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.10.5@sha256:54d048dcab5082c0e394f0d00caacaf292f8f042ee449b974f9a28d1a192e3b7
+    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.10.8@sha256:1e7ef2ddb701c8610301787c9ed476b57184ec5f5e839db804fbb4da3dccc17f
     container_name: crowdsec_ui
     volumes:
       - ${APPS_FOLDER}/monitoring/crowdsec:/app/data
