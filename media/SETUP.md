@@ -32,6 +32,7 @@ tv -> tv
 tv-uhd -> tv-uhd
 adult -> adult
 adult2 -> adult2
+prowlarr -> prowlarr
 
 See <https://trash-guides.info/Downloaders/SABnzbd/Basic-Setup>:
 
@@ -54,27 +55,17 @@ Edit `${APPS_FOLDER}/media/whisparr2/config.xml`
 
 ## Prowlarr
 
-Add Sonarr (+UHD), Radarr (+UHD), Whisparr, Whisparr2 instances with API keys.
+Apps, download clients and sync profiles are configured by Configarr.
 
-Use `media` as hostname instead of `localhost`
-
-Add you preferred indexers.
+Add your preferred indexers and assign `Manual`, `No RSS` or `Standard`.
 
 ## Sonarr / Radarr / Whisparr
 
-Add Download Client. Add SABnzbd instance. Use `media` as hostname instead of `localhost`.
+Configured by Configarr, except Whisparr2:
 
-Use category `tv-uhd` for Sonarr-UHD
-Use category `movies-uhd` for Radarr-UHD
-Use category `adult` for Whisparr
-Use category `adult2` for Whisparr2
-
-Media Management: Propers and Repacks: Do Not Prefer
-
-Media Management: Root Folders:
-
-- /data/media/adult (Whisparr)
-- /data/media/adult2 (Whisparr2)
+- Download Client: SABnzbd at `media:8080`, category `adult2`
+- Propers and Repacks: Do Not Prefer
+- Root Folder: `/data/media/adult2`
 
 ## Stash
 
@@ -143,7 +134,7 @@ See <https://github.com/jnk22/kodinerds-iptv/blob/master/iptv/clean/clean.m3u> a
 
 Setting up seerr is straight forward. Just follow the onboarding steps.
 
-Add Sonarr (+UHD) and Radarr (+UHD) instances like in Prowlarr section.
+Add Sonarr (+UHD) and Radarr (+UHD) instances with API keys. Use `media` as hostname.
 
 For Sonarr make sure to enable Season Folders
 

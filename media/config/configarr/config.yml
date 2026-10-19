@@ -22,10 +22,17 @@ x-download-clients:
       port: 8080
       apiKey: !env QBITTORRENT_API_KEY
 
+# Keep import behavior consistent with the shared /data mount and TRaSH scores.
+x-media-management: &media_management
+  downloadPropersAndRepacks: doNotPrefer
+  copyUsingHardlinks: true
+
 sonarr:
   fhd:
     base_url: http://media:8989
     api_key: !env SONARR_API_KEY
+
+    media_management: *media_management
 
     download_clients:
       data:
@@ -153,6 +160,8 @@ sonarr:
     base_url: http://media:8988
     api_key: !env SONARR_UHD_API_KEY
 
+    media_management: *media_management
+
     download_clients:
       data:
         - <<: *sb_base
@@ -271,6 +280,8 @@ radarr:
   fhd:
     base_url: http://media:7878
     api_key: !env RADARR_API_KEY
+
+    media_management: *media_management
 
     download_clients:
       data:
@@ -410,6 +421,8 @@ radarr:
     base_url: http://media:7879
     api_key: !env RADARR_UHD_API_KEY
 
+    media_management: *media_management
+
     download_clients:
       data:
         - <<: *sb_base
@@ -539,6 +552,8 @@ whisparr:
     base_url: http://media:6969
     api_key: !env WHISPARR_API_KEY
 
+    media_management: *media_management
+
     download_clients:
       data:
         - <<: *sb_base
@@ -560,3 +575,97 @@ whisparr:
       renameScenes: true
       standardSceneFormat: "{Studio CleanTitle} - {Scene CleanTitle} ({Release-Date}) ({Scene PerformersFemale}) [{Quality Full}] [{MediaInfo Simple}]{-Release Group} [{Original Title}]"
       sceneFolderFormat: "scenes/{Release Date} - {Studio CleanTitle} - {Scene CleanTitle} {[StashId]}"
+
+prowlarr:
+  main:
+    base_url: http://media:9696
+    api_key: !env PROWLARR_API_KEY
+
+    sync_profiles:
+      data:
+        - name: Manual
+          enable_rss: false
+          enable_automatic_search: false
+          enable_interactive_search: true
+          minimum_seeders: 1
+        - name: No RSS
+          enable_rss: false
+          enable_automatic_search: true
+          enable_interactive_search: true
+          minimum_seeders: 1
+        - name: Standard
+          enable_rss: true
+          enable_automatic_search: true
+          enable_interactive_search: true
+          minimum_seeders: 1
+      delete_unmanaged:
+        enabled: true
+
+    applications:
+      data:
+        - name: Sonarr
+          type: Sonarr
+          sync_level: fullSync
+          fields:
+            prowlarrUrl: http://media:9696
+            baseUrl: http://media:8989
+            apiKey: !env SONARR_API_KEY
+        - name: Sonarr-UHD
+          type: Sonarr
+          sync_level: fullSync
+          fields:
+            prowlarrUrl: http://media:9696
+            baseUrl: http://media:8988
+            apiKey: !env SONARR_UHD_API_KEY
+        - name: Radarr
+          type: Radarr
+          sync_level: fullSync
+          fields:
+            prowlarrUrl: http://media:9696
+            baseUrl: http://media:7878
+            apiKey: !env RADARR_API_KEY
+        - name: Radarr-UHD
+          type: Radarr
+          sync_level: fullSync
+          fields:
+            prowlarrUrl: http://media:9696
+            baseUrl: http://media:7879
+            apiKey: !env RADARR_UHD_API_KEY
+        - name: Whisparr
+          type: Whisparr
+          sync_level: fullSync
+          fields:
+            prowlarrUrl: http://media:9696
+            baseUrl: http://media:6969
+            apiKey: !env WHISPARR_API_KEY
+        - name: Whisparr2
+          type: Whisparr
+          sync_level: fullSync
+          fields:
+            prowlarrUrl: http://media:9696
+            baseUrl: http://media:6968
+            apiKey: !env WHISPARR_API_KEY
+      delete_unmanaged:
+        enabled: true
+      sync_indexers: true
+
+    # Clients for downloads started directly in Prowlarr.
+    download_clients:
+      data:
+        - name: "SABnzbd"
+          type: sabnzbd
+          enable: true
+          priority: 1
+          fields:
+            <<: *sb_fields
+            category: prowlarr
+        - name: "qBittorrent"
+          type: qbittorrent
+          enable: true
+          priority: 2
+          fields:
+            <<: *qb_fields
+            category: prowlarr
+      update_password: true
+      delete_unmanaged:
+        enabled: true
