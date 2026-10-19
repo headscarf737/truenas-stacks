@@ -89,7 +89,7 @@ services:
     hostname: media
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:version-12.1ubu2604@sha256:b0b6d034aa52ed6e1a76daaa3d7ed29039d2b802a50fa8ffd1d9fc8d3fd836c7
+    image: lscr.io/linuxserver/jellyfin:version-12.2ubu2604@sha256:799509f8ef3be7037478699cc6fd14d19dd75faac5e474ed219e98ae78a5b3e4
     container_name: jellyfin
     depends_on:
       gluetun:
