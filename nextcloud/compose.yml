@@ -60,7 +60,7 @@ services:
     user: 568:568
 
   nextcloud:
-    image: docker.io/library/nextcloud:35.0.2@sha256:a588aa5353703b44106a6129adaaf7bf22521b7a4754f9f529b3228d6aa390c5
+    image: docker.io/library/nextcloud:35.0.2@sha256:301e07b7f661c122752cc2c01b76f15036a156f2b6d794c76621b7d0a6bb8a50
     container_name: nextcloud
     depends_on:
       - collabora
@@ -126,7 +126,7 @@ services:
     user: 568:568
 
   redis:
-    image: docker.io/library/redis:8.10.2-alpine@sha256:3811787313eba226a2ef38658c6ccb91cd5e110edc89c37767de373120a0e5a0
+    image: docker.io/library/redis:8.10.2-alpine@sha256:0bf6577d7774e592b29d093e3ac9390eb91e13d72c21e506afce736de5e0eeb0
     container_name: nextcloud-redis
     networks:
       nextcloud_internal:
