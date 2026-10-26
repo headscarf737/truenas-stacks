@@ -5,29 +5,20 @@ services:
     image: docker.io/collabora/code:26.04.5.2.1@sha256:c7415b963e32eb0986a562583f154d36d3d7a461e1ddfb660a95e87094328acb
     container_name: collabora
     environment:
-      PUID: 568
-      PGID: 568
       TZ: Europe/Berlin
       password: ${COLLABORA_PASSWORD}
       username: ${COLLABORA_USERNAME}
       aliasgroup1: https://nextcloud.${DOMAIN}:443
-      server_name: collabora.${DOMAIN}
       DONT_GEN_SSL_CERT: "YES"
-      extra_params: |
-        --o:ssl.enable=false \
-        --o:ssl.termination=true \
-        --o:logging.level=warning \
-        --o:logging.level_startup=warning \
-        --o:welcome.enable=false \
-        --o:net.frame_ancestors=https://nextcloud.${DOMAIN} \
-        --o:remote_font_config.url=https://nextcloud.${DOMAIN}/apps/richdocuments/settings/fonts.json \
+      extra_params: >-
+        --o:ssl.enable=false
+        --o:ssl.termination=true
+        --o:remote_font_config.url=https://nextcloud.${DOMAIN}/apps/richdocuments/settings/fonts.json
     networks:
       nextcloud:
-        ipv4_address: 172.31.253.2
-        ipv6_address: fdd0:0:0:ffe::2
       traefik_internal:
-    extra_hosts:
-      - "nextcloud.${DOMAIN}:172.31.253.3"
+        ipv4_address: 172.31.255.252
+        ipv6_address: fdd0:0:0:1000::fc
     restart: unless-stopped
     labels:
       - traefik.enable=true

@@ -93,6 +93,9 @@ services:
       traefik_internal:
         ipv4_address: 172.31.255.254
         ipv6_address: fdd0:0:0:1000::fe
+        aliases:
+          - nextcloud.${DOMAIN}
+          - collabora.${DOMAIN}
       auth_internal:
         ipv4_address: 172.31.254.2
         ipv6_address: fdd0:0:0:fff::2
