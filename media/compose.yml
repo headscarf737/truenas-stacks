@@ -351,7 +351,7 @@ services:
       - no-new-privileges:true
 
   thelounge:
-    image: ghcr.io/lordbex/thelounge:4.8.10@sha256:08c109fba2749e356dcc40b3864c7a1bf75c84c1be38494463bf835b85111886
+    image: ghcr.io/lordbex/thelounge:4.9.0@sha256:102b245482e14115d6a8f2126289893eb5c53ad1e3ae7a59c56e3d713f40f0aa
     container_name: thelounge
     depends_on:
       gluetun:
