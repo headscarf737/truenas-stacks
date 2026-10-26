@@ -16,6 +16,8 @@ services:
       immich_internal:
     restart: unless-stopped
     user: 568:568
+    cap_drop:
+      - ALL
     security_opt:
       - no-new-privileges:true
     shm_size: 128mb

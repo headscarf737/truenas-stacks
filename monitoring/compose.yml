@@ -4,8 +4,6 @@ services:
   beszel:
     image: ghcr.io/henrygd/beszel/beszel:0.21.1@sha256:8514a69d9bbbcb74f371a3205561ee231fc0289739cea64e8131f341d695b770
     container_name: beszel
-    networks:
-      traefik_internal:
     volumes:
       - ${APPS_FOLDER}/monitoring/beszel:/beszel_data
       - ${APPS_FOLDER}/monitoring/beszel/beszel_socket:/beszel_socket
@@ -14,6 +12,8 @@ services:
       APP_URL: https://beszel.${DOMAIN}
       TRUSTED_AUTH_HEADER: Remote-Email
       TRUSTED_PROXY_IPS: 172.31.255.254/32,fdd0:0:0:1000::fe/128
+    networks:
+      traefik_internal:
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -36,8 +36,8 @@ services:
       TZ: Europe/Berlin
       LISTEN: /beszel_socket/beszel.sock
       KEY: ${BESZEL_KEY}
-    restart: unless-stopped
     network_mode: host
+    restart: unless-stopped
     cap_add:
       - SYS_RAWIO
       - SYS_ADMIN
@@ -76,6 +76,8 @@ services:
       - traefik.http.routers.crowdsec_ui.service=crowdsec_ui
       - traefik.http.services.crowdsec_ui.loadbalancer.server.port=3000
     user: 568:568
+    cap_drop:
+      - ALL
     security_opt:
       - no-new-privileges:true
 
@@ -94,6 +96,8 @@ services:
       - traefik.http.routers.dozzle.middlewares=authelia@docker
       - traefik.http.routers.dozzle.service=dozzle
       - traefik.http.services.dozzle.loadbalancer.server.port=8080
+    cap_drop:
+      - ALL
     security_opt:
       - no-new-privileges:true
 

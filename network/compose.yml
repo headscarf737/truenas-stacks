@@ -24,7 +24,7 @@ services:
     image: ghcr.io/crowdsecurity/crowdsec:v1.8.1@sha256:0f2523fa61ef507f15d953045cface490cc880670c62f2755ced17524107f71a
     container_name: crowdsec
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config/acquis:/etc/crowdsec/acquis.d/:ro
       - ${APPS_FOLDER}/network/crowdsec/data:/var/lib/crowdsec/data/
       - ${APPS_FOLDER}/network/crowdsec/config:/etc/crowdsec/
@@ -44,6 +44,8 @@ services:
       network:
       traefik_internal:
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
 
   dns:
     image: docker.io/technitium/dns-server:15.6.2@sha256:eb48ac5c135f4ab936b536f74f853d53e15ab39ef37fdbc9598a089b90d9f245
@@ -68,12 +70,14 @@ services:
       network:
     restart: unless-stopped
     hostname: dns-server
+    security_opt:
+      - no-new-privileges:true
 
   traefik:
     image: ghcr.io/traefik/traefik:v3.7.16@sha256:6d3e069ee484ab1da5adfdda555a75eb9b1545ef09096a0cc7c3043101986a20
     container_name: traefik
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config/dynamic:/dynamic:ro
       - ${APPS_FOLDER}/network/traefik/data:/data
       - ${APPS_FOLDER}/network/traefik/logs:/var/log/traefik
