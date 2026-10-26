@@ -55,7 +55,12 @@ services:
       MYSQL_USER: nextcloud
     networks:
       nextcloud_internal:
-    command: --transaction-isolation=READ-COMMITTED --innodb_read_only_compressed=OFF
+    command:
+      - --transaction-isolation=READ-COMMITTED
+      - --innodb-read-only-compressed=OFF
+      - --tmp-table-size=64M
+      - --max-heap-table-size=64M
+      - --innodb-log-file-size=256M
     restart: unless-stopped
     user: 568:568
 
