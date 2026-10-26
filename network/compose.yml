@@ -94,6 +94,7 @@ services:
         ipv4_address: 172.31.255.254
         ipv6_address: fdd0:0:0:1000::fe
         aliases:
+          - auth.${DOMAIN}
           - nextcloud.${DOMAIN}
           - collabora.${DOMAIN}
       auth_internal:
