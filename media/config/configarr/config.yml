@@ -400,19 +400,10 @@ radarr:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
             score: -10000
 
-      # my phone does not support atmos
-      - trash_ids:
-          - 496f355514737f7d83bf7aa4d24f8169 # TrueHD ATMOS
-          - 417804f7f2c4308c1f4c5d380d4c4475 # ATMOS (undefined)
-          - 1af239278386be2919e1bcee0bde047e # DD+ ATMOS
-        assign_scores_to:
-          - name: "[GERMAN] FHD Remux, Bluray, WEB"
-            score: -3000
-
     custom_format_groups:
       - trash_guide:
           - id: 0ca61b4b233178d07113082a7acff72d # [Unwanted] Unwanted Formats German
-          - id: 9d5acd8f1da78dfbae788182f7605200 # [Audio] Audio Formats
+          # No Audio for better compatibility
           - id: d9cc9a504e5ede6294c8b973aad4f028 # [Streaming Services] General
         assign_scores_to:
           - name: "[GERMAN] FHD Remux, Bluray, WEB"
