@@ -37,3 +37,5 @@ To protect the public facing Immich instance, basic auth is enforced. Generate a
 ```bash
 htpasswd -nbB <username> <password>
 ```
+
+Set `IMMICH_BASIC_AUTH_USERS` in `.env` to the complete `username:hash` output, enclosed in single quotes.

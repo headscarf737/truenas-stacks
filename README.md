@@ -2,7 +2,7 @@
 
 ## Description
 
-This is the repo for my NAS server based on TrueNAS Community Edition with various docker compose stacks for media, home automation, networking, and other services.
+This is the repo for my NAS server based on TrueNAS Community Edition with various docker compose stacks for media, networking, and other services.
 
 ## Notice
 
@@ -30,7 +30,7 @@ This repo includes the following stacks:
 
 - [immich](./immich): Immich self-hosted photo and video backup and management solution
 
-- [media](./media): Arr stack based on Usenet
+- [media](./media): Arr stack based on Usenet and torrents
   - Gluetun: VPN client for secure connections
   - Jellyfin: Media server for streaming
   - Prowlarr: Indexer manager
@@ -48,7 +48,7 @@ This repo includes the following stacks:
 - [monitoring](./monitoring): Monitoring stack for server health and performance
   - Dozzle: Log viewer for docker containers
   - Homepage: Dashboard for quick access to services
-  - scrutiny: SMART monitoring for drives
+  - Beszel and Beszel agent: Host, container, and drive monitoring
   - CrowdSec Web UI: Web interface for CrowdSec
 
 - [network](./network): Network services stack
@@ -67,6 +67,8 @@ This repo includes the following stacks:
   - qBittorrent: Torrent client
   - qui: Web UI for managing torrents
   - autobrr: Automation tool for managing torrent downloads
+  - auditorr: Torrent auditing tool
+  - rePollo: Torrent automation
 
 ## Planned Content
 

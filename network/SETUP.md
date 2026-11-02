@@ -37,7 +37,7 @@ Choose an ULA prefix for your network, e.g. `fd42:168:178:220::/64`
 
 In your router add a static IPv6 route for `fd42:168:178:220::/64` via your link local address.
 
-Add `NET_INTERFACE_DNS6` as an alias to your network interface
+Add `NET_INTERFACE_DNS6` as an alias to your network interface, without the surrounding brackets
 
 ## Setup Crowdsec
 

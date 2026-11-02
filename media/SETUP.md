@@ -20,7 +20,7 @@ openssl rand -hex 32
 
 ## sabnzbd
 
-Edit `data/sabnzbd/sabnzbd.ini` and add `sabnzbd.$DOMAIN` to the host_whitelist
+Edit `${APPS_FOLDER}/media/sabnzbd/sabnzbd.ini` and add `sabnzbd.$DOMAIN` to the host_whitelist
 
 Temporary Download Folder: `/data/usenet/incomplete`
 Completed Download Folder: `/data/usenet/complete`

@@ -18,7 +18,7 @@ In your Network settings, make sure that your network interface has three IP add
 
 The first one will be used for internal communication inside your network. (192.168.178.221)
 
-The second one will be used for external communication from outside your network. This one should be port forwarded from your router/firewall to your TrueNAS server. (192.168.178.222)
+The second one will be used for external communication from outside your network. This one should be port forwarded from your router/firewall to your TrueNAS server. (192.168.178.224)
 
 The third one will be used for TrueNAS web interface and services not using the reverse proxy. (192.168.178.220)
 
@@ -146,7 +146,7 @@ Pull the repository to the SSD pool apps stacks dataset
 
 ## Environment Variables
 
-Copy the example environment file:
+In each stack directory you intend to deploy, copy its example once and fill in the values:
 
 ```shell
 cp .env.example .env
@@ -313,7 +313,7 @@ should look something like this:
 
 Name      Current Timer Default Timer Saved Timer Recovery Time Min Timer   Max Timer   C S
 Idle A    *1            *1            *1          1             0           10          Y Y
-Idle B    *3600         *1200         *3600       4             0           42949672    Y Y
+Idle B    *9600         *1200         *9600       4             0           42949672    Y Y
 Idle C     0             6000          6000       20            0           42949672    Y Y
 Standby Z  0             9000          9000       110           0           42949672    Y Y
 ```

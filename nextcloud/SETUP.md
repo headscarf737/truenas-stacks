@@ -27,9 +27,9 @@ TODO fonts
 ## Basic Configs
 
 ```shell
-./occ maintenance:repair --include-expensive
-./occ config:system:set maintenance_window_start --type=integer --value=1
-./occ db:add-missing-indices
+sudo docker compose exec --user 568:568 nextcloud php occ maintenance:repair --include-expensive
+sudo docker compose exec --user 568:568 nextcloud php occ config:system:set maintenance_window_start --type=integer --value=1
+sudo docker compose exec --user 568:568 nextcloud php occ db:add-missing-indices
 ```
 
 ### Email
@@ -78,6 +78,6 @@ Go to Apps and install `Whiteboard`
 
 Go into Settings > Administration > Whiteboard and set the Server address to `https://whiteboard.${DOMAIN}`
 
-Paste the generated JWT Secret into the Shared Secret field
+Set `WHITEBOARD_SECRET` in `.env` to the generated JWT Secret and paste the same value into the Shared Secret field
 
 Adjust max image size
