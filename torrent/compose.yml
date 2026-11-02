@@ -85,7 +85,7 @@ services:
       - no-new-privileges:true
 
   qbittorrent:
-    image: ghcr.io/hotio/qbittorrent:release-v5.3.0@sha256:185b79cb8b8e1bfa52b4463d0ea6039d8336ac08b9bffa52b7406794eb5253cd
+    image: ghcr.io/hotio/qbittorrent:release-v5.3.0@sha256:944b91832c8b34306d9197a581c9993813443d9d7e5c4bb0a32cf5fc148f7b36
     container_name: qbittorrent
     volumes:
       - ${MEDIA_FOLDER}/torrent:/data/torrent
