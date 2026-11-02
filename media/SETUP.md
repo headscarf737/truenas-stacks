@@ -140,6 +140,14 @@ For Sonarr make sure to enable Season Folders
 
 Setting up Email notifications is recommended.
 
+## Lurker
+
+Open `https://lurker.${DOMAIN}` and create your account. Configure the upstream IRC networks, their authentication and channels in Lurker.
+
+The bouncer listens on `127.0.0.1:6667` inside Gluetun's shared network namespace. The Lounge connects over this loopback interface, so bouncer TLS is disabled and no bouncer port is published. Configure TLS for the upstream IRC connections in Lurker as appropriate for each network.
+
+Create a **read-write API token** under **Settings → API tokens** for The Lounge. **Settings → Bouncer** shows your username and network names. See the [Lurker bouncer documentation](https://docs.lurker.chat/SELF_HOSTING#irc-bouncer-attach-from-other-irc-clients).
+
 ## The Lounge
 
 Edit `${APPS_FOLDER}/media/thelounge/config.js`:
@@ -154,6 +162,40 @@ Under `ldap.searchDN`:
 Set `rootDN` to `uid=service,ou=people,dc=sodium,dc=example,dc=com`
 set `filter` to `(memberOf=cn=admin,ou=groups,dc=sodium,dc=example,dc=com)`
 Set `base` to `dc=sodium,dc=example,dc=com`
+
+### Connect through Lurker
+
+In `${APPS_FOLDER}/media/thelounge/config.js`, set `lockNetwork` to `true` and update these fields in the existing `defaults` object:
+
+```javascript
+name: "Lurker",
+host: "127.0.0.1",
+port: 6667,
+tls: false,
+password: "",
+join: "",
+```
+
+Keep the other configuration settings, including LDAP. These [network settings](https://thelounge.chat/docs/configuration#default-network) make The Lounge connect to Lurker over the shared loopback interface and prevent direct connections to other IRC servers.
+
+Apply the Compose configuration from the `media` directory, then restart The Lounge to load the edited `config.js`:
+
+```shell
+sudo docker compose up -d lurker thelounge
+sudo docker compose restart thelounge
+```
+
+Sign in to The Lounge as usual, then add one connection per Lurker network:
+
+- **Nick:** your nick on that network in Lurker.
+- **Channels:** leave empty; Lurker supplies the channels already joined.
+- **Authentication:** `Username + password (SASL PLAIN)`.
+- **Account:** `lurker-username/networkname` (the network's name in Lurker, or its numeric ID).
+- **Password:** the read-write API token created in Lurker.
+
+The SASL account is your Lurker account; LDAP remains the login for The Lounge's web interface. Keep upstream IRC authentication in Lurker.
+
+Existing direct IRC connections are not migrated automatically and will be rejected by the network lock. Disconnect them and add the corresponding Lurker connections using the settings above. Copy any per-network FiSH settings you need before removing old entries.
 
 ## sabnzbd Problems
 

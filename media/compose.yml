@@ -136,6 +136,11 @@ services:
       NODE_ENV: production
       PORT: 8015
       DATABASE_PATH: /app/data/lurker.db
+      # The Lounge shares Gluetun's network namespace, including loopback.
+      LURKER_BOUNCER_ENABLED: "true"
+      LURKER_BOUNCER_BIND: 127.0.0.1
+      LURKER_BOUNCER_PORT: 6667
+      LURKER_BOUNCER_TLS: "off"
     network_mode: service:gluetun
     restart: unless-stopped
     labels:
@@ -391,6 +396,8 @@ services:
       gluetun:
         condition: service_healthy
         restart: true
+      lurker:
+        condition: service_started
     volumes:
       - ${APPS_FOLDER}/media/thelounge:/var/opt/thelounge
     environment:
