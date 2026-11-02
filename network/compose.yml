@@ -126,7 +126,7 @@ services:
       - "--entrypoints.websecure.http3"
       # Web Public
       - "--entrypoints.web-pub.address=:8081/tcp"
-      - "--entrypoints.web-pub.http.redirections.entryPoint.to=websecure-pub"
+      - "--entrypoints.web-pub.http.redirections.entryPoint.to=:443"
       - "--entrypoints.web-pub.http.aliasHeadersStrategy=delete"
       # Websecure Public
       - "--entrypoints.websecure-pub.address=:8443/tcp"
