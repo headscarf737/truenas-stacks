@@ -43,6 +43,7 @@ This repo includes the following stacks:
   - Stash: Adult media manager
   - Configarr: Configuration management
   - The Lounge: Web IRC client
+  - Lurker: Web IRC client and bouncer
 
 - [monitoring](./monitoring): Monitoring stack for server health and performance
   - Dozzle: Log viewer for docker containers

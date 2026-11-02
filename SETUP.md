@@ -71,6 +71,7 @@ git config --global --add safe.directory /mnt/apps/docker/stacks
 - `media/configarr`
 - `media/gluetun`
 - `media/jellyfin`
+- `media/lurker`
 - `media/prowlarr`
 - `media/radarr`
 - `media/radarr-uhd`

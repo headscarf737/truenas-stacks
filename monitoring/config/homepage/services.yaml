@@ -248,3 +248,7 @@
     - The Lounge:
         href: https://thelounge.{{HOMEPAGE_VAR_DOMAIN}}
         icon: thelounge
+
+    - Lurker:
+        href: https://lurker.{{HOMEPAGE_VAR_DOMAIN}}
+        icon: mdi-chat-outline

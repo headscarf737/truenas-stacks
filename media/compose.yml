@@ -122,6 +122,34 @@ services:
     security_opt:
       - no-new-privileges:true
 
+  lurker:
+    image: ghcr.io/amiantos/lurker:2.6.3@sha256:89d051237f737aecb7eca673fe88075af6a384ed9e77a12b7ddafedc6595c35c
+    container_name: lurker
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ${APPS_FOLDER}/media/lurker:/app/data
+    environment:
+      TZ: Europe/Berlin
+      NODE_ENV: production
+      PORT: 8015
+      DATABASE_PATH: /app/data/lurker.db
+    network_mode: service:gluetun
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.lurker.rule=Host(`lurker.${DOMAIN}`)
+      - traefik.http.routers.lurker.entrypoints=websecure
+      - traefik.http.routers.lurker.service=lurker
+      - traefik.http.services.lurker.loadbalancer.server.port=8015
+    user: 568:568
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:version-2.7.0.5723@sha256:04be30163fbaf48d6aeee7b5893c9f6614ffbad6d853971df0d6dcdf01c7f104
     container_name: prowlarr
