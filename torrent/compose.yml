@@ -149,7 +149,7 @@ services:
       - no-new-privileges:true
 
   repollo:
-    image: docker.io/uppollo/repollo:v0.11.0@sha256:eca955c3a97ccea90787042a99af8c8b025d07994b80523aadbeae2d5238acd6
+    image: docker.io/uppollo/repollo:v0.12.0@sha256:9183cd3ff5fb72a80021ba2ddac92b186a19bc3fa44b0b0eac197acb5ab07638
     container_name: repollo
     depends_on:
       gluetun:
