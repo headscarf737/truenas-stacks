@@ -61,7 +61,7 @@ services:
       - no-new-privileges:true
 
   nextcloud:
-    image: docker.io/library/nextcloud:35.0.2@sha256:e0b1a2af52c82c07b7a0e8e59878bd8769e704447734d5d238a836982f51b9c8
+    image: docker.io/library/nextcloud:35.0.2@sha256:d88929dc8386420b8963f86cabb667fdaf733eef9dcf8fc98e226801a32c023c
     container_name: nextcloud
     depends_on:
       - collabora
@@ -135,7 +135,7 @@ services:
       - no-new-privileges:true
 
   redis:
-    image: docker.io/library/redis:8.10.3-alpine@sha256:21090af93f8324db2f0f0f4f38a7c60369d47d917e000c3423d89d2ae2883537
+    image: docker.io/library/redis:8.10.3-alpine@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80
     container_name: nextcloud-redis
     networks:
       nextcloud_internal:
