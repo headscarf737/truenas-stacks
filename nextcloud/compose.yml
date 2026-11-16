@@ -35,7 +35,7 @@ services:
       - apparmor=unconfined
 
   mariadb:
-    image: docker.io/library/mariadb:11.8.9@sha256:c4124d1afa875e47f2892edf26b482fa54f796e2f342d3717a04ca091a22a9bd
+    image: docker.io/library/mariadb:11.8.9@sha256:d36f18d65a0459510b8b0f643b226a6d299e3206486e2b64ff20754a6d291707
     container_name: nextcloud-db
     volumes:
       - ${APPS_FOLDER}/nextcloud/db:/var/lib/mysql
@@ -61,7 +61,7 @@ services:
       - no-new-privileges:true
 
   nextcloud:
-    image: docker.io/library/nextcloud:35.0.2@sha256:d88929dc8386420b8963f86cabb667fdaf733eef9dcf8fc98e226801a32c023c
+    image: docker.io/library/nextcloud:35.0.2@sha256:786c102155d2717ba0f53a62b3fdd7a1354edc48e800b94dbe32294d9a5752a2
     container_name: nextcloud
     depends_on:
       - collabora
@@ -135,7 +135,7 @@ services:
       - no-new-privileges:true
 
   redis:
-    image: docker.io/library/redis:8.10.3-alpine@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80
+    image: docker.io/library/redis:8.10.3-alpine@sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3
     container_name: nextcloud-redis
     networks:
       nextcloud_internal:
