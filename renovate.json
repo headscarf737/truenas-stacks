@@ -11,6 +11,11 @@
   "prHourlyLimit": 0,
   "packageRules": [
     {
+      "matchSourceUrls": ["https://github.com/henrygd/beszel"],
+      "groupName": "beszel monorepo",
+      "matchUpdateTypes": ["digest", "patch", "minor", "major"]
+    },
+    {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/hotio/**"],
       "versionCompatibility": "^(?<compatibility>.*)-(?<version>.*)$"
