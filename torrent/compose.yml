@@ -119,7 +119,7 @@ services:
       - no-new-privileges:true
 
   qui:
-    image: ghcr.io/autobrr/qui:v1.35.0@sha256:a5b2f5faf6388cce257137c88e4b189458fd799cf9119ed476c980e5a69341b2
+    image: ghcr.io/autobrr/qui:v1.36.1@sha256:83399374ea680d2c2790b4552c2a2c732837611710bcb5e4f7b63d79cfcae416
     container_name: qui
     depends_on:
       gluetun:
