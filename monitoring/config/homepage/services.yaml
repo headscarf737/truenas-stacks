@@ -218,8 +218,6 @@
         widgets:
           - type: autobrr
             url: http://torrent:7474
-            # prettier-ignore
-            key: {{HOMEPAGE_VAR_AUTOBRR_KEY}}
 
     - auditorr:
         href: https://auditorr.{{HOMEPAGE_VAR_DOMAIN}}

@@ -41,6 +41,11 @@ services:
     environment:
       TZ: Europe/Berlin
       AUTOBRR__LOG_LEVEL: INFO
+      AUTOBRR__AUTH_DISABLED: true
+      AUTOBRR__AUTH_DISABLED_ACKNOWLEDGEMENT: I_ACKNOWLEDGE_THIS_IS_A_BAD_IDEA
+      AUTOBRR__AUTH_ALLOWED_PEER_CIDRS: 172.31.255.254/32,fdd0:0:0:1000::fe/128,172.31.255.253/32,fdd0:0:0:1000::fd/128
+      AUTOBRR__AUTH_ALLOWED_HOSTS: torrent
+      AUTOBRR__CORS_ALLOWED_ORIGINS: https://autobrr.${DOMAIN}
     network_mode: service:gluetun
     restart: unless-stopped
     labels:
