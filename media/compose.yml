@@ -3,7 +3,7 @@ name: media
 services:
   # todo: add bazarr-uhd
   bazarr:
-    image: lscr.io/linuxserver/bazarr:version-v1.6.2@sha256:832820dec70bce9e912c6eee7a95baf6551e03dbc63325a7208daaa455423752
+    image: lscr.io/linuxserver/bazarr:version-v1.6.2@sha256:e0c5d45965242830c5eeddaafe9ae2b5e8ca3f6c01ecda9ee9364f550921dc50
     container_name: bazarr
     depends_on:
       gluetun:
@@ -96,7 +96,7 @@ services:
       - no-new-privileges:true
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:version-12.4ubu2604@sha256:2f708001387aa9853e744a4a4d572d9970927c479c56d6c9e199f789c5173535
+    image: lscr.io/linuxserver/jellyfin:version-12.4ubu2604@sha256:b10044530553b2506f06279bf0b5223f9534f434f87a277da4b8fa8ac386cb58
     container_name: jellyfin
     depends_on:
       gluetun:
@@ -248,7 +248,7 @@ services:
       - no-new-privileges:true
 
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:version-5.1.3@sha256:b356d0a9b22db584e9005364ec4e752dfc081ce501b7145e9a5c0bb38e4d1ba4
+    image: lscr.io/linuxserver/sabnzbd:version-5.1.3@sha256:d225bbab93f54784c115a3b1d89711e469b1969c9f32aa6ebb11fb03b5804431
     container_name: sabnzbd
     depends_on:
       gluetun:
@@ -299,7 +299,7 @@ services:
       - no-new-privileges:true
 
   sonarr:
-    image: lscr.io/linuxserver/sonarr:version-4.0.20.3014@sha256:c7d1df25e428da6c9ace05daea0d34e59522978a3843ea1944812f855af4086c
+    image: lscr.io/linuxserver/sonarr:version-4.0.20.3014@sha256:339814bbf50599ac3b59077c252f29833d0138b59a062d0e82ce37bdc7f04f86
     container_name: sonarr
     depends_on:
       gluetun:
@@ -330,7 +330,7 @@ services:
       - no-new-privileges:true
 
   sonarr-uhd:
-    image: lscr.io/linuxserver/sonarr:version-4.0.20.3014@sha256:c7d1df25e428da6c9ace05daea0d34e59522978a3843ea1944812f855af4086c
+    image: lscr.io/linuxserver/sonarr:version-4.0.20.3014@sha256:339814bbf50599ac3b59077c252f29833d0138b59a062d0e82ce37bdc7f04f86
     container_name: sonarr-uhd
     depends_on:
       gluetun:
@@ -362,7 +362,7 @@ services:
       - no-new-privileges:true
 
   stash:
-    image: ghcr.io/hotio/stash:release-v0.32.0@sha256:6341ae970d8ab1e245964cb94f9c6a303c9f2261f6abe9c2e3ddc65793c40315
+    image: ghcr.io/hotio/stash:release-v0.32.0@sha256:ae699dfe0ef7a1b687ca0b579a741825b3e26ca8202c45b07d59cfb2d93e1e56
     container_name: stash
     depends_on:
       gluetun:
@@ -390,7 +390,7 @@ services:
       - no-new-privileges:true
 
   thelounge:
-    image: ghcr.io/lordbex/thelounge:4.9.0@sha256:15b3e9721a24360f9f51644037233c437d63d6dba1c80983160e04bf0a6e0113
+    image: ghcr.io/lordbex/thelounge:4.9.0@sha256:3698b0c9b19bb5d6f74c908a217f5ffb71e23d8255264a7badb3e355c498a2e4
     container_name: thelounge
     depends_on:
       gluetun:
